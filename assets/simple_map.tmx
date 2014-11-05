@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="35" height="35" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="zelda-like" tilewidth="16" tileheight="16">
+  <image source="zelda-like.png" width="128" height="208"/>
+ </tileset>
+ <layer name="Map" width="35" height="35">
+  <data encoding="base64" compression="zlib">
+   eJzt1LEJACAMBVEXECu1cwX3386MYIqQHzjhuhSPBGxN501rCbStbt3PhmPW2yhsiayyRelGWHIsnr9uC+0lMixYsGDBgiXbgQULFixYcixHqAdJncqz
+  </data>
+ </layer>
+</map>
