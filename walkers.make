@@ -20,7 +20,7 @@ ifndef AR
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = obj/Debug/walkers
+  OBJDIR     = obj/Debug
   TARGETDIR  = .
   TARGET     = $(TARGETDIR)/walkers
   DEFINES   += -DDEBUG
@@ -42,7 +42,7 @@ ifeq ($(config),debug)
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = obj/Release/walkers
+  OBJDIR     = obj/Release
   TARGETDIR  = .
   TARGET     = $(TARGETDIR)/walkers
   DEFINES   += -DNDEBUG
@@ -64,6 +64,13 @@ ifeq ($(config),release)
 endif
 
 OBJECTS := \
+	$(OBJDIR)/Entity.o \
+	$(OBJDIR)/Game.o \
+	$(OBJDIR)/Graphics.o \
+	$(OBJDIR)/main.o \
+	$(OBJDIR)/asset_helper.o \
+	$(OBJDIR)/TextureManager.o \
+	$(OBJDIR)/MoveSystem.o \
 	$(OBJDIR)/jsoncpp.o \
 
 RESOURCES := \
@@ -125,6 +132,27 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 endif
 
+$(OBJDIR)/Entity.o: src/Entity.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Game.o: src/Game.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Graphics.o: src/Graphics.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/main.o: src/main.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/asset_helper.o: src/assets/asset_helper.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/TextureManager.o: src/assets/TextureManager.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MoveSystem.o: src/systems/MoveSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/jsoncpp.o: lib/jsoncpp.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"

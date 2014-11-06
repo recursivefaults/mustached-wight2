@@ -6,7 +6,7 @@ ifndef config
 endif
 export config
 
-PROJECTS := walkers test
+PROJECTS := walkers
 
 .PHONY: all clean help $(PROJECTS)
 
@@ -16,13 +16,8 @@ walkers:
 	@echo "==== Building walkers ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f walkers.make
 
-test: 
-	@echo "==== Building test ($(config)) ===="
-	@${MAKE} --no-print-directory -C . -f test.make
-
 clean:
 	@${MAKE} --no-print-directory -C . -f walkers.make clean
-	@${MAKE} --no-print-directory -C . -f test.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -35,6 +30,5 @@ help:
 	@echo "   all (default)"
 	@echo "   clean"
 	@echo "   walkers"
-	@echo "   test"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"

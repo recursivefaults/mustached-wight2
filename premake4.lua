@@ -21,7 +21,3 @@ solution "Walkers"
          defines { "NDEBUG" }
          flags { "Optimize" }
 
-    project "test"
-        excludes { "src/main.cpp" }
-        files { "src/**.h", "src/**.cpp", "lib/jsoncpp.cpp", "test/**.cpp" }
-        includedirs {"/usr/local/include", "lib"}
