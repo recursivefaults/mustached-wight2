@@ -11,7 +11,7 @@ Component* Entity::getComponent(ComponentTypes type)
 bool Entity::hasComponent(ComponentTypes type)
 {
     std::map<ComponentTypes, Component*>::iterator it = components.find(type);
-    return it == components.end();
+    return it != components.end();
 }
 void Entity::addComponent(ComponentTypes type, Component *component)
 {

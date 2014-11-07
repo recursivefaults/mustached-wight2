@@ -70,6 +70,7 @@ OBJECTS := \
 	$(OBJDIR)/Graphics.o \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/SystemFactory.o \
+	$(OBJDIR)/World.o \
 	$(OBJDIR)/asset_helper.o \
 	$(OBJDIR)/TextureManager.o \
 	$(OBJDIR)/MoveSystem.o \
@@ -150,6 +151,9 @@ $(OBJDIR)/main.o: src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SystemFactory.o: src/SystemFactory.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/World.o: src/World.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/asset_helper.o: src/assets/asset_helper.cpp

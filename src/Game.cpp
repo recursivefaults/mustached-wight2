@@ -27,7 +27,6 @@ Game::Game()
     world.addEntity(entityFactory.createPlayer());
     continueRunning = true;
     SDL_Log("Game initialized");
-
 }
 
 Game::~Game()
@@ -45,14 +44,19 @@ void Game::start()
     {
         int current = SDL_GetTicks();
         const long elapsed = current - previousFrameMs;
+
+        //gather input
         handleInput();
+
         //update
+        update(elapsed);
         
         //render
         render();
         
         if(elapsed < msPerFrame)
         {
+            //Rest to keep 60 fps
             SDL_Delay(msPerFrame - elapsed);
         }
         previousFrameMs = current;
@@ -63,6 +67,10 @@ void Game::start()
 
 void Game::update(int elapsedMs)
 {
+    for(auto system : systems)
+    {
+        system->update(elapsedMs, world);
+    }
 }
 
 void Game::render()
@@ -70,13 +78,12 @@ void Game::render()
     SDL_Rect rect;
     graphics.clearRenderer();
 
-    //TODO: Make this real.
-    rect.x = 10;
-    rect.y = 10;
-    rect.w = 16;
-    rect.h = 16;
-
-    graphics.drawRect(&rect, 10, 10, 200, true);
+    for(auto entity : world.getEntitiesForType(ComponentTypes::RENDERRECT))
+    {
+        RenderRect *r = (RenderRect *)entity->getComponent(ComponentTypes::RENDERRECT);
+        graphics.drawRect(&r->rect, 10, 10, 200, true);
+    
+    }
     graphics.render();
 }
 
