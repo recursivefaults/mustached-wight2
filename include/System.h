@@ -2,7 +2,7 @@
 #define SYSETM_H
 
 #include "Entity.h"
-#include <vector>
+#include "World.h"
 
 class System
 {
@@ -10,7 +10,7 @@ class System
         System() {};
         virtual ~System() {};
 
-        virtual void update(int elapsedMs, std::vector<Entity *> entities) = 0;
+        virtual void update(int elapsedMs, World &) = 0;
     protected:
     private:
 };

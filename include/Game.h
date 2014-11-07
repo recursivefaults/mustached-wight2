@@ -3,7 +3,7 @@
 
 #include "Graphics.h"
 #include "Entity.h"
-#include <vector>
+#include "World.h"
 
 class Game
 {
@@ -13,12 +13,16 @@ class Game
         void start();
     protected:
     private:
-        void handleInput(SDL_Event &e);
+        void handleInput();
         void update(int elapsedMs);
         void render();
-        Graphics graphics;
+
+        //TODO: I Don't like this
+        bool continueRunning;
+
         int fps;
-        std::vector<Entity *> entities;
+        Graphics graphics;
+        World world;
 };
 
 #endif
