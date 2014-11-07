@@ -65,9 +65,11 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/Entity.o \
+	$(OBJDIR)/EntityFactory.o \
 	$(OBJDIR)/Game.o \
 	$(OBJDIR)/Graphics.o \
 	$(OBJDIR)/main.o \
+	$(OBJDIR)/SystemFactory.o \
 	$(OBJDIR)/asset_helper.o \
 	$(OBJDIR)/TextureManager.o \
 	$(OBJDIR)/MoveSystem.o \
@@ -135,6 +137,9 @@ endif
 $(OBJDIR)/Entity.o: src/Entity.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/EntityFactory.o: src/EntityFactory.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Game.o: src/Game.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
@@ -142,6 +147,9 @@ $(OBJDIR)/Graphics.o: src/Graphics.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/main.o: src/main.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SystemFactory.o: src/SystemFactory.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/asset_helper.o: src/assets/asset_helper.cpp

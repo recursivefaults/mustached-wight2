@@ -6,8 +6,10 @@
 enum class ComponentTypes
 {
     POSITION,
-    MOVEMENT,
-    RENDERRECT
+    VELOCITY,
+    RENDERRECT,
+    COLLIDABLE
+
 };
 
 class Component
@@ -23,7 +25,7 @@ struct Position : public Component
         int x, y;
 };
 
-struct Movement : public Component
+struct Velocity : public Component
 {
     public:
         float dx, dy;
@@ -35,6 +37,8 @@ struct RenderRect : public Component
         SDL_Rect rect;
         int r, g, b, a;
 };
+
+struct Collidable : public Component {};
 
 
 #endif

@@ -1,6 +1,9 @@
 #include "walkers.h"
 #include "Game.h"
 #include "Components.h"
+#include "SystemFactory.h"
+
+#include "EntityFactory.h"
 
 Game::Game()
 {
@@ -12,21 +15,19 @@ Game::Game()
     graphics = Graphics();
     world = World();
 
+    SystemFactory f = SystemFactory();
+    systems = f.constructSystems();
+
+    SDL_Log("Systems constructed");
+
     fps = 60;
 
-    Entity *e = new Entity();
-    Position *p = new Position();
-    p->x = 10;
-    p->y = 10;
-    Movement *m = new Movement();
-    m->dx = 0.0f;
-    m->dy = 0.0f;
+    EntityFactory entityFactory = EntityFactory();
 
-    e->addComponent(ComponentTypes::POSITION, p); 
-    e->addComponent(ComponentTypes::MOVEMENT, m); 
-    world.addEntity(e);
+    world.addEntity(entityFactory.createPlayer());
     continueRunning = true;
     SDL_Log("Game initialized");
+
 }
 
 Game::~Game()

@@ -4,6 +4,7 @@
 #include "Graphics.h"
 #include "Entity.h"
 #include "World.h"
+#include "System.h"
 
 class Game
 {
@@ -23,6 +24,7 @@ class Game
         int fps;
         Graphics graphics;
         World world;
+        std::vector<System *> systems;
 };
 
 #endif
