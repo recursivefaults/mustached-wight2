@@ -19,4 +19,10 @@ void Entity::addComponent(ComponentTypes type, Component *component)
 }
 void Entity::removeComponent(ComponentTypes type)
 {
+    
+    std::map<ComponentTypes, Component*>::iterator it = components.find(type);
+    if(it != components.end())
+    {
+        components.erase(it);
+    }
 }

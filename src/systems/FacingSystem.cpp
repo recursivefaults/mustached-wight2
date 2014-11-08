@@ -7,6 +7,7 @@ void FacingSystem::update(int elapsedMs, World &world)
     {
         Component *newFacing = nullptr;
         ComponentTypes type = ComponentTypes::NORTHFACING;
+
         if(world.wasKeyPressed(SDLK_a)) {
             newFacing = new WestFacing();
             type = ComponentTypes::WESTFACING;
@@ -24,14 +25,14 @@ void FacingSystem::update(int elapsedMs, World &world)
             type = ComponentTypes::SOUTHFACING;
         }
 
-        //Clean up old facings, and add this one if it's new
-        entity->removeComponent(ComponentTypes::SOUTHFACING);
-        entity->removeComponent(ComponentTypes::NORTHFACING);
-        entity->removeComponent(ComponentTypes::EASTFACING);
-        entity->removeComponent(ComponentTypes::WESTFACING);
-
         if(newFacing != nullptr)
         {
+            //Clean up old facings, and add this one if it's new
+            entity->removeComponent(ComponentTypes::SOUTHFACING);
+            entity->removeComponent(ComponentTypes::NORTHFACING);
+            entity->removeComponent(ComponentTypes::EASTFACING);
+            entity->removeComponent(ComponentTypes::WESTFACING);
+
             entity->addComponent(type, newFacing);
         }
     }

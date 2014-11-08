@@ -8,7 +8,6 @@ void ShootingSystem::update(int elapsedMs, World &world)
     {
         if(world.wasKeyPressed(SDLK_SPACE))
         {
-            SDL_Log("Firing a bullet!");
             EntityFactory factory = EntityFactory();
 
             Position *initialPosition = new Position();
