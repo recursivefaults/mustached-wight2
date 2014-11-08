@@ -73,6 +73,7 @@ OBJECTS := \
 	$(OBJDIR)/World.o \
 	$(OBJDIR)/asset_helper.o \
 	$(OBJDIR)/TextureManager.o \
+	$(OBJDIR)/CollisionSystem.o \
 	$(OBJDIR)/MoveSystem.o \
 	$(OBJDIR)/jsoncpp.o \
 
@@ -160,6 +161,9 @@ $(OBJDIR)/asset_helper.o: src/assets/asset_helper.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/TextureManager.o: src/assets/TextureManager.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/CollisionSystem.o: src/systems/CollisionSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MoveSystem.o: src/systems/MoveSystem.cpp

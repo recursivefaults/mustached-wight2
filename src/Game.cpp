@@ -81,7 +81,12 @@ void Game::render()
     for(auto entity : world.getEntitiesForType(ComponentTypes::RENDERRECT))
     {
         RenderRect *r = (RenderRect *)entity->getComponent(ComponentTypes::RENDERRECT);
-        graphics.drawRect(&r->rect, 10, 10, 200, true);
+        Position *p = (Position *)entity->getComponent(ComponentTypes::POSITION);
+        rect.x = p->x;
+        rect.y = p->y;
+        rect.h = r->rect.h;
+        rect.w = r->rect.w;
+        graphics.drawRect(&rect, 10, 10, 200, true);
     
     }
     graphics.render();
