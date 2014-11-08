@@ -3,7 +3,7 @@
 
 
 Graphics::Graphics() {
-    window = SDL_CreateWindow("Walkers", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Walkers", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_Log("Graphics system initialized");
 }
