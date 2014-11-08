@@ -14,8 +14,6 @@ std::list<Entity *> World::getEntitiesForType(ComponentTypes type)
     return entitiesWithComponents;
 }
 
-
-//TODO: Is this safe?
 void World::removeEntity(int id)
 {
     std::list<Entity*>::iterator it = entities.begin();
@@ -23,7 +21,6 @@ void World::removeEntity(int id)
     {
         if((*it)->getId() == id)
         {
-            SDL_Log("Removing stale entity");
             entities.erase(it);
         }
     }

@@ -8,6 +8,7 @@ class EntityFactory
     public:
         Entity *createPlayer();
         Entity *createBullet(Position *, Velocity *);
+        Entity *createZombie(Position *);
     protected:
     private:
 };

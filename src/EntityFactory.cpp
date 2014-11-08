@@ -1,5 +1,6 @@
 #include "EntityFactory.h"
 #include "Components.h"
+#include <random>
 
 Entity *EntityFactory::createPlayer() 
 {
@@ -19,16 +20,45 @@ Entity *EntityFactory::createPlayer()
     r->rect.y = p->y;
     r->rect.w = 16;
     r->rect.h = 16;
+    r->r = 10;
+    r->b = 200;
+    r->g = 10;
 
     player->addComponent(ComponentTypes::POSITION, p); 
     player->addComponent(ComponentTypes::VELOCITY, m); 
     player->addComponent(ComponentTypes::RENDERRECT, r);
-    player->addComponent(ComponentTypes::FACING, new Facing());
     player->addComponent(ComponentTypes::PLAYERINPUT, new PlayerInput());
     player->addComponent(ComponentTypes::CANSHOOT, new CanShoot());
+    player->addComponent(ComponentTypes::FACING, new Facing());
     player->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
 
     return player;
+}
+
+Entity *EntityFactory::createZombie(Position *position)
+{
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(1,3);
+
+    Entity *zombie = new Entity();
+
+    int life = distribution(generator);
+
+    RenderRect *r = new RenderRect();
+    r->rect.w = 16;
+    r->rect.h = 16;
+    r->r = 40;
+    r->g = 180;
+    r->b = 80;
+
+    zombie->addComponent(ComponentTypes::RENDERRECT, r);
+    zombie->addComponent(ComponentTypes::LIFE, new Life(life));
+    zombie->addComponent(ComponentTypes::VELOCITY, new Velocity());
+    zombie->addComponent(ComponentTypes::MONSTER, new Monster());
+    zombie->addComponent(ComponentTypes::FACING, new Facing());
+    zombie->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
+    zombie->addComponent(ComponentTypes::POSITION, position);
+    return zombie;
 }
 
 Entity *EntityFactory::createBullet(Position *initialPosition, Velocity *initialVelocity)

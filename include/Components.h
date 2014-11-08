@@ -17,6 +17,7 @@ enum class ComponentTypes
     PLAYERINPUT,
     CANSHOOT,
     BULLET,
+    MONSTER,
     REMOVE,
     COLLIDABLE
 
@@ -60,6 +61,8 @@ struct Bullet : public Component {};
 struct CanShoot : public Component {};
 
 struct PlayerInput : public Component {};
+
+struct Monster : public Component {};
 
 struct Life : public Component {
     public:

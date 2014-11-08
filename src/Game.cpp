@@ -25,6 +25,13 @@ Game::Game()
     EntityFactory entityFactory = EntityFactory();
 
     world.addEntity(entityFactory.createPlayer());
+
+    //TODO:: Move this to a spawn thingie
+    Position *p = new Position();
+    p->x = 740;
+    p->y = 10;
+    world.addEntity(entityFactory.createZombie(p));
+
     continueRunning = true;
     SDL_Log("Game initialized");
 }
@@ -93,7 +100,7 @@ void Game::render()
         rect.y = p->y;
         rect.h = r->rect.h;
         rect.w = r->rect.w;
-        graphics.drawRect(&rect, 10, 10, 200, true);
+        graphics.drawRect(&rect, r->r, r->g, r->b, true);
     }
     graphics.render();
 }
