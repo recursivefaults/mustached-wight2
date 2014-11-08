@@ -19,6 +19,10 @@ void MonsterSystem::update(int elapsedMs, World &world)
 
         //Adjust velocity in that direction
         Velocity *zombieVelocity = (Velocity *) monster->getComponent(ComponentTypes::VELOCITY);
+        if(diff.dx == 0.0f)
+            zombieVelocity->dx = 0.0f;
+        if(diff.dy == 0.0f)
+            zombieVelocity->dy = 0.0f;
         if(diff.dx < 0.0f)
             zombieVelocity->dx = -kZombieMoveVelocity;
         if(diff.dx > 0.0f)
