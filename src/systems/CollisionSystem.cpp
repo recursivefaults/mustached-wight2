@@ -25,7 +25,5 @@ void CollisionSystem::update(int elapsedMs, World &world)
                p->y = 0;
            }
        }
-
     }
-
 }
