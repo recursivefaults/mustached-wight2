@@ -10,8 +10,8 @@ class Entity
 {
     public:
         Entity() : _id(STATIC_COUNTER++) {}; 
-        ~Entity();
         Component* getComponent(ComponentTypes type);
+        const int getId() const {return _id;}
         bool hasComponent(ComponentTypes);
         void addComponent(ComponentTypes type, Component *component);
         void removeComponent(ComponentTypes type);

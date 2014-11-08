@@ -7,6 +7,7 @@ class EntityFactory
 {
     public:
         Entity *createPlayer();
+        Entity *createBullet(Position *, Velocity *);
     protected:
     private:
 };

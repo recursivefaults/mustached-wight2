@@ -8,6 +8,16 @@ enum class ComponentTypes
     POSITION,
     VELOCITY,
     RENDERRECT,
+    LIFE,
+    FACING,
+    EASTFACING,
+    WESTFACING,
+    NORTHFACING,
+    SOUTHFACING,
+    PLAYERINPUT,
+    CANSHOOT,
+    BULLET,
+    REMOVE,
     COLLIDABLE
 
 };
@@ -37,6 +47,28 @@ struct RenderRect : public Component
         SDL_Rect rect;
         int r, g, b, a;
 };
+
+struct Facing : public Component {};
+
+struct NorthFacing : public Component {};
+struct SouthFacing : public Component {};
+struct WestFacing : public Component {};
+struct EastFacing : public Component {};
+
+struct Bullet : public Component {};
+
+struct CanShoot : public Component {};
+
+struct PlayerInput : public Component {};
+
+struct Life : public Component {
+    public:
+        Life(int _hp) : hp(_hp), damage(0) {}; 
+        int hp;
+        int damage;
+};
+
+struct Remove : public Component {};
 
 struct Collidable : public Component {};
 

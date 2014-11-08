@@ -74,7 +74,10 @@ OBJECTS := \
 	$(OBJDIR)/asset_helper.o \
 	$(OBJDIR)/TextureManager.o \
 	$(OBJDIR)/CollisionSystem.o \
+	$(OBJDIR)/FacingSystem.o \
 	$(OBJDIR)/MoveSystem.o \
+	$(OBJDIR)/RemoveSystem.o \
+	$(OBJDIR)/ShootingSystem.o \
 	$(OBJDIR)/jsoncpp.o \
 
 RESOURCES := \
@@ -166,7 +169,16 @@ $(OBJDIR)/TextureManager.o: src/assets/TextureManager.cpp
 $(OBJDIR)/CollisionSystem.o: src/systems/CollisionSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/FacingSystem.o: src/systems/FacingSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MoveSystem.o: src/systems/MoveSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/RemoveSystem.o: src/systems/RemoveSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/ShootingSystem.o: src/systems/ShootingSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/jsoncpp.o: lib/jsoncpp.cpp

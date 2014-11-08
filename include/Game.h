@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <vector>
 #include "Graphics.h"
 #include "Entity.h"
 #include "World.h"
@@ -17,6 +18,7 @@ class Game
         void handleInput();
         void update(int elapsedMs);
         void render();
+        void cleanUp();
 
         //TODO: I Don't like this
         bool continueRunning;

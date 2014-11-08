@@ -4,7 +4,7 @@
 void MoveSystem::update(int elapsedMs, World &world)
 {
     //TODO: Change this to something else.. enemies move different.
-    for(auto entity : world.getEntitiesForType(ComponentTypes::VELOCITY))
+    for(auto entity : world.getEntitiesForType(ComponentTypes::PLAYERINPUT))
     {
         Velocity *v = (Velocity *) entity->getComponent(ComponentTypes::VELOCITY);
         v->dx = 0.0f;

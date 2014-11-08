@@ -62,7 +62,14 @@ void Game::start()
         previousFrameMs = current;
 
     }
+    cleanUp();
 
+}
+
+void Game::cleanUp()
+{
+    SDL_Log("Cleaning up resources and quitting");
+    SDL_Quit();
 }
 
 void Game::update(int elapsedMs)
@@ -80,14 +87,13 @@ void Game::render()
 
     for(auto entity : world.getEntitiesForType(ComponentTypes::RENDERRECT))
     {
-        RenderRect *r = (RenderRect *)entity->getComponent(ComponentTypes::RENDERRECT);
-        Position *p = (Position *)entity->getComponent(ComponentTypes::POSITION);
+        RenderRect *r = (RenderRect *) entity->getComponent(ComponentTypes::RENDERRECT);
+        Position *p = (Position *) entity->getComponent(ComponentTypes::POSITION);
         rect.x = p->x;
         rect.y = p->y;
         rect.h = r->rect.h;
         rect.w = r->rect.w;
         graphics.drawRect(&rect, 10, 10, 200, true);
-    
     }
     graphics.render();
 }
@@ -106,10 +112,6 @@ void Game::handleInput()
     if(e.type == SDL_KEYDOWN) {
         //We don't use a switch because mutiple keys are pressed
         SDL_Keycode c = e.key.keysym.sym;
-        if(c == SDLK_w) { world.pressKey(SDLK_w); }
-        if(c == SDLK_a) { world.pressKey(SDLK_a); }
-        if(c == SDLK_s) { world.pressKey(SDLK_s); }
-        if(c == SDLK_d) { world.pressKey(SDLK_d); }
+        world.pressKey(c);
     }
-
 }
