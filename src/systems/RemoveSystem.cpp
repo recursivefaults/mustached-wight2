@@ -1,8 +1,5 @@
 #include "systems/RemoveSystem.h"
 
-#include "RemovalPredicate.h"
-
-
 void RemoveSystem::update(int elapsedMs, World &world)
 {
     std::list<int> idsToRemove;
@@ -14,6 +11,4 @@ void RemoveSystem::update(int elapsedMs, World &world)
     {
         world.removeEntity(id);
     }
-    
-    
 }

@@ -5,8 +5,6 @@
 #include <map>
 #include "Entity.h"
 #include "Components.h"
-#include "RemovalPredicate.h"
-
 
 class World
 {
