@@ -13,6 +13,7 @@ class World
         void pressKey(SDL_Keycode key) {keypresses[key] = true;}
         void removeEntity(int id);
         void clearKeys() {keypresses.clear();}
+        void unPressKey(SDL_Keycode key) {keypresses[key] = false;}
         std::list<Entity *> getEntitiesForType(ComponentTypes type);
         bool wasKeyPressed(SDL_Keycode key) {return keypresses[key];};
     protected:

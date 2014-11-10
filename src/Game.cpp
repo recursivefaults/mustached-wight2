@@ -109,7 +109,6 @@ void Game::handleInput()
 {
 
     SDL_Event e;
-    world.clearKeys();
     SDL_PollEvent(&e);
     if (e.type == SDL_QUIT) 
     {
@@ -120,5 +119,10 @@ void Game::handleInput()
         //We don't use a switch because mutiple keys are pressed
         SDL_Keycode c = e.key.keysym.sym;
         world.pressKey(c);
+    }
+    if(e.type == SDL_KEYUP) {
+        //We don't use a switch because mutiple keys are pressed
+        SDL_Keycode c = e.key.keysym.sym;
+        world.unPressKey(c);
     }
 }
