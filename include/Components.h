@@ -58,7 +58,12 @@ struct EastFacing : public Component {};
 
 struct Bullet : public Component {};
 
-struct CanShoot : public Component {};
+struct CanShoot : public Component 
+{
+    public:
+        const int  msBetweenShots = 400;
+        int currentMs;
+};
 
 struct PlayerInput : public Component {};
 

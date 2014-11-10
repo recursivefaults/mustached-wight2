@@ -7,8 +7,12 @@ void CollisionSystem::update(int elapsedMs, World &world)
        {
            Velocity *v = (Velocity *)collidable->getComponent(ComponentTypes::VELOCITY);
            Position *p = (Position *)collidable->getComponent(ComponentTypes::POSITION);
-           p->x += v->dx * elapsedMs;
-           p->y += v->dy * elapsedMs;
+           float deltaX, deltaY = 0.0f;
+           deltaX = v->dx * elapsedMs;
+           deltaY = v->dy * elapsedMs;
+
+           p->x += deltaX;
+           p->y += deltaY;
 
            //Check world boundaries
            bool remove = false;

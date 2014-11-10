@@ -6,18 +6,24 @@ void ShootingSystem::update(int elapsedMs, World &world)
 {
     for(auto entity : world.getEntitiesForType(ComponentTypes::CANSHOOT))
     {
+        CanShoot *c = (CanShoot *) entity->getComponent(ComponentTypes::CANSHOOT);
         if(world.wasKeyPressed(SDLK_SPACE))
         {
-            EntityFactory factory = EntityFactory();
+            //TODO: Invert this if.
+            if(c->currentMs == 0 || c->currentMs >= c->msBetweenShots) {
+                c->currentMs = 0;
+                EntityFactory factory = EntityFactory();
 
-            Position *initialPosition = new Position();
-            Position *p = (Position *)entity->getComponent(ComponentTypes::POSITION);
-            initialPosition->x = p->x;
-            initialPosition->y = p->y;
-            
-            Entity *bullet = factory.createBullet(initialPosition, getInitialVelocity(entity));
-            
-            world.addEntity(bullet);
+                Position *initialPosition = new Position();
+                Position *p = (Position *)entity->getComponent(ComponentTypes::POSITION);
+                initialPosition->x = p->x;
+                initialPosition->y = p->y;
+
+                Entity *bullet = factory.createBullet(initialPosition, getInitialVelocity(entity));
+
+                world.addEntity(bullet);
+            }
+            c->currentMs += elapsedMs;
         }
 
     }
