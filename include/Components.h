@@ -78,7 +78,11 @@ struct Life : public Component {
 
 struct Remove : public Component {};
 
-struct Collidable : public Component {};
+struct Collidable : public Component {
+    public:
+        int msBetweenHits = 400;
+        int currentMs;
+};
 
 
 #endif

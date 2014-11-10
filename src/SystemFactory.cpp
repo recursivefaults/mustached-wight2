@@ -5,6 +5,7 @@
 #include "systems/FacingSystem.h"
 #include "systems/ShootingSystem.h"
 #include "systems/RemoveSystem.h"
+#include "systems/DamageSystem.h"
 
 
 std::vector<System *> SystemFactory::constructSystems()
@@ -15,6 +16,7 @@ std::vector<System *> SystemFactory::constructSystems()
     systems.push_back(new FacingSystem());
     systems.push_back(new ShootingSystem());
     systems.push_back(new CollisionSystem());
+    systems.push_back(new DamageSystem());
     systems.push_back(new RemoveSystem());
     return systems;
 }

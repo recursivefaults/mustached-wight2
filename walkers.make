@@ -75,6 +75,7 @@ OBJECTS := \
 	$(OBJDIR)/asset_helper.o \
 	$(OBJDIR)/TextureManager.o \
 	$(OBJDIR)/CollisionSystem.o \
+	$(OBJDIR)/DamageSystem.o \
 	$(OBJDIR)/FacingSystem.o \
 	$(OBJDIR)/MonsterSystem.o \
 	$(OBJDIR)/MoveSystem.o \
@@ -172,6 +173,9 @@ $(OBJDIR)/TextureManager.o: src/assets/TextureManager.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/CollisionSystem.o: src/systems/CollisionSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/DamageSystem.o: src/systems/DamageSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/FacingSystem.o: src/systems/FacingSystem.cpp
