@@ -27,12 +27,35 @@ Entity *EntityFactory::createPlayer()
     player->addComponent(ComponentTypes::POSITION, p); 
     player->addComponent(ComponentTypes::VELOCITY, m); 
     player->addComponent(ComponentTypes::RENDERRECT, r);
+    player->addComponent(ComponentTypes::LIFE, new Life(3));
+    player->addComponent(ComponentTypes::AMMO, new Ammo(5));
     player->addComponent(ComponentTypes::PLAYERINPUT, new PlayerInput());
     player->addComponent(ComponentTypes::CANSHOOT, new CanShoot());
     player->addComponent(ComponentTypes::FACING, new Facing());
     player->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
 
     return player;
+}
+
+Entity *EntityFactory::createCorpse(Position *position)
+{
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(1,3);
+
+    Entity *corpse = new Entity();
+
+    RenderRect *r = new RenderRect();
+    r->rect.w = 16;
+    r->rect.h = 16;
+    r->r = 168;
+    r->b = 132;
+    r->g = 0;
+
+    corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
+    corpse->addComponent(ComponentTypes::AMMO, new Ammo(distribution(generator)));
+    corpse->addComponent(ComponentTypes::POSITION, position);
+    corpse->addComponent(ComponentTypes::RENDERRECT, r);
+    return corpse;
 }
 
 Entity *EntityFactory::createZombie(Position *position)

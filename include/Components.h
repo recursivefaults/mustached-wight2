@@ -9,6 +9,7 @@ enum class ComponentTypes
     VELOCITY,
     RENDERRECT,
     LIFE,
+    AMMO,
     FACING,
     EASTFACING,
     WESTFACING,
@@ -18,6 +19,7 @@ enum class ComponentTypes
     CANSHOOT,
     BULLET,
     MONSTER,
+    CORPSE,
     REMOVE,
     COLLIDABLE
 
@@ -69,11 +71,19 @@ struct PlayerInput : public Component {};
 
 struct Monster : public Component {};
 
+struct Corpse : public Component {};
+
 struct Life : public Component {
     public:
         Life(int _hp) : hp(_hp), damage(0) {}; 
         int hp;
         int damage;
+};
+
+struct Ammo : public Component {
+    public:
+        Ammo(int _ammo) : ammo(_ammo) {}; 
+        int ammo;
 };
 
 struct Remove : public Component {};

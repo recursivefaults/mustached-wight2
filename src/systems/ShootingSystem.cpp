@@ -7,10 +7,15 @@ void ShootingSystem::update(int elapsedMs, World &world)
     for(auto entity : world.getEntitiesForType(ComponentTypes::CANSHOOT))
     {
         CanShoot *c = (CanShoot *) entity->getComponent(ComponentTypes::CANSHOOT);
+        Ammo *ammo = (Ammo *) entity->getComponent(ComponentTypes::AMMO);
+        if(ammo != nullptr && ammo->ammo == 0) {
+            continue;
+        }
         if(world.wasKeyPressed(SDLK_SPACE))
         {
             //TODO: Invert this if.
             if(c->currentMs == 0 || c->currentMs >= c->msBetweenShots) {
+                ammo->ammo--;
                 c->currentMs = 0;
                 EntityFactory factory = EntityFactory();
 

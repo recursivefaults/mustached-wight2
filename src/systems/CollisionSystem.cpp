@@ -28,7 +28,6 @@ void CollisionSystem::update(int elapsedMs, World &world)
                Position *testPosition = (Position *)entity->getComponent(ComponentTypes::POSITION);
                RenderRect *testRender = (RenderRect *)entity->getComponent(ComponentTypes::RENDERRECT);
 
-               bool didCollide = false;
                SDL_Rect minkowskiSquare;
                float halfWidth = r->rect.w/2;
                float halfHeight = r->rect.h/2;
@@ -47,11 +46,6 @@ void CollisionSystem::update(int elapsedMs, World &world)
                        centerPoint.y >= minkowskiSquare.y &&
                        centerPoint.y <= minkowskiSquare.y + minkowskiSquare.h)
                {
-                   didCollide = true;
-               }
-
-               if(didCollide == true)
-               {
                    if(collidable->hasComponent(ComponentTypes::BULLET) && entity->hasComponent(ComponentTypes::MONSTER))
                    {
                        SDL_Log("Bullet hit monster!");
@@ -61,10 +55,10 @@ void CollisionSystem::update(int elapsedMs, World &world)
                    }
                    else if(collidable->hasComponent(ComponentTypes::PLAYERINPUT) && entity->hasComponent(ComponentTypes::MONSTER))
                    {
-                       SDL_Log("Monster hit player!");
                        Collidable *collision = (Collidable *)collidable->getComponent(ComponentTypes::COLLIDABLE);
                        if(collision->currentMs == 0 || collision->currentMs >= collision->msBetweenHits)
                        {
+                           SDL_Log("Monster hit player!");
                            Life *life = (Life *)collidable->getComponent(ComponentTypes::LIFE);
                            life->damage++;
                            collision->currentMs = 0;

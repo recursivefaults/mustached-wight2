@@ -92,6 +92,11 @@ void Game::render()
     SDL_Rect rect;
     graphics.clearRenderer();
 
+    /**
+     * Render the HUD
+     * Render the game
+     */
+
     for(auto entity : world.getEntitiesForType(ComponentTypes::RENDERRECT))
     {
         RenderRect *r = (RenderRect *) entity->getComponent(ComponentTypes::RENDERRECT);
