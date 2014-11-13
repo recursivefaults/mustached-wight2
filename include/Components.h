@@ -20,6 +20,9 @@ enum class ComponentTypes
     BULLET,
     MONSTER,
     CORPSE,
+    ONCORPSE,
+    LOOTINGCORPSE,
+    BURNINGCORPSE,
     REMOVE,
     COLLIDABLE
 
@@ -72,6 +75,32 @@ struct PlayerInput : public Component {};
 struct Monster : public Component {};
 
 struct Corpse : public Component {};
+
+struct OnCorpse : public Component 
+{
+    public:
+        int corpseEntityId;
+};
+
+struct TimedComponent : public Component
+{
+    public:
+        TimedComponent(int _totalNeeded) : totalMsNeeded(_totalNeeded) {};
+        int elapsedMs;
+        int totalMsNeeded;
+};
+
+struct LootingCorpse : public TimedComponent
+{
+    public:
+        LootingCorpse(int _totalNeeded = 400) : TimedComponent(_totalNeeded) {};
+};
+
+struct BurningCorpse : public TimedComponent
+{
+    public:
+        BurningCorpse(int _totalNeeded = 600) : TimedComponent(_totalNeeded) {};
+};
 
 struct Life : public Component {
     public:

@@ -53,6 +53,16 @@ void CollisionSystem::update(int elapsedMs, World &world)
                        Life *life = (Life *)entity->getComponent(ComponentTypes::LIFE);
                        life->damage++;
                    }
+                   else if(collidable->hasComponent(ComponentTypes::PLAYERINPUT) && entity->hasComponent(ComponentTypes::CORPSE))
+                   {
+                       if(!collidable->hasComponent(ComponentTypes::ONCORPSE))
+                       {
+                           OnCorpse *c = new OnCorpse();
+                           c->corpseEntityId = entity->getId();
+                           SDL_Log("Standing on corpse: %d", c->corpseEntityId);
+                           collidable->addComponent(ComponentTypes::ONCORPSE, c);
+                       }
+                   }
                    else if(collidable->hasComponent(ComponentTypes::PLAYERINPUT) && entity->hasComponent(ComponentTypes::MONSTER))
                    {
                        Collidable *collision = (Collidable *)collidable->getComponent(ComponentTypes::COLLIDABLE);
@@ -64,6 +74,15 @@ void CollisionSystem::update(int elapsedMs, World &world)
                            collision->currentMs = 0;
                        }
                        collision->currentMs += elapsedMs;
+                   }
+               }
+               else 
+               {
+                   //Remove the onCorpse if it's there.
+                   if(collidable->hasComponent(ComponentTypes::ONCORPSE))
+                   {
+                       SDL_Log("Player no longer on corpse");
+                       collidable->removeComponent(ComponentTypes::ONCORPSE);
                    }
                }
            }

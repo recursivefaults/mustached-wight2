@@ -54,6 +54,7 @@ Entity *EntityFactory::createCorpse(Position *position)
     corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
     corpse->addComponent(ComponentTypes::AMMO, new Ammo(distribution(generator)));
     corpse->addComponent(ComponentTypes::POSITION, position);
+    corpse->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
     corpse->addComponent(ComponentTypes::RENDERRECT, r);
     return corpse;
 }

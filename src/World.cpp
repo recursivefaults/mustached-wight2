@@ -25,3 +25,15 @@ void World::removeEntity(int id)
         }
     }
 }
+
+Entity *World::getEntityById(int id)
+{
+    for(auto e : entities)
+    {
+        if(e->getId() == id)
+        {
+            return e;
+        }
+    }
+    return nullptr;
+}
