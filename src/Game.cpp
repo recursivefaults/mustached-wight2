@@ -1,7 +1,11 @@
+#include <string>
+
 #include "walkers.h"
 #include "Game.h"
 #include "Components.h"
 #include "SystemFactory.h"
+
+#include "asset_helper.h"
 
 #include "EntityFactory.h"
 
@@ -14,6 +18,10 @@ Game::Game()
 
     graphics = Graphics();
     world = World();
+
+    //Initialize SDL_ttf
+    //TODO: Font rendering class?
+    TTF_Init();
 
     SystemFactory f = SystemFactory();
     systems = f.constructSystems();
@@ -60,6 +68,8 @@ void Game::start()
         
         //render
         render();
+
+        //Render HUD
         
         if(elapsed < msPerFrame)
         {
@@ -107,8 +117,41 @@ void Game::render()
         rect.w = r->rect.w;
         graphics.drawRect(&rect, r->r, r->g, r->b, true);
     }
+
+    renderHud();
     graphics.render();
 }
+
+void Game::renderHud()
+{
+    SDL_Texture *ammoText, *lifeText;
+    AssetHelper helper;
+    TTF_Font *font = TTF_OpenFont(helper.fullAssetPathForFile("ostrich-black.ttf").c_str(), 24);
+    SDL_Color color = {255, 255, 255};
+    if(!font) 
+    { 
+        SDL_Log("Font didn't load %s", TTF_GetError());
+    }
+    Entity *player = world.getEntitiesForType(ComponentTypes::AMMO).front();
+    Ammo *ammo = (Ammo *) player->getComponent(ComponentTypes::AMMO);
+    Life *life = (Life *) player->getComponent(ComponentTypes::LIFE);
+
+    std::string lifeString = "Life: " + std::to_string(life->hp - life->damage);
+    std::string ammoString = "Ammo: " + std::to_string(ammo->ammo);
+
+    SDL_Surface *surface = TTF_RenderText_Solid(font, lifeString.c_str(), color);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
+    SDL_Rect loc = {5, 5, 20, 10};
+    graphics.drawTexture(tex, &loc);
+    surface = TTF_RenderText_Solid(font, ammoString.c_str(), color);
+    tex = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
+    loc = {5, 25, 30, 10};
+    graphics.drawTexture(tex, &loc);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(tex);
+    
+}
+
 
 void Game::handleInput()
 {

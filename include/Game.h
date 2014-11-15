@@ -18,6 +18,7 @@ class Game
         void handleInput();
         void update(int elapsedMs);
         void render();
+        void renderHud();
         void cleanUp();
 
         //TODO: I Don't like this
