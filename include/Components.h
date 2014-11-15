@@ -85,7 +85,7 @@ struct OnCorpse : public Component
 struct TimedComponent : public Component
 {
     public:
-        TimedComponent(int _totalNeeded) : totalMsNeeded(_totalNeeded) {};
+        TimedComponent(int _totalNeeded) : elapsedMs(0), totalMsNeeded(_totalNeeded) {};
         int elapsedMs;
         int totalMsNeeded;
 };

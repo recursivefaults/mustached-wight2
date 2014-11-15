@@ -32,7 +32,7 @@ void CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &world)
     {
         entity->addComponent(ComponentTypes::LOOTINGCORPSE, new LootingCorpse());
     }
-    TimedComponent *timed = (TimedComponent *) entity->getComponent(ComponentTypes::LOOTINGCORPSE);
+    LootingCorpse *timed = (LootingCorpse *) entity->getComponent(ComponentTypes::LOOTINGCORPSE);
     timed->elapsedMs += elapsed;
 
     if(timed->elapsedMs >= timed->totalMsNeeded)
@@ -45,6 +45,7 @@ void CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &world)
         SDL_Log("Deleting corpse %d", c->corpseEntityId);
         
         entity->removeComponent(ComponentTypes::LOOTINGCORPSE);
+        entity->removeComponent(ComponentTypes::ONCORPSE);
         world.removeEntity(c->corpseEntityId);
     }
 }
@@ -65,6 +66,7 @@ void CorpseSystem::handleBurning(Entity *entity, int elapsed, World &world)
         SDL_Log("Deleting corpse %d", c->corpseEntityId);
         
         entity->removeComponent(ComponentTypes::BURNINGCORPSE);
+        entity->removeComponent(ComponentTypes::ONCORPSE);
         world.removeEntity(c->corpseEntityId);
     }
 }

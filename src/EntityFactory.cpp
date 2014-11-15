@@ -89,13 +89,25 @@ Entity *EntityFactory::createBullet(Position *initialPosition, Velocity *initial
 {
     Entity *bullet = new Entity();
     RenderRect *render = new RenderRect();
-    render->rect.w = 8;
-    render->rect.h = 8;
+    render->rect.w = 2;
+    render->rect.h = 2;
+    if(initialVelocity->dx != 0) 
+    {
+    render->rect.w = 4;
+    }
+    else
+    {
+    render->rect.h = 4;
+    }
     render->r = 200;
     render->g = 10;
     render->b = 10;
 
-    bullet->addComponent(ComponentTypes::POSITION, initialPosition);
+    Position *p = new Position();
+    p->x = initialPosition->x + 8;
+    p->y = initialPosition->y + 8;
+
+    bullet->addComponent(ComponentTypes::POSITION, p);
     bullet->addComponent(ComponentTypes::VELOCITY, initialVelocity);
     bullet->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
     bullet->addComponent(ComponentTypes::RENDERRECT, render);
