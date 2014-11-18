@@ -7,12 +7,11 @@ void CollisionSystem::update(int elapsedMs, World &world)
        {
            Velocity *v = (Velocity *)collidable->getComponent(ComponentTypes::VELOCITY);
            Position *p = (Position *)collidable->getComponent(ComponentTypes::POSITION);
-           RenderRect *r = (RenderRect *)collidable->getComponent(ComponentTypes::RENDERRECT);
            float deltaX, deltaY = 0.0f;
            deltaX = v->dx * elapsedMs;
            deltaY = v->dy * elapsedMs;
 
-           SDL_Rect updated = {p->x, p->y, static_cast<int>(r->rect.w + deltaX), static_cast<int>(r->rect.h + deltaY)};
+           bool collided = false;
 
            /**
             * For each other entity:
@@ -24,21 +23,23 @@ void CollisionSystem::update(int elapsedMs, World &world)
            for(auto entity : world.getEntitiesForType(ComponentTypes::COLLIDABLE))
            {
                if(entity == collidable) { continue; }
+
                //Minkowski Sum
                if(didCollide(collidable, entity, elapsedMs))
                {
                    bulletHitsMonster(collidable, entity);
                    playerHitsCorpse(collidable, entity);
                    playerHitsMonster(collidable, entity, elapsedMs);
+                   collided = true;
                }
-               //Remove the onCorpse if it's there.
-               else if(collidable->hasComponent(ComponentTypes::PLAYERINPUT) && collidable->hasComponent(ComponentTypes::ONCORPSE))
-               {
-                   SDL_Log("Player %d, no longer on corpse", collidable->getId());
-                   collidable->removeComponent(ComponentTypes::ONCORPSE);
-               }
-               
            }
+           //Remove the onCorpse if it's there.
+           if(collidable->hasComponent(ComponentTypes::PLAYERINPUT) && collidable->hasComponent(ComponentTypes::ONCORPSE) && !collided)
+           {
+               SDL_Log("Player %d, no longer on corpse", collidable->getId());
+               collidable->removeComponent(ComponentTypes::ONCORPSE);
+           }
+               
 
            p->x += deltaX;
            p->y += deltaY;
