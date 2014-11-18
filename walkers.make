@@ -78,6 +78,7 @@ OBJECTS := \
 	$(OBJDIR)/CorpseSystem.o \
 	$(OBJDIR)/DamageSystem.o \
 	$(OBJDIR)/FacingSystem.o \
+	$(OBJDIR)/MonsterSpawningSystem.o \
 	$(OBJDIR)/MonsterSystem.o \
 	$(OBJDIR)/MoveSystem.o \
 	$(OBJDIR)/RemoveSystem.o \
@@ -183,6 +184,9 @@ $(OBJDIR)/DamageSystem.o: src/systems/DamageSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/FacingSystem.o: src/systems/FacingSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MonsterSpawningSystem.o: src/systems/MonsterSpawningSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MonsterSystem.o: src/systems/MonsterSystem.cpp

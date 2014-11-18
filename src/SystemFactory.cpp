@@ -7,11 +7,13 @@
 #include "systems/RemoveSystem.h"
 #include "systems/DamageSystem.h"
 #include "systems/CorpseSystem.h"
+#include "systems/MonsterSpawningSystem.h"
 
 
 std::vector<System *> SystemFactory::constructSystems()
 {
     std::vector<System *> systems;
+    systems.push_back(new MonsterSpawningSystem());
     systems.push_back(new MoveSystem());
     systems.push_back(new MonsterSystem());
     systems.push_back(new FacingSystem());

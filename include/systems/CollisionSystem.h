@@ -9,6 +9,10 @@ class CollisionSystem : public System
         virtual void update(int elapsedMs, World &);
     protected:
     private:
+        bool didCollide(Entity *, Entity *, int);
+        void bulletHitsMonster(Entity *, Entity *);
+        void playerHitsCorpse(Entity *, Entity *);
+        void playerHitsMonster(Entity *, Entity *, int);
 };
 
 #endif
