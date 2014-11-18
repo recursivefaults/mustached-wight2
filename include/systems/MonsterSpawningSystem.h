@@ -6,10 +6,11 @@
 class MonsterSpawningSystem : public System
 {
     public:
-        MonsterSpawningSystem() : ticksPerSpawn(5000), currentTicks(0) {};
+        MonsterSpawningSystem() : bracket(0), ticksPerSpawn(5000), currentTicks(0) {};
         void update(int, World &);
     protected:
     private:
+        int bracket;
         int ticksPerSpawn;
         int currentTicks;
 };

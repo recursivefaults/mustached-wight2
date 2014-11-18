@@ -16,10 +16,7 @@ Entity *EntityFactory::createPlayer()
     m->dy = 0.0f;
 
     RenderRect *r = new RenderRect();
-    r->rect.x = p->x;
-    r->rect.y = p->y;
-    r->rect.w = 16;
-    r->rect.h = 16;
+    r->rect = {p->x, p->y, 16, 16};
     r->r = 10;
     r->b = 200;
     r->g = 10;
@@ -28,7 +25,7 @@ Entity *EntityFactory::createPlayer()
     player->addComponent(ComponentTypes::VELOCITY, m); 
     player->addComponent(ComponentTypes::RENDERRECT, r);
     player->addComponent(ComponentTypes::LIFE, new Life(3));
-    player->addComponent(ComponentTypes::AMMO, new Ammo(5));
+    player->addComponent(ComponentTypes::AMMO, new Ammo(10));
     player->addComponent(ComponentTypes::PLAYERINPUT, new PlayerInput());
     player->addComponent(ComponentTypes::CANSHOOT, new CanShoot());
     player->addComponent(ComponentTypes::FACING, new Facing());

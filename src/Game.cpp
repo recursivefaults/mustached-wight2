@@ -118,7 +118,7 @@ void Game::render()
         graphics.drawRect(&rect, r->r, r->g, r->b, true);
     }
 
-    renderHud();
+    //renderHud();
     graphics.render();
 }
 

@@ -5,9 +5,6 @@
 
 void MonsterSpawningSystem::update(int elapsedMs, World &world)
 {
-    currentTicks += elapsedMs;
-    std::list<Entity *> corpses = world.getEntitiesForType(ComponentTypes::CORPSE);
-    int bracket = floor(corpses.size()/3);
 
     if(currentTicks >= ticksPerSpawn)
     {
@@ -23,8 +20,15 @@ void MonsterSpawningSystem::update(int elapsedMs, World &world)
         world.addEntity(factory.createZombie(p));
     }
 
-    
-    
-    
+    currentTicks += elapsedMs;
+    std::list<Entity *> corpses = world.getEntitiesForType(ComponentTypes::CORPSE);
+    int newBracket = floor(corpses.size()/3);
 
+    if(newBracket != bracket)
+    {
+        ticksPerSpawn -= (newBracket - bracket) * 100;
+        SDL_Log("New ticks per spawn %d", ticksPerSpawn);
+        bracket = newBracket;
+    }
+    
 }
