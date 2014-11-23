@@ -51,6 +51,7 @@ Entity *EntityFactory::createCorpse(Position *position)
     r->rect.w = 16;
     r->rect.h = 16;
     r->color = {168, 132, 0};
+    r->spriteName = "Corpse.png";
 
     corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
     corpse->addComponent(ComponentTypes::AMMO, new Ammo(ammoDistribution(generator)));
@@ -70,6 +71,7 @@ Entity *EntityFactory::createZombie(Position *position)
     r->rect.w = 16;
     r->rect.h = 16;
     r->color = {40, 180, 80};
+    r->spriteName = "Zombie.png";
 
     zombie->addComponent(ComponentTypes::RENDERRECT, r);
     zombie->addComponent(ComponentTypes::LIFE, new Life(life));
