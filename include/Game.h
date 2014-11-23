@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Graphics.h"
+#include "TextureManager.h"
 #include "Entity.h"
 #include "World.h"
 #include "System.h"
@@ -27,6 +28,7 @@ class Game
         int fps;
         Graphics graphics;
         World world;
+        TextureManager *textureManager;
         std::vector<System *> systems;
 };
 

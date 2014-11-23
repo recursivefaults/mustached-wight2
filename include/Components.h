@@ -1,6 +1,8 @@
 #ifndef COMPONENTS_H
 #define COMPONENTS_H
 
+#include <string>
+
 #include "walkers.h"
 
 enum class ComponentTypes
@@ -15,6 +17,7 @@ enum class ComponentTypes
     CORPSE,
     PARTICLE,
     FACING,
+    SPRITE,
     EASTFACING,
     WESTFACING,
     NORTHFACING,
@@ -53,7 +56,8 @@ struct RenderRect : public Component
 {
     public:
         SDL_Rect rect;
-        int r, g, b, a;
+        std::string spriteName;
+        SDL_Color color;
 };
 
 struct Facing : public Component {};

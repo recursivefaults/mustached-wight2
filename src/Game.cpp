@@ -18,6 +18,8 @@ Game::Game()
 
     graphics = Graphics();
     world = World();
+    textureManager = new TextureManager(graphics);
+    textureManager->loadTextureWithName("Hero.png");
 
     //Initialize SDL_ttf
     //TODO: Font rendering class?
@@ -46,6 +48,7 @@ Game::Game()
 
 Game::~Game()
 {
+    delete(textureManager);
     SDL_Quit();
 }
 void Game::start()
@@ -115,7 +118,14 @@ void Game::render()
         rect.y = p->y;
         rect.h = r->rect.h;
         rect.w = r->rect.w;
-        graphics.drawRect(&rect, r->r, r->g, r->b, true);
+        if(r->spriteName.length() == 0)
+        {
+            graphics.drawRect(&rect, r->color, true);
+        }
+        else
+        {
+            graphics.drawTexture(textureManager->getTextureForName(r->spriteName)->getTexture(), &rect);
+        }
     }
 
     //renderHud();

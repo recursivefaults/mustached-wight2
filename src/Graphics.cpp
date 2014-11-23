@@ -21,9 +21,9 @@ void Graphics::drawTexture(SDL_Texture *texture,
     SDL_RenderCopy(renderer, texture, sourceRect, destination);
 }
 
-void Graphics::drawRect(const SDL_Rect *rect, int r, int g, int b, bool fill)
+void Graphics::drawRect(const SDL_Rect *rect, const SDL_Color &color, bool fill)
 {
-    SDL_SetRenderDrawColor(renderer, r, g, b, 1);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 1);
     if(fill)
     {
         SDL_RenderFillRect(renderer, rect);

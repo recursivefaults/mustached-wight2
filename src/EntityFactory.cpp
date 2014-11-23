@@ -26,10 +26,9 @@ Entity *EntityFactory::createPlayer()
     m->dy = 0.0f;
 
     RenderRect *r = new RenderRect();
+    r->spriteName = "Hero.png";
     r->rect = {p->x, p->y, 16, 16};
-    r->r = 10;
-    r->b = 200;
-    r->g = 10;
+    r->color = {10, 200, 10};
 
     player->addComponent(ComponentTypes::POSITION, p); 
     player->addComponent(ComponentTypes::VELOCITY, m); 
@@ -51,9 +50,7 @@ Entity *EntityFactory::createCorpse(Position *position)
     RenderRect *r = new RenderRect();
     r->rect.w = 16;
     r->rect.h = 16;
-    r->r = 168;
-    r->b = 132;
-    r->g = 0;
+    r->color = {168, 132, 0};
 
     corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
     corpse->addComponent(ComponentTypes::AMMO, new Ammo(ammoDistribution(generator)));
@@ -72,9 +69,7 @@ Entity *EntityFactory::createZombie(Position *position)
     RenderRect *r = new RenderRect();
     r->rect.w = 16;
     r->rect.h = 16;
-    r->r = 40;
-    r->g = 180;
-    r->b = 80;
+    r->color = {40, 180, 80};
 
     zombie->addComponent(ComponentTypes::RENDERRECT, r);
     zombie->addComponent(ComponentTypes::LIFE, new Life(life));
@@ -100,9 +95,7 @@ Entity *EntityFactory::createBullet(Position *initialPosition, Velocity *initial
     {
         render->rect.h = 4;
     }
-    render->r = 200;
-    render->g = 10;
-    render->b = 10;
+    render->color = {200, 10, 10};
 
     Position *p = new Position();
     p->x = initialPosition->x + 8;
@@ -154,9 +147,7 @@ Entity *EntityFactory::createBloodParticle(Position *startingPostion, Velocity *
     RenderRect *render = new RenderRect();
     render->rect.w = 2;
     render->rect.h = 2;
-    render->r = 200;
-    render->g = 60;
-    render->b = 20;
+    render->color = {200, 60, 20};
 
     int particleLifespan = frameDistribution(generator);
     
