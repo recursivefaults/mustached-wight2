@@ -31,6 +31,5 @@ void MonsterSystem::update(int elapsedMs, World &world)
             zombieVelocity->dy = -kZombieMoveVelocity;
         if(diff.dy > 0.0f)
             zombieVelocity->dy = kZombieMoveVelocity;
-        
     }
 }

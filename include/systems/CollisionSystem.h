@@ -13,6 +13,7 @@ class CollisionSystem : public System
         void bulletHitsMonster(Entity *, Entity *);
         void playerHitsCorpse(Entity *, Entity *);
         void playerHitsMonster(Entity *, Entity *, int);
+        void monsterHitsMonster(Entity *, Entity *, int);
 };
 
 #endif

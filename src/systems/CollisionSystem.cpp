@@ -152,3 +152,4 @@ void CollisionSystem::playerHitsMonster(Entity *first, Entity *second, int elaps
         collision->currentMs += elapsedMs;
     }
 }
+
