@@ -10,7 +10,7 @@ class CollisionSystem : public System
     protected:
     private:
         bool didCollide(Entity *, Entity *, int);
-        void bulletHitsMonster(Entity *, Entity *);
+        void bulletHitsMonster(Entity *, Entity *, World &);
         void playerHitsCorpse(Entity *, Entity *);
         void playerHitsMonster(Entity *, Entity *, int);
         void monsterHitsMonster(Entity *, Entity *, int);

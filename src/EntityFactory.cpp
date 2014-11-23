@@ -1,6 +1,16 @@
 #include "EntityFactory.h"
 #include "Components.h"
+#include "Constants.h"
 #include <random>
+
+
+EntityFactory::EntityFactory()
+{
+        lifeDistribution = std::uniform_int_distribution<int>(1, 3);
+        ammoDistribution = std::uniform_int_distribution<int>(1, 5);
+        frameDistribution = std::uniform_int_distribution<int>(5, 25);
+        velocityDistribution = std::uniform_real_distribution<float>(-1.0f, 1.0f);
+}
 
 Entity *EntityFactory::createPlayer() 
 {
@@ -36,9 +46,6 @@ Entity *EntityFactory::createPlayer()
 
 Entity *EntityFactory::createCorpse(Position *position)
 {
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(1,3);
-
     Entity *corpse = new Entity();
 
     RenderRect *r = new RenderRect();
@@ -49,7 +56,7 @@ Entity *EntityFactory::createCorpse(Position *position)
     r->g = 0;
 
     corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
-    corpse->addComponent(ComponentTypes::AMMO, new Ammo(distribution(generator)));
+    corpse->addComponent(ComponentTypes::AMMO, new Ammo(ammoDistribution(generator)));
     corpse->addComponent(ComponentTypes::POSITION, position);
     corpse->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
     corpse->addComponent(ComponentTypes::RENDERRECT, r);
@@ -58,12 +65,9 @@ Entity *EntityFactory::createCorpse(Position *position)
 
 Entity *EntityFactory::createZombie(Position *position)
 {
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(1,3);
-
     Entity *zombie = new Entity();
 
-    int life = distribution(generator);
+    int life = lifeDistribution(generator);
 
     RenderRect *r = new RenderRect();
     r->rect.w = 16;
@@ -90,11 +94,11 @@ Entity *EntityFactory::createBullet(Position *initialPosition, Velocity *initial
     render->rect.h = 2;
     if(initialVelocity->dx != 0) 
     {
-    render->rect.w = 4;
+        render->rect.w = 4;
     }
     else
     {
-    render->rect.h = 4;
+        render->rect.h = 4;
     }
     render->r = 200;
     render->g = 10;
@@ -111,5 +115,56 @@ Entity *EntityFactory::createBullet(Position *initialPosition, Velocity *initial
     bullet->addComponent(ComponentTypes::BULLET, new Bullet());
 
     return bullet;
+}
+Entity *EntityFactory::createBloodParticle(Position *startingPostion, Velocity *startingVelocity)
+{
+    Entity *particle = new Entity();
+
+    Position *position = new Position();
+
+    //TODO: Fix this!
+    position->x = startingPostion->x + 8;
+    position->y = startingPostion->y + 8;
+
+    Velocity *velocity = new Velocity();
+
+    velocity->dx = kBloodVelocity;
+    velocity->dy = kBloodVelocity;
+
+    if(startingVelocity->dx != 0)
+    {
+        if(startingVelocity->dx < 0)
+        {
+            velocity->dx *= -1.0f;
+        }
+        velocity->dy *= velocityDistribution(generator);
+    }
+    else
+    if(startingVelocity->dy != 0)
+    {
+        if(startingVelocity->dy < 0)
+        {
+            velocity->dy *= -1.0f;
+        }
+        velocity->dx *= velocityDistribution(generator);
+    }
+
+    SDL_Log("Particle Velocity: %f, %f", velocity->dx, velocity->dy);
+
+    RenderRect *render = new RenderRect();
+    render->rect.w = 2;
+    render->rect.h = 2;
+    render->r = 200;
+    render->g = 60;
+    render->b = 20;
+
+    int particleLifespan = frameDistribution(generator);
+    
+    particle->addComponent(ComponentTypes::POSITION, position);
+    particle->addComponent(ComponentTypes::VELOCITY, velocity);
+    particle->addComponent(ComponentTypes::RENDERRECT, render);
+    particle->addComponent(ComponentTypes::PARTICLE, new Particle(particleLifespan));
+
+    return particle;
 }
 

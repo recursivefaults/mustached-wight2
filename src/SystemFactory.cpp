@@ -8,6 +8,7 @@
 #include "systems/DamageSystem.h"
 #include "systems/CorpseSystem.h"
 #include "systems/MonsterSpawningSystem.h"
+#include "systems/ParticleSystem.h"
 
 
 std::vector<System *> SystemFactory::constructSystems()
@@ -21,6 +22,7 @@ std::vector<System *> SystemFactory::constructSystems()
     systems.push_back(new CorpseSystem());
     systems.push_back(new CollisionSystem());
     systems.push_back(new DamageSystem());
+    systems.push_back(new ParticleSystem());
     systems.push_back(new RemoveSystem());
     return systems;
 }

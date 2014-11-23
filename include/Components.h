@@ -10,6 +10,10 @@ enum class ComponentTypes
     RENDERRECT,
     LIFE,
     AMMO,
+    BULLET,
+    MONSTER,
+    CORPSE,
+    PARTICLE,
     FACING,
     EASTFACING,
     WESTFACING,
@@ -17,10 +21,8 @@ enum class ComponentTypes
     SOUTHFACING,
     PLAYERINPUT,
     CANSHOOT,
-    BULLET,
-    MONSTER,
-    CORPSE,
     ONCORPSE,
+    STUNNED,
     LOOTINGCORPSE,
     BURNINGCORPSE,
     REMOVE,
@@ -76,6 +78,13 @@ struct Monster : public Component {};
 
 struct Corpse : public Component {};
 
+struct Particle : public Component 
+{
+    public:
+        Particle(int _framesRemaining) : framesRemaining(_framesRemaining) {};
+        int framesRemaining;
+};
+
 struct OnCorpse : public Component 
 {
     public:
@@ -88,6 +97,12 @@ struct TimedComponent : public Component
         TimedComponent(int _totalNeeded) : elapsedMs(0), totalMsNeeded(_totalNeeded) {};
         int elapsedMs;
         int totalMsNeeded;
+};
+
+struct Stunned : public TimedComponent 
+{
+    public:
+        Stunned(int _totalNeeded = 250) : TimedComponent(_totalNeeded) {};
 };
 
 struct LootingCorpse : public TimedComponent

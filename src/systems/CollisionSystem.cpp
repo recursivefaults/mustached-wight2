@@ -1,4 +1,6 @@
 #include "systems/CollisionSystem.h"
+#include "EntityFactory.h"
+
 void CollisionSystem::update(int elapsedMs, World &world)
 {
     for(auto collidable : world.getEntitiesForType(ComponentTypes::COLLIDABLE))
@@ -27,7 +29,7 @@ void CollisionSystem::update(int elapsedMs, World &world)
                //Minkowski Sum
                if(didCollide(collidable, entity, elapsedMs))
                {
-                   bulletHitsMonster(collidable, entity);
+                   bulletHitsMonster(collidable, entity, world);
                    playerHitsCorpse(collidable, entity);
                    playerHitsMonster(collidable, entity, elapsedMs);
                    collided = true;
@@ -112,7 +114,7 @@ bool CollisionSystem::didCollide(Entity *first, Entity *second, int elapsedMs)
             centerPoint.y <= minkowskiSquare.y + minkowskiSquare.h;
 }
 
-void CollisionSystem::bulletHitsMonster(Entity *first, Entity *second)
+void CollisionSystem::bulletHitsMonster(Entity *first, Entity *second, World &world)
 {
     if(first->hasComponent(ComponentTypes::BULLET) && second->hasComponent(ComponentTypes::MONSTER))
     {
@@ -120,6 +122,17 @@ void CollisionSystem::bulletHitsMonster(Entity *first, Entity *second)
         first->addComponent(ComponentTypes::REMOVE, new Remove());
         Life *life = (Life *)second->getComponent(ComponentTypes::LIFE);
         life->damage++;
+
+        EntityFactory factory = EntityFactory();
+
+        //Create particles
+        for(int i = 0; i < 4; i++)
+        {
+            Position *startP = (Position *) second->getComponent(ComponentTypes::POSITION);
+            Velocity *startV = (Velocity *) first->getComponent(ComponentTypes::VELOCITY);
+
+            world.addEntity(factory.createBloodParticle(startP, startV));
+        }
     }
 }
 

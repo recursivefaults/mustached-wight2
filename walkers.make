@@ -81,6 +81,7 @@ OBJECTS := \
 	$(OBJDIR)/MonsterSpawningSystem.o \
 	$(OBJDIR)/MonsterSystem.o \
 	$(OBJDIR)/MoveSystem.o \
+	$(OBJDIR)/ParticleSystem.o \
 	$(OBJDIR)/RemoveSystem.o \
 	$(OBJDIR)/ShootingSystem.o \
 	$(OBJDIR)/jsoncpp.o \
@@ -193,6 +194,9 @@ $(OBJDIR)/MonsterSystem.o: src/systems/MonsterSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MoveSystem.o: src/systems/MoveSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/ParticleSystem.o: src/systems/ParticleSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/RemoveSystem.o: src/systems/RemoveSystem.cpp
