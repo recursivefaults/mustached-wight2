@@ -9,16 +9,20 @@ class Vector2d
         Vector2d() : x(0.0f), y(0.0f) {};
         Vector2d(float _x, float _y) : x(_x), y(_y) {};
         
-        float dotProduct(Vector2d &other);
-        Vector2d projectOn(Vector2d &other);
-        Vector2d normalize();
-        Vector2d leftNormal();
-        Vector2d rightNormal();
-        Vector2d operator+ (Vector2d &other);
-        Vector2d operator- (Vector2d &other);
+        float dotProduct(Vector2d &other) const;
+        Vector2d projectOn(Vector2d &other) const;
+        Vector2d normalize() const;
+        Vector2d leftNormal() const;
+        Vector2d rightNormal() const;
+        Vector2d operator+ (Vector2d &other) const;
+        Vector2d operator- (Vector2d &other) const;
+        float magnitude() const;
+        Vector2d unit() const;
+        float x() {return x;};
+        float y() {return y;};
     private:
-        float x;
         float y;
+        float x;
     protected:
 };
 
