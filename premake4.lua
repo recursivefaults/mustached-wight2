@@ -2,7 +2,7 @@
 solution "Walkers"
    configurations { "Debug", "Release" }
    includedirs {"/usr/local/include", "include", "lib"}
-   links {"SDL2", "SDL2_image", "SDL2_ttf" }
+   links {"SDL2", "SDL2_image", "SDL2_ttf", "SDL2_mixer" }
    libdirs {"/usr/local/lib", "lib"}
    kind "ConsoleApp"
    buildoptions {"-Wall", "-std=c++11" }

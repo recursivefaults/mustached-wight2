@@ -5,6 +5,7 @@
 #include "Graphics.h"
 #include "TextureManager.h"
 #include "FontManager.h"
+#include "SoundEngine.h"
 #include "Entity.h"
 #include "World.h"
 #include "System.h"
@@ -29,6 +30,7 @@ class Game
         int fps;
         Graphics graphics;
         World world;
+        SoundEngine soundEngine;
         TextureManager *textureManager;
         FontManager *fontManager;
         std::vector<System *> systems;

@@ -29,7 +29,7 @@ ifeq ($(config),debug)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -Wall -std=c++11
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -L/usr/local/lib -Llib
-  LIBS      += -lSDL2 -lSDL2_image -lSDL2_ttf
+  LIBS      += -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -Wall -std=c++11
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -Wl,-x -L/usr/local/lib -Llib
-  LIBS      += -lSDL2 -lSDL2_image -lSDL2_ttf
+  LIBS      += -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -70,6 +70,8 @@ OBJECTS := \
 	$(OBJDIR)/Game.o \
 	$(OBJDIR)/Graphics.o \
 	$(OBJDIR)/main.o \
+	$(OBJDIR)/SoundEngine.o \
+	$(OBJDIR)/SoundManager.o \
 	$(OBJDIR)/SystemFactory.o \
 	$(OBJDIR)/Vector2d.o \
 	$(OBJDIR)/World.o \
@@ -162,6 +164,12 @@ $(OBJDIR)/Graphics.o: src/Graphics.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/main.o: src/main.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SoundEngine.o: src/SoundEngine.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SoundManager.o: src/SoundManager.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SystemFactory.o: src/SystemFactory.cpp

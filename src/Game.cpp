@@ -18,6 +18,7 @@ Game::Game()
 
     graphics = Graphics();
     world = World();
+    world.setSoundEngine(soundEngine);
     textureManager = new TextureManager(graphics);
     textureManager->loadTextureWithName("Hero.png");
 
