@@ -19,6 +19,14 @@ void MonsterSystem::update(int elapsedMs, World &world)
 
         //Adjust velocity in that direction
         Velocity *zombieVelocity = (Velocity *) monster->getComponent(ComponentTypes::VELOCITY);
+
+        if(monster->hasComponent(ComponentTypes::STUNNED))
+        {
+            handleStun(monster, elapsedMs);
+            return;
+        }
+
+
         if(diff.dx == 0.0f)
             zombieVelocity->dx = 0.0f;
         if(diff.dy == 0.0f)
@@ -31,5 +39,20 @@ void MonsterSystem::update(int elapsedMs, World &world)
             zombieVelocity->dy = -kZombieMoveVelocity;
         if(diff.dy > 0.0f)
             zombieVelocity->dy = kZombieMoveVelocity;
+
     }
+}
+
+void MonsterSystem::handleStun(Entity *monster, int elapsedMs)
+{
+    Velocity *zombieVelocity = (Velocity *) monster->getComponent(ComponentTypes::VELOCITY);
+    Stunned *stun = (Stunned *) monster->getComponent(ComponentTypes::STUNNED);
+    zombieVelocity->dx = 0.0f;
+    zombieVelocity->dy = 0.0f;
+    stun->elapsedMs += elapsedMs;
+    if(stun->elapsedMs >= stun->totalMsNeeded)
+    {
+        monster->removeComponent(ComponentTypes::STUNNED);
+    }
+
 }

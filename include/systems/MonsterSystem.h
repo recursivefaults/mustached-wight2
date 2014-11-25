@@ -9,6 +9,7 @@ class MonsterSystem : public System
         void update(int elapsedMs, World &);
     protected:
     private:
+        void handleStun(Entity *, int);
 };
 
 #endif

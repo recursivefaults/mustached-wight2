@@ -123,8 +123,10 @@ void CollisionSystem::bulletHitsMonster(Entity *first, Entity *second, World &wo
         Life *life = (Life *)second->getComponent(ComponentTypes::LIFE);
         life->damage++;
 
-        EntityFactory factory = EntityFactory();
+        //Stun the monster
+        second->addComponent(ComponentTypes::STUNNED, new Stunned());
 
+        EntityFactory factory = EntityFactory();
         //Create particles
         for(int i = 0; i < 4; i++)
         {
