@@ -62,7 +62,7 @@ void CorpseSystem::handleBurning(Entity *entity, int elapsed, World &world)
     if(timed->elapsedMs >= timed->totalMsNeeded)
     {
 
-        world.getSoundEngine()->playSound("Fire.wav", 1);
+        soundEngine->playSound("Fire.wav", 1);
 
         OnCorpse *c = (OnCorpse *)entity->getComponent(ComponentTypes::ONCORPSE);
         SDL_Log("Deleting corpse %d", c->corpseEntityId);

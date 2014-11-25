@@ -5,7 +5,6 @@
 #include <map>
 #include "Entity.h"
 #include "Components.h"
-#include "SoundEngine.h"
 
 enum class GameState
 {
@@ -27,11 +26,8 @@ class World
         std::list<Entity *> getEntitiesForType(ComponentTypes type);
         Entity *getEntityById(int id);
         bool wasKeyPressed(SDL_Keycode key) {return keypresses[key];};
-        void setSoundEngine(SoundEngine &engine) {soundEngine = &engine;};
-        SoundEngine *getSoundEngine() {return soundEngine;};
     protected:
     private:
-        SoundEngine *soundEngine;
         GameState currentState;
         std::list<Entity *> entities;
         std::map<SDL_Keycode, bool> keypresses;

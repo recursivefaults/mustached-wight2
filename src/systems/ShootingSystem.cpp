@@ -27,7 +27,7 @@ void ShootingSystem::update(int elapsedMs, World &world)
                 Entity *bullet = factory.createBullet(initialPosition, getInitialVelocity(entity));
 
                 world.addEntity(bullet);
-                world.getSoundEngine()->playSound("Shoot.wav", 1);
+                soundEngine->playSound("Shoot.wav", 1);
 
             }
             c->currentMs += elapsedMs;

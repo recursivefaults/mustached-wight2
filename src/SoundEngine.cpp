@@ -13,8 +13,9 @@ SoundEngine::~SoundEngine()
     Mix_CloseAudio();
 }
 
-void SoundEngine::playSound(const std::string &name, int loops)
+void SoundEngine::playSound(const std::string &name, int loops) const
 {
+    SDL_Log("Playing %s sound", name.c_str());
     Mix_Chunk *sound = sounds->getSoundWithName(name);
     SDL_assert(sound != nullptr);
     Mix_PlayChannel(-1, sound, loops);

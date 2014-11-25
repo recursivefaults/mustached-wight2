@@ -6,6 +6,7 @@
 class CollisionSystem : public System
 {
     public:
+        CollisionSystem(const SoundEngine *e) : System(e) {};
         virtual void update(int elapsedMs, World &);
     protected:
     private:

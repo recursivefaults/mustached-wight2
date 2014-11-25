@@ -6,6 +6,7 @@
 class CorpseSystem : public System
 {
     public:
+        CorpseSystem(const SoundEngine *e) : System(e) {};
         void update(int, World &);
     protected:
     private:

@@ -6,6 +6,7 @@
 class ShootingSystem : public System
 {
     public:
+        ShootingSystem(const SoundEngine *e) : System(e) {};
         virtual void update(int elapsedMs, World &world);
     protected:
     private:
