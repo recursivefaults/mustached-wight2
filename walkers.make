@@ -66,6 +66,7 @@ endif
 OBJECTS := \
 	$(OBJDIR)/Entity.o \
 	$(OBJDIR)/EntityFactory.o \
+	$(OBJDIR)/FontManager.o \
 	$(OBJDIR)/Game.o \
 	$(OBJDIR)/Graphics.o \
 	$(OBJDIR)/main.o \
@@ -149,6 +150,9 @@ $(OBJDIR)/Entity.o: src/Entity.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/EntityFactory.o: src/EntityFactory.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/FontManager.o: src/FontManager.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Game.o: src/Game.cpp

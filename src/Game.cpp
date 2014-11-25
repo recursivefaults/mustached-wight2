@@ -25,6 +25,10 @@ Game::Game()
     //TODO: Font rendering class?
     TTF_Init();
 
+    fontManager = new FontManager();
+    fontManager->loadFontWithname("ostrich-regular.ttf", 24);
+
+
     SystemFactory f = SystemFactory();
     systems = f.constructSystems();
 
@@ -49,6 +53,9 @@ Game::Game()
 Game::~Game()
 {
     delete(textureManager);
+    delete(fontManager);
+    //TODO: Font rendering class?
+    TTF_Quit();
     SDL_Quit();
 }
 void Game::start()
@@ -128,15 +135,13 @@ void Game::render()
         }
     }
 
-    //renderHud();
+    renderHud();
     graphics.render();
 }
 
 void Game::renderHud()
 {
-    SDL_Texture *ammoText, *lifeText;
-    AssetHelper helper;
-    TTF_Font *font = TTF_OpenFont(helper.fullAssetPathForFile("ostrich-black.ttf").c_str(), 24);
+    TTF_Font *font = fontManager->getFontWithName("ostrich-regular.ttf", 24);
     SDL_Color color = {255, 255, 255};
     if(!font) 
     { 
@@ -149,13 +154,24 @@ void Game::renderHud()
     std::string lifeString = "Life: " + std::to_string(life->hp - life->damage);
     std::string ammoString = "Ammo: " + std::to_string(ammo->ammo);
 
+    int w = 0;
+    int h = 0;
+    TTF_SizeText(font, lifeString.c_str(), &w, &h);
+
     SDL_Surface *surface = TTF_RenderText_Solid(font, lifeString.c_str(), color);
     SDL_Texture *tex = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
-    SDL_Rect loc = {5, 5, 20, 10};
+
+    SDL_Rect loc = {5, 5, w, h};
     graphics.drawTexture(tex, &loc);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(tex);
+
     surface = TTF_RenderText_Solid(font, ammoString.c_str(), color);
     tex = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
-    loc = {5, 25, 30, 10};
+
+    TTF_SizeText(font, ammoString.c_str(), &w, &h);
+
+    loc = {5, 25, w, h};
     graphics.drawTexture(tex, &loc);
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(tex);

@@ -4,6 +4,7 @@
 #include <vector>
 #include "Graphics.h"
 #include "TextureManager.h"
+#include "FontManager.h"
 #include "Entity.h"
 #include "World.h"
 #include "System.h"
@@ -29,6 +30,7 @@ class Game
         Graphics graphics;
         World world;
         TextureManager *textureManager;
+        FontManager *fontManager;
         std::vector<System *> systems;
 };
 

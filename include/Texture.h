@@ -7,7 +7,7 @@ class Texture
 {
     public:
         Texture(SDL_Texture *tex) : texture(tex) {};
-        ~Texture() {SDL_DestroyTexture(texture); };
+        ~Texture() { SDL_DestroyTexture(texture); };
         SDL_Texture *getTexture() {return texture;};
     protected:
     private:
