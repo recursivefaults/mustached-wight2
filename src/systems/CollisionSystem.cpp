@@ -1,5 +1,6 @@
 #include "systems/CollisionSystem.h"
 #include "EntityFactory.h"
+#include <cmath>
 
 void CollisionSystem::update(int elapsedMs, World &world)
 {
@@ -87,9 +88,10 @@ bool CollisionSystem::didCollide(Entity *first, Entity *second, int elapsedMs)
     Velocity *v = (Velocity *)first->getComponent(ComponentTypes::VELOCITY);
     Position *p = (Position *)first->getComponent(ComponentTypes::POSITION);
     RenderRect *r = (RenderRect *)first->getComponent(ComponentTypes::RENDERRECT);
+
     float deltaX, deltaY = 0.0f;
-    deltaX = v->dx * elapsedMs;
-    deltaY = v->dy * elapsedMs;
+    deltaX = abs(v->dx * elapsedMs);
+    deltaY = abs(v->dy * elapsedMs);
 
     SDL_Rect updated = {p->x, p->y, static_cast<int>(r->rect.w + deltaX), static_cast<int>(r->rect.h + deltaY)};
 
@@ -99,16 +101,17 @@ bool CollisionSystem::didCollide(Entity *first, Entity *second, int elapsedMs)
     SDL_Rect minkowskiSquare;
     float halfWidth = updated.w/2;
     float halfHeight = updated.h/2;
+
     minkowskiSquare.x = testPosition->x - halfWidth;
     minkowskiSquare.y = testPosition->y - halfHeight;
     minkowskiSquare.w = testRender->rect.w + 2 * halfWidth;
     minkowskiSquare.h = testRender->rect.h + 2 * halfHeight;
 
     Position centerPoint = Position();
-    centerPoint.x = p->x + halfWidth;
-    centerPoint.y = p->y + halfHeight;
+    centerPoint.x = p->x + r->rect.w/2;
+    centerPoint.y = p->y + r->rect.h/2;
 
-    return centerPoint.x > minkowskiSquare.x && 
+    return centerPoint.x >= minkowskiSquare.x && 
             centerPoint.x <= minkowskiSquare.x + minkowskiSquare.w &&
             centerPoint.y >= minkowskiSquare.y &&
             centerPoint.y <= minkowskiSquare.y + minkowskiSquare.h;

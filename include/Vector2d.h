@@ -18,11 +18,9 @@ class Vector2d
         Vector2d operator- (Vector2d &other) const;
         float magnitude() const;
         Vector2d unit() const;
-        float x() {return x;};
-        float y() {return y;};
-    private:
         float y;
         float x;
+    private:
     protected:
 };
 
