@@ -11,15 +11,20 @@
 
 Game::Game()
 {
-    if(SDL_Init(SDL_INIT_EVERYTHING) < 0) 
+    SDL_Log("SDL Initializing");
+    if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
     {
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "SDL failed to initizlize, how do we have this message?");
     }
+    graphics.init();
+    soundEngine.init();
+    
 
-    graphics = Graphics();
-    world = World();
     textureManager = new TextureManager(graphics);
     textureManager->loadTextureWithName("Hero.png");
+    textureManager->loadTextureWithName("Zombie.png");
+    textureManager->loadTextureWithName("Corpse.png");
+    textureManager->loadTextureWithName("forest2.png");
 
     //Initialize SDL_ttf
     //TODO: Font rendering class?
@@ -29,7 +34,7 @@ Game::Game()
     fontManager->loadFontWithname("ostrich-regular.ttf", 24);
 
 
-    SystemFactory f = SystemFactory();
+    SystemFactory f;
     systems = f.constructSystems(&soundEngine);
 
     SDL_Log("Systems constructed");
@@ -111,6 +116,11 @@ void Game::render()
 {
     SDL_Rect rect;
     graphics.clearRenderer();
+
+    //Render the background
+    //TODO: MAP!
+    SDL_Rect wholeScreen = {0, 0, 800, 600};
+    graphics.drawTexture(textureManager->getTextureForName("forest2.png")->getTexture(), &wholeScreen);
 
     /**
      * Render the HUD

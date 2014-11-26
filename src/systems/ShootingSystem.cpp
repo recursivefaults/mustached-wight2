@@ -8,7 +8,10 @@ void ShootingSystem::update(int elapsedMs, World &world)
     {
         CanShoot *c = (CanShoot *) entity->getComponent(ComponentTypes::CANSHOOT);
         Ammo *ammo = (Ammo *) entity->getComponent(ComponentTypes::AMMO);
-        if(ammo != nullptr && ammo->ammo == 0) {
+        if(ammo == nullptr) {
+            continue;
+        }
+        if(ammo->ammo == 0) {
             continue;
         }
         if(world.wasKeyPressed(SDLK_SPACE))

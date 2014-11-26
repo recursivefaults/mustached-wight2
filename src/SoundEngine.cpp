@@ -2,9 +2,12 @@
 
 SoundEngine::SoundEngine()
 {
+    sounds = new SoundManager();
+}
+
+void SoundEngine::init() {
     SDL_assert(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096) == 0);
     SDL_Log("Sound engine loaded");
-    sounds = new SoundManager();
 }
 
 SoundEngine::~SoundEngine()

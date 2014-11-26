@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EB313D0C-BA55-405B-B5A5-29A177920277</string>
+	<key>IDESourceControlProjectName</key>
+	<string>walkers</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>61B72A56D01BD006772A6F8A2E6F55D932EE604E</key>
+		<string>github-personal:recursivefaults/mustached-wight2.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>walkers.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>61B72A56D01BD006772A6F8A2E6F55D932EE604E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github-personal:recursivefaults/mustached-wight2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>61B72A56D01BD006772A6F8A2E6F55D932EE604E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>61B72A56D01BD006772A6F8A2E6F55D932EE604E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>walkers</string>
+		</dict>
+	</array>
+</dict>
+</plist>

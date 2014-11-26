@@ -17,11 +17,16 @@ std::list<Entity *> World::getEntitiesForType(ComponentTypes type)
 void World::removeEntity(int id)
 {
     std::list<Entity*>::iterator it = entities.begin();
-    for(; it != entities.end(); ++it)
+    while(it != entities.end())
     {
         if((*it)->getId() == id)
         {
-            entities.erase(it);
+            entities.remove(*it);
+            break;
+        }
+        else
+        {
+            ++it;
         }
     }
 }

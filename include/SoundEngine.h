@@ -9,6 +9,7 @@ class SoundEngine
     public:
         SoundEngine();
         ~SoundEngine();
+        void init();
         void playSound(const std::string &, int) const;
     protected:
     private:

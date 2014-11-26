@@ -3,15 +3,20 @@
 
 
 Graphics::Graphics() {
+}
+
+void Graphics::init()
+{
     window = SDL_CreateWindow("Walkers", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_Log("Graphics system initialized");
 }
 
 Graphics::~Graphics() {
-    if(renderer == nullptr)
+    SDL_Log("Destroying graphics and windows");
+    if(renderer != nullptr)
         SDL_DestroyRenderer(renderer);
-    if(window == nullptr)
+    if(window != nullptr)
         SDL_DestroyWindow(window);
 }
 

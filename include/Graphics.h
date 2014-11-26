@@ -7,6 +7,7 @@ class Graphics {
     public:
     Graphics();
     ~Graphics();
+    void init();
     void drawTexture(SDL_Texture *texture,
             const SDL_Rect *destination,
             const SDL_Rect *sourceRect = nullptr);
