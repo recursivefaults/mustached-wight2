@@ -37,6 +37,7 @@ void CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &world)
 
     if(timed->elapsedMs >= timed->totalMsNeeded)
     {
+        soundEngine->playSound("Ammo.wav", 2);
         Ammo *ammo = (Ammo *) entity->getComponent(ComponentTypes::AMMO);
         ammo->ammo += 5;
         SDL_Log("Updating ammo to %d", ammo->ammo);
