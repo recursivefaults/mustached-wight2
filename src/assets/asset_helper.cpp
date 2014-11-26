@@ -11,6 +11,6 @@ SDL_Texture *AssetHelper::loadNamedTexture(const std::string &fileName, Graphics
 }
 std::string AssetHelper:: fullAssetPathForFile(const std::string &fileName) {
     std::string full_path = std::string(SDL_GetBasePath()); 
-    full_path += fileName;
+    full_path += "assets/" + fileName;
     return full_path;
 }

@@ -31,27 +31,6 @@
 		73EF60417FE94C54540A0AFF /* CollisionSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B514458788033CD6C563C35 /* CollisionSystem.cpp */; };
 		782142353291060D481E4514 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C923B041C154B4A7BC41DBD /* Graphics.cpp */; };
 		7BE533AC6C0C27501B4A4E3F /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75412DE5460D087B4B987FCD /* jsoncpp.cpp */; };
-		C8D4873D1A265024001D8FD1 /* Ammo.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D487281A265024001D8FD1 /* Ammo.wav */; };
-		C8D4873E1A265024001D8FD1 /* Corpse.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D487291A265024001D8FD1 /* Corpse.png */; };
-		C8D4873F1A265024001D8FD1 /* Corpse.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872A1A265024001D8FD1 /* Corpse.pxm */; };
-		C8D487401A265024001D8FD1 /* Fire.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872B1A265024001D8FD1 /* Fire.wav */; };
-		C8D487411A265024001D8FD1 /* forest.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872C1A265024001D8FD1 /* forest.png */; };
-		C8D487421A265024001D8FD1 /* forest2.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872D1A265024001D8FD1 /* forest2.png */; };
-		C8D487431A265024001D8FD1 /* forest2.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872E1A265024001D8FD1 /* forest2.pxm */; };
-		C8D487441A265024001D8FD1 /* Hero.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872F1A265024001D8FD1 /* Hero.png */; };
-		C8D487451A265024001D8FD1 /* Hero.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D487301A265024001D8FD1 /* Hero.pxm */; };
-		C8D487461A265024001D8FD1 /* Hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D487311A265024001D8FD1 /* Hurt.wav */; };
-		C8D487471A265024001D8FD1 /* ostrich-black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487321A265024001D8FD1 /* ostrich-black.ttf */; };
-		C8D487481A265024001D8FD1 /* ostrich-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487331A265024001D8FD1 /* ostrich-bold.ttf */; };
-		C8D487491A265024001D8FD1 /* ostrich-dashed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487341A265024001D8FD1 /* ostrich-dashed.ttf */; };
-		C8D4874A1A265024001D8FD1 /* ostrich-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487351A265024001D8FD1 /* ostrich-light.ttf */; };
-		C8D4874B1A265024001D8FD1 /* ostrich-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487361A265024001D8FD1 /* ostrich-regular.ttf */; };
-		C8D4874C1A265024001D8FD1 /* ostrich-rounded.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487371A265024001D8FD1 /* ostrich-rounded.ttf */; };
-		C8D4874D1A265024001D8FD1 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D487381A265024001D8FD1 /* shoot.wav */; };
-		C8D4874E1A265024001D8FD1 /* simple_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C8D487391A265024001D8FD1 /* simple_map.tmx */; };
-		C8D4874F1A265024001D8FD1 /* zelda-like.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4873A1A265024001D8FD1 /* zelda-like.png */; };
-		C8D487501A265024001D8FD1 /* Zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4873B1A265024001D8FD1 /* Zombie.png */; };
-		C8D487511A265024001D8FD1 /* Zombie.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D4873C1A265024001D8FD1 /* Zombie.pxm */; };
 		C8D4878A1A2651FA001D8FD1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8D487891A2651FA001D8FD1 /* Info.plist */; };
 		C8D4878F1A265262001D8FD1 /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D4878B1A265262001D8FD1 /* libSDL2_image-2.0.0.dylib */; };
 		C8D487901A265262001D8FD1 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D4878C1A265262001D8FD1 /* libSDL2_mixer-2.0.0.dylib */; };
@@ -81,27 +60,8 @@
 		C8D487A81A265433001D8FD1 /* ParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B060143B1234E68C82800 /* ParticleSystem.cpp */; };
 		C8D487A91A265433001D8FD1 /* RemoveSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E03751635FD78567CA2000B /* RemoveSystem.cpp */; };
 		C8D487AA1A265433001D8FD1 /* ShootingSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DCA063A032F02FC74CC31B5 /* ShootingSystem.cpp */; };
-		C8D487AB1A265474001D8FD1 /* Ammo.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D487281A265024001D8FD1 /* Ammo.wav */; };
-		C8D487AC1A265474001D8FD1 /* Corpse.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D487291A265024001D8FD1 /* Corpse.png */; };
-		C8D487AD1A265474001D8FD1 /* Corpse.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872A1A265024001D8FD1 /* Corpse.pxm */; };
-		C8D487AE1A265474001D8FD1 /* Fire.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872B1A265024001D8FD1 /* Fire.wav */; };
-		C8D487AF1A265474001D8FD1 /* forest.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872C1A265024001D8FD1 /* forest.png */; };
-		C8D487B01A265474001D8FD1 /* forest2.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872D1A265024001D8FD1 /* forest2.png */; };
-		C8D487B11A265474001D8FD1 /* forest2.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872E1A265024001D8FD1 /* forest2.pxm */; };
-		C8D487B21A265474001D8FD1 /* Hero.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4872F1A265024001D8FD1 /* Hero.png */; };
-		C8D487B31A265474001D8FD1 /* Hero.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D487301A265024001D8FD1 /* Hero.pxm */; };
-		C8D487B41A265474001D8FD1 /* Hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D487311A265024001D8FD1 /* Hurt.wav */; };
-		C8D487B51A265474001D8FD1 /* ostrich-black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487321A265024001D8FD1 /* ostrich-black.ttf */; };
-		C8D487B61A265474001D8FD1 /* ostrich-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487331A265024001D8FD1 /* ostrich-bold.ttf */; };
-		C8D487B71A265474001D8FD1 /* ostrich-dashed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487341A265024001D8FD1 /* ostrich-dashed.ttf */; };
-		C8D487B81A265474001D8FD1 /* ostrich-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487351A265024001D8FD1 /* ostrich-light.ttf */; };
-		C8D487B91A265474001D8FD1 /* ostrich-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487361A265024001D8FD1 /* ostrich-regular.ttf */; };
-		C8D487BA1A265474001D8FD1 /* ostrich-rounded.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D487371A265024001D8FD1 /* ostrich-rounded.ttf */; };
-		C8D487BB1A265474001D8FD1 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = C8D487381A265024001D8FD1 /* shoot.wav */; };
-		C8D487BC1A265474001D8FD1 /* simple_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C8D487391A265024001D8FD1 /* simple_map.tmx */; };
-		C8D487BD1A265474001D8FD1 /* zelda-like.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4873A1A265024001D8FD1 /* zelda-like.png */; };
-		C8D487BE1A265474001D8FD1 /* Zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D4873B1A265024001D8FD1 /* Zombie.png */; };
-		C8D487BF1A265474001D8FD1 /* Zombie.pxm in Resources */ = {isa = PBXBuildFile; fileRef = C8D4873C1A265024001D8FD1 /* Zombie.pxm */; };
+		C8D487C31A265D61001D8FD1 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = C8D487C21A265D61001D8FD1 /* assets */; };
+		C8D487C41A265D61001D8FD1 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = C8D487C21A265D61001D8FD1 /* assets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,27 +90,6 @@
 		769D588B2F4504A9322D58A3 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		7DCA063A032F02FC74CC31B5 /* ShootingSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShootingSystem.cpp; sourceTree = "<group>"; };
 		7F5F49381D5564BC19C36263 /* SoundManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
-		C8D487281A265024001D8FD1 /* Ammo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ammo.wav; sourceTree = "<group>"; };
-		C8D487291A265024001D8FD1 /* Corpse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Corpse.png; sourceTree = "<group>"; };
-		C8D4872A1A265024001D8FD1 /* Corpse.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Corpse.pxm; sourceTree = "<group>"; };
-		C8D4872B1A265024001D8FD1 /* Fire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Fire.wav; sourceTree = "<group>"; };
-		C8D4872C1A265024001D8FD1 /* forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forest.png; sourceTree = "<group>"; };
-		C8D4872D1A265024001D8FD1 /* forest2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forest2.png; sourceTree = "<group>"; };
-		C8D4872E1A265024001D8FD1 /* forest2.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = forest2.pxm; sourceTree = "<group>"; };
-		C8D4872F1A265024001D8FD1 /* Hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hero.png; sourceTree = "<group>"; };
-		C8D487301A265024001D8FD1 /* Hero.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hero.pxm; sourceTree = "<group>"; };
-		C8D487311A265024001D8FD1 /* Hurt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hurt.wav; sourceTree = "<group>"; };
-		C8D487321A265024001D8FD1 /* ostrich-black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ostrich-black.ttf"; sourceTree = "<group>"; };
-		C8D487331A265024001D8FD1 /* ostrich-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ostrich-bold.ttf"; sourceTree = "<group>"; };
-		C8D487341A265024001D8FD1 /* ostrich-dashed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ostrich-dashed.ttf"; sourceTree = "<group>"; };
-		C8D487351A265024001D8FD1 /* ostrich-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ostrich-light.ttf"; sourceTree = "<group>"; };
-		C8D487361A265024001D8FD1 /* ostrich-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ostrich-regular.ttf"; sourceTree = "<group>"; };
-		C8D487371A265024001D8FD1 /* ostrich-rounded.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ostrich-rounded.ttf"; sourceTree = "<group>"; };
-		C8D487381A265024001D8FD1 /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
-		C8D487391A265024001D8FD1 /* simple_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = simple_map.tmx; sourceTree = "<group>"; };
-		C8D4873A1A265024001D8FD1 /* zelda-like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zelda-like.png"; sourceTree = "<group>"; };
-		C8D4873B1A265024001D8FD1 /* Zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Zombie.png; sourceTree = "<group>"; };
-		C8D4873C1A265024001D8FD1 /* Zombie.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zombie.pxm; sourceTree = "<group>"; };
 		C8D487531A26504A001D8FD1 /* asset_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_helper.h; sourceTree = "<group>"; };
 		C8D487541A26504A001D8FD1 /* Components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
 		C8D487551A26504A001D8FD1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -188,6 +127,7 @@
 		C8D4878C1A265262001D8FD1 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "/usr/local/Cellar/sdl2_mixer/2.0.0/lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<absolute>"; };
 		C8D4878D1A265262001D8FD1 /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "/usr/local/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<absolute>"; };
 		C8D4878E1A265262001D8FD1 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "/usr/local/lib/libSDL2-2.0.0.dylib"; sourceTree = "<absolute>"; };
+		C8D487C21A265D61001D8FD1 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,8 +222,8 @@
 		7FDA47C15A6C2643253C472E /* walkers */ = {
 			isa = PBXGroup;
 			children = (
+				C8D487C21A265D61001D8FD1 /* assets */,
 				C8D487521A26504A001D8FD1 /* include */,
-				C8D487271A265024001D8FD1 /* assets */,
 				252E71BE304510F6116C5DEE /* lib */,
 				2B591B902A992594452A6926 /* src */,
 				C8D487761A265197001D8FD1 /* Walkers */,
@@ -291,34 +231,6 @@
 				1FB26DB9397E2C241E604F31 /* Products */,
 			);
 			name = walkers;
-			sourceTree = "<group>";
-		};
-		C8D487271A265024001D8FD1 /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				C8D487281A265024001D8FD1 /* Ammo.wav */,
-				C8D487291A265024001D8FD1 /* Corpse.png */,
-				C8D4872A1A265024001D8FD1 /* Corpse.pxm */,
-				C8D4872B1A265024001D8FD1 /* Fire.wav */,
-				C8D4872C1A265024001D8FD1 /* forest.png */,
-				C8D4872D1A265024001D8FD1 /* forest2.png */,
-				C8D4872E1A265024001D8FD1 /* forest2.pxm */,
-				C8D4872F1A265024001D8FD1 /* Hero.png */,
-				C8D487301A265024001D8FD1 /* Hero.pxm */,
-				C8D487311A265024001D8FD1 /* Hurt.wav */,
-				C8D487321A265024001D8FD1 /* ostrich-black.ttf */,
-				C8D487331A265024001D8FD1 /* ostrich-bold.ttf */,
-				C8D487341A265024001D8FD1 /* ostrich-dashed.ttf */,
-				C8D487351A265024001D8FD1 /* ostrich-light.ttf */,
-				C8D487361A265024001D8FD1 /* ostrich-regular.ttf */,
-				C8D487371A265024001D8FD1 /* ostrich-rounded.ttf */,
-				C8D487381A265024001D8FD1 /* shoot.wav */,
-				C8D487391A265024001D8FD1 /* simple_map.tmx */,
-				C8D4873A1A265024001D8FD1 /* zelda-like.png */,
-				C8D4873B1A265024001D8FD1 /* Zombie.png */,
-				C8D4873C1A265024001D8FD1 /* Zombie.pxm */,
-			);
-			path = assets;
 			sourceTree = "<group>";
 		};
 		C8D487521A26504A001D8FD1 /* include */ = {
@@ -463,27 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8D4873D1A265024001D8FD1 /* Ammo.wav in Resources */,
-				C8D4874F1A265024001D8FD1 /* zelda-like.png in Resources */,
-				C8D487461A265024001D8FD1 /* Hurt.wav in Resources */,
-				C8D4874E1A265024001D8FD1 /* simple_map.tmx in Resources */,
-				C8D487481A265024001D8FD1 /* ostrich-bold.ttf in Resources */,
-				C8D487451A265024001D8FD1 /* Hero.pxm in Resources */,
-				C8D4874A1A265024001D8FD1 /* ostrich-light.ttf in Resources */,
-				C8D487501A265024001D8FD1 /* Zombie.png in Resources */,
-				C8D4874D1A265024001D8FD1 /* shoot.wav in Resources */,
-				C8D4874B1A265024001D8FD1 /* ostrich-regular.ttf in Resources */,
-				C8D487441A265024001D8FD1 /* Hero.png in Resources */,
-				C8D487421A265024001D8FD1 /* forest2.png in Resources */,
-				C8D487431A265024001D8FD1 /* forest2.pxm in Resources */,
-				C8D4874C1A265024001D8FD1 /* ostrich-rounded.ttf in Resources */,
-				C8D487491A265024001D8FD1 /* ostrich-dashed.ttf in Resources */,
-				C8D4873F1A265024001D8FD1 /* Corpse.pxm in Resources */,
-				C8D487401A265024001D8FD1 /* Fire.wav in Resources */,
-				C8D487511A265024001D8FD1 /* Zombie.pxm in Resources */,
-				C8D487471A265024001D8FD1 /* ostrich-black.ttf in Resources */,
-				C8D487411A265024001D8FD1 /* forest.png in Resources */,
-				C8D4873E1A265024001D8FD1 /* Corpse.png in Resources */,
+				C8D487C31A265D61001D8FD1 /* assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,28 +383,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8D487B41A265474001D8FD1 /* Hurt.wav in Resources */,
-				C8D487B21A265474001D8FD1 /* Hero.png in Resources */,
-				C8D487AC1A265474001D8FD1 /* Corpse.png in Resources */,
-				C8D487B51A265474001D8FD1 /* ostrich-black.ttf in Resources */,
-				C8D487AE1A265474001D8FD1 /* Fire.wav in Resources */,
-				C8D487B61A265474001D8FD1 /* ostrich-bold.ttf in Resources */,
-				C8D487B71A265474001D8FD1 /* ostrich-dashed.ttf in Resources */,
-				C8D487BA1A265474001D8FD1 /* ostrich-rounded.ttf in Resources */,
-				C8D487B81A265474001D8FD1 /* ostrich-light.ttf in Resources */,
-				C8D487B01A265474001D8FD1 /* forest2.png in Resources */,
-				C8D487BE1A265474001D8FD1 /* Zombie.png in Resources */,
-				C8D487BB1A265474001D8FD1 /* shoot.wav in Resources */,
-				C8D487BC1A265474001D8FD1 /* simple_map.tmx in Resources */,
-				C8D487B11A265474001D8FD1 /* forest2.pxm in Resources */,
-				C8D487B91A265474001D8FD1 /* ostrich-regular.ttf in Resources */,
-				C8D487AD1A265474001D8FD1 /* Corpse.pxm in Resources */,
-				C8D487BD1A265474001D8FD1 /* zelda-like.png in Resources */,
-				C8D487AB1A265474001D8FD1 /* Ammo.wav in Resources */,
-				C8D487AF1A265474001D8FD1 /* forest.png in Resources */,
-				C8D487BF1A265474001D8FD1 /* Zombie.pxm in Resources */,
 				C8D4878A1A2651FA001D8FD1 /* Info.plist in Resources */,
-				C8D487B31A265474001D8FD1 /* Hero.pxm in Resources */,
+				C8D487C41A265D61001D8FD1 /* assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
