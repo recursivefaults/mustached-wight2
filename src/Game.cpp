@@ -66,14 +66,13 @@ Game::~Game()
 void Game::start()
 {
     int msPerFrame = 1000/fps;
-    const float kVelocity = 0.27;
 
     long previousFrameMs = SDL_GetTicks();
 
     while(continueRunning)
     {
         int current = SDL_GetTicks();
-        const long elapsed = current - previousFrameMs;
+        const int elapsed = current - previousFrameMs;
 
         //gather input
         handleInput();
