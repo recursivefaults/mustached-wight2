@@ -2,7 +2,7 @@
 #define PARTICLE_SYSTEM_H
 
 #include "System.h"
-
+namespace System {
 class ParticleSystem : public System
 {
     public:
@@ -10,4 +10,5 @@ class ParticleSystem : public System
     protected:
     private:
 };
+}
 #endif

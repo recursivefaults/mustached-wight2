@@ -4,9 +4,7 @@
 #include "Game.h"
 #include "Components.h"
 #include "SystemFactory.h"
-
 #include "asset_helper.h"
-
 #include "EntityFactory.h"
 
 Game::Game()
@@ -18,7 +16,6 @@ Game::Game()
     }
     graphics.init();
     soundEngine.init();
-    
 
     textureManager = new TextureManager(graphics);
     textureManager->loadTextureWithName("Hero.png");
@@ -34,8 +31,10 @@ Game::Game()
     fontManager->loadFontWithname("ostrich-regular.ttf", 24);
 
 
-    SystemFactory f;
+    System::SystemFactory f;
     systems = f.constructSystems(&soundEngine);
+
+    _state = GameStates::STATE_PLAYING;
 
     SDL_Log("Systems constructed");
 
@@ -63,7 +62,7 @@ Game::~Game()
     TTF_Quit();
     SDL_Quit();
 }
-void Game::start()
+void Game::run()
 {
     int msPerFrame = 1000/fps;
 

@@ -2,7 +2,7 @@
 #define DAMAGE_SYSTEM_H
 
 #include "System.h"
-
+namespace System {
 class DamageSystem : public System
 {
     public:
@@ -12,5 +12,5 @@ class DamageSystem : public System
     private:
 
 };
-
+}
 #endif

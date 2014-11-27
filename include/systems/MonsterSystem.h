@@ -3,13 +3,15 @@
 
 #include "System.h"
 
-class MonsterSystem : public System
-{
-    public:
-        void update(int elapsedMs, World &);
-    protected:
-    private:
-        void handleStun(Entity *, int);
-};
+namespace System {
+    class MonsterSystem : public System
+    {
+        public:
+            void update(int elapsedMs, World &);
+        protected:
+        private:
+            void handleStun(Entity *, int);
+    };
+}
 
 #endif

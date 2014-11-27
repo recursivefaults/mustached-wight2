@@ -2,7 +2,7 @@
 #define CORPSE_SYSTEM_H
 
 #include "System.h"
-
+namespace System {
 class CorpseSystem : public System
 {
     public:
@@ -13,5 +13,5 @@ class CorpseSystem : public System
         void handleLooting(Entity *entity, int, World &world);
         void handleBurning(Entity *entity, int, World &world);
 };
-
+}
 #endif

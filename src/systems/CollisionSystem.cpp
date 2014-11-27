@@ -2,7 +2,7 @@
 #include "EntityFactory.h"
 #include <cmath>
 
-void CollisionSystem::update(int elapsedMs, World &world)
+void System::CollisionSystem::update(int elapsedMs, World &world)
 {
     for(auto collidable : world.getEntitiesForType(ComponentTypes::COLLIDABLE))
     {
@@ -83,7 +83,7 @@ void CollisionSystem::update(int elapsedMs, World &world)
     }
 }
 
-bool CollisionSystem::didCollide(Entity *first, Entity *second, int elapsedMs)
+bool System::CollisionSystem::didCollide(Entity *first, Entity *second, int elapsedMs)
 {
     Velocity *v = (Velocity *)first->getComponent(ComponentTypes::VELOCITY);
     Position *p = (Position *)first->getComponent(ComponentTypes::POSITION);
@@ -117,7 +117,7 @@ bool CollisionSystem::didCollide(Entity *first, Entity *second, int elapsedMs)
             centerPoint.y <= minkowskiSquare.y + minkowskiSquare.h;
 }
 
-void CollisionSystem::bulletHitsMonster(Entity *first, Entity *second, World &world)
+void System::CollisionSystem::bulletHitsMonster(Entity *first, Entity *second, World &world)
 {
     if(first->hasComponent(ComponentTypes::BULLET) && second->hasComponent(ComponentTypes::MONSTER))
     {
@@ -141,7 +141,7 @@ void CollisionSystem::bulletHitsMonster(Entity *first, Entity *second, World &wo
     }
 }
 
-void CollisionSystem::playerHitsCorpse(Entity *first, Entity *second)
+void System::CollisionSystem::playerHitsCorpse(Entity *first, Entity *second)
 {
     if(first->hasComponent(ComponentTypes::PLAYERINPUT) && second->hasComponent(ComponentTypes::CORPSE))
     {
@@ -155,7 +155,7 @@ void CollisionSystem::playerHitsCorpse(Entity *first, Entity *second)
     }
 }
 
-void CollisionSystem::playerHitsMonster(Entity *first, Entity *second, int elapsedMs)
+void System::CollisionSystem::playerHitsMonster(Entity *first, Entity *second, int elapsedMs)
 {
     if(first->hasComponent(ComponentTypes::PLAYERINPUT) && second->hasComponent(ComponentTypes::MONSTER))
     {

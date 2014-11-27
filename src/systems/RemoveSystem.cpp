@@ -1,6 +1,6 @@
 #include "systems/RemoveSystem.h"
 
-void RemoveSystem::update(int elapsedMs, World &world)
+void System::RemoveSystem::update(int elapsedMs, World &world)
 {
     std::list<int> idsToRemove;
     for(auto deleteEntity : world.getEntitiesForType(ComponentTypes::REMOVE))

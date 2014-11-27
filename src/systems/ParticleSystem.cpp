@@ -1,7 +1,7 @@
 #include "systems/ParticleSystem.h"
 
 
-void ParticleSystem::update(int elapsedMs, World &world)
+void System::ParticleSystem::update(int elapsedMs, World &world)
 {
     for(auto particle : world.getEntitiesForType(ComponentTypes::PARTICLE))
     {

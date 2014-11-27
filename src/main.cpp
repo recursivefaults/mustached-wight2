@@ -5,6 +5,6 @@ int main()
 {
     SDL_Log("Walkers initializing");
     Game g = Game();
-    g.start();
+    g.run();
     return 0;
 }

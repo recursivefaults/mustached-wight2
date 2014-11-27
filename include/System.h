@@ -5,6 +5,8 @@
 #include "World.h"
 #include "SoundEngine.h"
 
+namespace System {
+
 class System
 {
     public:
@@ -17,5 +19,7 @@ class System
         const SoundEngine *soundEngine;
     private:
 };
+    
+}
 
 #endif

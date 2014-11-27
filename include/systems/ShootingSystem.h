@@ -2,7 +2,7 @@
 #define SHOOTING_SYSTEM_H
 
 #include "System.h"
-
+namespace System {
 class ShootingSystem : public System
 {
     public:
@@ -12,5 +12,6 @@ class ShootingSystem : public System
     private:
         Velocity *getInitialVelocity(Entity *entity);
 };
+}
 
 #endif

@@ -1,7 +1,7 @@
 #include "systems/DamageSystem.h"
 #include "EntityFactory.h"
 
-void DamageSystem::update(int elapsedMs, World &world)
+void System::DamageSystem::update(int elapsedMs, World &world)
 {
     for(auto lifer : world.getEntitiesForType(ComponentTypes::LIFE))
     {
@@ -11,7 +11,7 @@ void DamageSystem::update(int elapsedMs, World &world)
             //That thing died.
             if(lifer->hasComponent(ComponentTypes::PLAYERINPUT))
             {
-                world.setCurrentState(GameState::GAME_OVER);
+                //world.setCurrentState(GameState::GAME_OVER);
                 SDL_Log("Player Died");
             }
             if(lifer->hasComponent(ComponentTypes::MONSTER))

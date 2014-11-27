@@ -1,7 +1,7 @@
 #include "systems/MonsterSystem.h"
 #include "Constants.h"
 
-void MonsterSystem::update(int elapsedMs, World &world)
+void System::MonsterSystem::update(int elapsedMs, World &world)
 {
     for(auto monster : world.getEntitiesForType(ComponentTypes::MONSTER))
     {
@@ -43,7 +43,7 @@ void MonsterSystem::update(int elapsedMs, World &world)
     }
 }
 
-void MonsterSystem::handleStun(Entity *monster, int elapsedMs)
+void System::MonsterSystem::handleStun(Entity *monster, int elapsedMs)
 {
     Velocity *zombieVelocity = (Velocity *) monster->getComponent(ComponentTypes::VELOCITY);
     Stunned *stun = (Stunned *) monster->getComponent(ComponentTypes::STUNNED);

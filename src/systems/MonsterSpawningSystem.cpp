@@ -3,7 +3,7 @@
 #include "EntityFactory.h"
 #include "systems/MonsterSpawningSystem.h"
 
-void MonsterSpawningSystem::update(int elapsedMs, World &world)
+void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
 {
 
     if(currentTicks >= ticksPerSpawn)

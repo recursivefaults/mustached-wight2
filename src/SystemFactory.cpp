@@ -11,9 +11,9 @@
 #include "systems/ParticleSystem.h"
 
 
-std::vector<System *> SystemFactory::constructSystems(const SoundEngine *engine)
+std::vector<System::System *> System::SystemFactory::constructSystems(const SoundEngine *engine)
 {
-    std::vector<System *> systems;
+    std::vector<System::System *> systems;
     systems.push_back(new MonsterSpawningSystem(engine));
     systems.push_back(new MoveSystem());
     systems.push_back(new MonsterSystem());

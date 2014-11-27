@@ -2,7 +2,7 @@
 #define REMOVE_SYSTEM_H
 
 #include "System.h"
-
+namespace System {
 class RemoveSystem : public System
 {
     public:
@@ -10,5 +10,6 @@ class RemoveSystem : public System
     protected:
     private:
 };
+}
 
 #endif

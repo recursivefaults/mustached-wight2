@@ -4,7 +4,7 @@
 #include <vector>
 #include "System.h"
 #include "SoundEngine.h"
-
+namespace System {
 class SystemFactory
 {
     public:
@@ -15,5 +15,6 @@ class SystemFactory
     private:
 
 };
+}
 
 #endif

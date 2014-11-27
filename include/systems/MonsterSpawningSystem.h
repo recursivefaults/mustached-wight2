@@ -2,7 +2,7 @@
 #define MONSTER_SPAWNING_SYSTEM_H
 
 #include "System.h"
-
+namespace System {
 class MonsterSpawningSystem : public System
 {
     public:
@@ -14,6 +14,6 @@ class MonsterSpawningSystem : public System
         int ticksPerSpawn;
         int currentTicks;
 };
-
+}
 #endif
 

@@ -2,7 +2,7 @@
 #include "Constants.h"
 #include "EntityFactory.h"
 
-void ShootingSystem::update(int elapsedMs, World &world)
+void System::ShootingSystem::update(int elapsedMs, World &world)
 {
     for(auto entity : world.getEntitiesForType(ComponentTypes::CANSHOOT))
     {
@@ -39,7 +39,7 @@ void ShootingSystem::update(int elapsedMs, World &world)
     }
 }
 
-Velocity *ShootingSystem::getInitialVelocity(Entity *entity)
+Velocity *System::ShootingSystem::getInitialVelocity(Entity *entity)
 {
     Velocity *initialVelocity = new Velocity();
     initialVelocity->dx = 0.0f;

@@ -1,6 +1,6 @@
 #include "systems/CorpseSystem.h"
 
-void CorpseSystem::update(int elapsedMs, World &world)
+void System::CorpseSystem::update(int elapsedMs, World &world)
 {
     for(auto oncorpse : world.getEntitiesForType(ComponentTypes::ONCORPSE))
     {
@@ -26,7 +26,7 @@ void CorpseSystem::update(int elapsedMs, World &world)
     }
 }
 
-void CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &world)
+void System::CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &world)
 {
     if(!entity->hasComponent(ComponentTypes::LOOTINGCORPSE))
     {
@@ -51,7 +51,7 @@ void CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &world)
     }
 }
 
-void CorpseSystem::handleBurning(Entity *entity, int elapsed, World &world)
+void System::CorpseSystem::handleBurning(Entity *entity, int elapsed, World &world)
 {
     if(!entity->hasComponent(ComponentTypes::BURNINGCORPSE))
     {

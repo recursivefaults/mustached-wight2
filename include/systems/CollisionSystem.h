@@ -2,7 +2,7 @@
 #define COLLISION_SYSETM_H
 
 #include "System.h"
-
+namespace System {
 class CollisionSystem : public System
 {
     public:
@@ -16,5 +16,6 @@ class CollisionSystem : public System
         void playerHitsMonster(Entity *, Entity *, int);
         void monsterHitsMonster(Entity *, Entity *, int);
 };
+}
 
 #endif
