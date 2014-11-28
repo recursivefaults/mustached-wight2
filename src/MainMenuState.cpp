@@ -80,8 +80,6 @@ void MainMenuState::render()
     loc = {800/2 - w/2, 600/2 - h, w, h};
     renderFontAt(font, loc, instructions);
 
-    nextH += h + 30;
-
     instructions = "Press W,A,S,D to move. Space shoots.";
     TTF_SizeText(font, instructions.c_str(), &w, &h);
     loc = {5, 600 - h, w, h};
