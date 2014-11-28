@@ -67,6 +67,7 @@ OBJECTS := \
 	$(OBJDIR)/Entity.o \
 	$(OBJDIR)/EntityFactory.o \
 	$(OBJDIR)/FontManager.o \
+	$(OBJDIR)/GameOverState.o \
 	$(OBJDIR)/GameplayState.o \
 	$(OBJDIR)/GameStateManager.o \
 	$(OBJDIR)/Graphics.o \
@@ -157,6 +158,9 @@ $(OBJDIR)/EntityFactory.o: src/EntityFactory.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/FontManager.o: src/FontManager.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/GameOverState.o: src/GameOverState.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/GameplayState.o: src/GameplayState.cpp

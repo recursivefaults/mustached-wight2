@@ -6,6 +6,7 @@
 #include "SystemFactory.h"
 #include "asset_helper.h"
 #include "EntityFactory.h"
+#include "GameOverState.h"
 
 GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 {
@@ -20,8 +21,7 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 
 
     System::SystemFactory f;
-    systems = f.constructSystems(engine->getSoundEngine());
-
+    systems = f.constructSystems(engine);
     SDL_Log("Systems constructed");
 
 
@@ -40,6 +40,8 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 
 GameplayState::~GameplayState()
 {
+    SDL_Log("Destroying gameplay");
+    systems.clear();
     //TODO: Delete all systems
 }
 
@@ -54,6 +56,10 @@ void GameplayState::update(int elapsedMs)
     for(auto system : systems)
     {
         system->update(elapsedMs, world);
+    }
+    if(world.getGameOver())
+    {
+        engine->changeState(new GameOverState(engine));
     }
 }
 

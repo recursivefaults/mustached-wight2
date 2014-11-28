@@ -44,6 +44,8 @@
 		C8A4A8921A292AE700E4341B /* GameplayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88A1A2929DE00E4341B /* GameplayState.cpp */; };
 		C8A4A8931A292AEA00E4341B /* GameStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88B1A2929DE00E4341B /* GameStateManager.cpp */; };
 		C8A4A8941A292AED00E4341B /* MainMenuState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88C1A2929DE00E4341B /* MainMenuState.cpp */; };
+		C8A4A8961A293D0500E4341B /* GameOverState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A8951A293D0500E4341B /* GameOverState.cpp */; };
+		C8A4A8971A293D0500E4341B /* GameOverState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A8951A293D0500E4341B /* GameOverState.cpp */; };
 		C8D4878A1A2651FA001D8FD1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8D487891A2651FA001D8FD1 /* Info.plist */; };
 		C8D487931A265433001D8FD1 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75412DE5460D087B4B987FCD /* jsoncpp.cpp */; };
 		C8D487941A265433001D8FD1 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47822CC208F2672B77502876 /* Entity.cpp */; };
@@ -244,6 +246,8 @@
 		C8A4A88A1A2929DE00E4341B /* GameplayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameplayState.cpp; sourceTree = "<group>"; };
 		C8A4A88B1A2929DE00E4341B /* GameStateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateManager.cpp; sourceTree = "<group>"; };
 		C8A4A88C1A2929DE00E4341B /* MainMenuState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuState.cpp; sourceTree = "<group>"; };
+		C8A4A8951A293D0500E4341B /* GameOverState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverState.cpp; sourceTree = "<group>"; };
+		C8A4A8981A293D1100E4341B /* GameOverState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverState.h; sourceTree = "<group>"; };
 		C8D487531A26504A001D8FD1 /* asset_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_helper.h; sourceTree = "<group>"; };
 		C8D487541A26504A001D8FD1 /* Components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
 		C8D487551A26504A001D8FD1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 		2B591B902A992594452A6926 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C8A4A8951A293D0500E4341B /* GameOverState.cpp */,
 				C8A4A88A1A2929DE00E4341B /* GameplayState.cpp */,
 				C8A4A88B1A2929DE00E4341B /* GameStateManager.cpp */,
 				C8A4A88C1A2929DE00E4341B /* MainMenuState.cpp */,
@@ -429,6 +434,7 @@
 		C8D487521A26504A001D8FD1 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				C8A4A8981A293D1100E4341B /* GameOverState.h */,
 				C8A4A8881A2929D100E4341B /* GameplayState.h */,
 				C8A4A8891A2929D100E4341B /* MainMenuState.h */,
 				C8D487531A26504A001D8FD1 /* asset_helper.h */,
@@ -728,6 +734,7 @@
 				27DD2AEF689E5D7872BA21D1 /* FacingSystem.cpp in Sources */,
 				5AA935F915761BAC65EA20C6 /* MonsterSpawningSystem.cpp in Sources */,
 				17611ED3677C21A762BF22F2 /* MonsterSystem.cpp in Sources */,
+				C8A4A8961A293D0500E4341B /* GameOverState.cpp in Sources */,
 				46665A3A32010C5206E94DD6 /* MoveSystem.cpp in Sources */,
 				2F133AA2161F5DCB4F0C4191 /* ParticleSystem.cpp in Sources */,
 				104E04FC3F8B436A7F49533D /* RemoveSystem.cpp in Sources */,
@@ -761,6 +768,7 @@
 				C8D487A41A265433001D8FD1 /* FacingSystem.cpp in Sources */,
 				C8D487A51A265433001D8FD1 /* MonsterSpawningSystem.cpp in Sources */,
 				C8D487A61A265433001D8FD1 /* MonsterSystem.cpp in Sources */,
+				C8A4A8971A293D0500E4341B /* GameOverState.cpp in Sources */,
 				C8D487A71A265433001D8FD1 /* MoveSystem.cpp in Sources */,
 				C8D487A81A265433001D8FD1 /* ParticleSystem.cpp in Sources */,
 				C8D487A91A265433001D8FD1 /* RemoveSystem.cpp in Sources */,

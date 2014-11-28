@@ -11,8 +11,7 @@ void System::DamageSystem::update(int elapsedMs, World &world)
             //That thing died.
             if(lifer->hasComponent(ComponentTypes::PLAYERINPUT))
             {
-                //world.setCurrentState(GameState::GAME_OVER);
-                SDL_Log("Player Died");
+                world.setGameOver(true);
             }
             if(lifer->hasComponent(ComponentTypes::MONSTER))
             {

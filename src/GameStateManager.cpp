@@ -25,6 +25,7 @@ void GameStateManager::changeState(GameState *newState)
     newState->initialize();
     stateStack.push(newState);
 }
+
 void GameStateManager::pushState(GameState *newState)
 {
     if(!stateStack.empty())

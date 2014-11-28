@@ -167,7 +167,7 @@ void System::CollisionSystem::playerHitsMonster(Entity *first, Entity *second, i
             life->damage++;
             collision->currentMs = 0;
             second->addComponent(ComponentTypes::STUNNED, new Stunned());
-            soundEngine->playSound("Hurt.wav", 1);
+            engine->getSoundEngine()->playSound("Hurt.wav", 1);
         }
         collision->currentMs += elapsedMs;
     }

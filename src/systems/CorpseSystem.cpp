@@ -37,7 +37,7 @@ void System::CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &wo
 
     if(timed->elapsedMs >= timed->totalMsNeeded)
     {
-        soundEngine->playSound("Ammo.wav", 2);
+        engine->getSoundEngine()->playSound("Ammo.wav", 2);
         Ammo *ammo = (Ammo *) entity->getComponent(ComponentTypes::AMMO);
         ammo->ammo += 5;
         SDL_Log("Updating ammo to %d", ammo->ammo);
@@ -63,7 +63,7 @@ void System::CorpseSystem::handleBurning(Entity *entity, int elapsed, World &wor
     if(timed->elapsedMs >= timed->totalMsNeeded)
     {
 
-        soundEngine->playSound("Fire.wav", 1);
+        engine->getSoundEngine()->playSound("Fire.wav", 1);
 
         OnCorpse *c = (OnCorpse *)entity->getComponent(ComponentTypes::ONCORPSE);
         SDL_Log("Deleting corpse %d", c->corpseEntityId);

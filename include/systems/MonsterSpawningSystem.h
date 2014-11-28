@@ -6,7 +6,7 @@ namespace System {
 class MonsterSpawningSystem : public System
 {
     public:
-        MonsterSpawningSystem(const SoundEngine *e) : System(e), bracket(0), ticksPerSpawn(5000), currentTicks(0) {};
+        MonsterSpawningSystem(GameStateManager *e) : System(e), bracket(0), ticksPerSpawn(5000), currentTicks(0) {};
         void update(int, World &);
     protected:
     private:

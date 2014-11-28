@@ -3,14 +3,15 @@
 
 #include <vector>
 #include "System.h"
-#include "SoundEngine.h"
+#include "GameStateManager.h"
+
 namespace System {
 class SystemFactory
 {
     public:
         SystemFactory() {};
         ~SystemFactory() {};
-        std::vector<System *> constructSystems(const SoundEngine *);
+        std::vector<System *> constructSystems(GameStateManager *);
     protected:
     private:
 

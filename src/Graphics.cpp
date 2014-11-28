@@ -41,3 +41,13 @@ void Graphics::drawRect(const SDL_Rect *rect, const SDL_Color &color, bool fill)
     }
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 1);
 }
+
+void Graphics::renderFont(TTF_Font *font, const std::string &text, const SDL_Color &color, const SDL_Rect *rect)
+{
+    SDL_Surface *surface = TTF_RenderText_Solid(font, text.c_str(), color);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, surface);
+
+    drawTexture(tex, rect);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(tex);
+}

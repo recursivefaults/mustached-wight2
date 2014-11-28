@@ -101,12 +101,5 @@ void MainMenuState::renderFontAt(TTF_Font *font, SDL_Rect &location, const std::
     { 
         SDL_Log("Font didn't load %s", TTF_GetError());
     }
-
-
-    SDL_Surface *surface = TTF_RenderText_Solid(font, text.c_str(), color);
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(graphics->getRenderer(), surface);
-
-    graphics->drawTexture(tex, &location);
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(tex);
+    graphics->renderFont(font, text, color, &location);
 }

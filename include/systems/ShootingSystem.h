@@ -6,7 +6,7 @@ namespace System {
 class ShootingSystem : public System
 {
     public:
-        ShootingSystem(const SoundEngine *e) : System(e) {};
+        ShootingSystem(GameStateManager *e) : System(e) {};
         virtual void update(int elapsedMs, World &world);
     protected:
     private:
