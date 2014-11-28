@@ -10,8 +10,7 @@ int main()
     }
 
     //Initialize SDL_ttf
-    //TODO: Font rendering class?
-    TTF_Init();
+
 
     Graphics graphics;
     SoundEngine soundEngine;
@@ -48,8 +47,6 @@ int main()
         previousFrameMs = current;
     }
     manager.cleanUp();
-    //TODO: Move the ttf out.
-    TTF_Quit();
     SDL_Quit();
     return 0;
 }

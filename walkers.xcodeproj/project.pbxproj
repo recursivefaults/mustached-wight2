@@ -27,7 +27,6 @@
 		6882334F490F791C29072D6D /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B5D025E3F7EC814C1198E /* World.cpp */; };
 		6BDE5E1D5D9E3A38480D4E78 /* DamageSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 310228150E437A77307E59C6 /* DamageSystem.cpp */; };
 		728D1F47114846956337561B /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F5F49381D5564BC19C36263 /* SoundManager.cpp */; };
-		73AA1FEF2B8A2D235EB60EC5 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769D588B2F4504A9322D58A3 /* Game.cpp */; };
 		73EF60417FE94C54540A0AFF /* CollisionSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B514458788033CD6C563C35 /* CollisionSystem.cpp */; };
 		782142353291060D481E4514 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C923B041C154B4A7BC41DBD /* Graphics.cpp */; };
 		7BE533AC6C0C27501B4A4E3F /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75412DE5460D087B4B987FCD /* jsoncpp.cpp */; };
@@ -39,12 +38,17 @@
 		C80DD9F11A279E9400A14330 /* SDL2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C80DD9C51A279B4F00A14330 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C80DD9F21A279E9400A14330 /* SDL2_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C80DD9AC1A279AF900A14330 /* SDL2_image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C80DD9F31A279E9400A14330 /* SDL2_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C80DD9A01A279ACE00A14330 /* SDL2_mixer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8A4A88D1A2929DE00E4341B /* GameplayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88A1A2929DE00E4341B /* GameplayState.cpp */; };
+		C8A4A88E1A2929DE00E4341B /* GameStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88B1A2929DE00E4341B /* GameStateManager.cpp */; };
+		C8A4A88F1A2929DE00E4341B /* MainMenuState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88C1A2929DE00E4341B /* MainMenuState.cpp */; };
+		C8A4A8921A292AE700E4341B /* GameplayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88A1A2929DE00E4341B /* GameplayState.cpp */; };
+		C8A4A8931A292AEA00E4341B /* GameStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88B1A2929DE00E4341B /* GameStateManager.cpp */; };
+		C8A4A8941A292AED00E4341B /* MainMenuState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8A4A88C1A2929DE00E4341B /* MainMenuState.cpp */; };
 		C8D4878A1A2651FA001D8FD1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8D487891A2651FA001D8FD1 /* Info.plist */; };
 		C8D487931A265433001D8FD1 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75412DE5460D087B4B987FCD /* jsoncpp.cpp */; };
 		C8D487941A265433001D8FD1 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47822CC208F2672B77502876 /* Entity.cpp */; };
 		C8D487951A265433001D8FD1 /* EntityFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D170A5654005ACC17F77962 /* EntityFactory.cpp */; };
 		C8D487961A265433001D8FD1 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F275AFD35EE4E027FFA17C3 /* FontManager.cpp */; };
-		C8D487971A265433001D8FD1 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769D588B2F4504A9322D58A3 /* Game.cpp */; };
 		C8D487981A265433001D8FD1 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C923B041C154B4A7BC41DBD /* Graphics.cpp */; };
 		C8D487991A265433001D8FD1 /* SoundEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E153D6777585E267766DD /* SoundEngine.cpp */; };
 		C8D4879A1A265433001D8FD1 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F5F49381D5564BC19C36263 /* SoundManager.cpp */; };
@@ -229,20 +233,23 @@
 		6B514458788033CD6C563C35 /* CollisionSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionSystem.cpp; sourceTree = "<group>"; };
 		6C0944E13B6050875DB462B4 /* MoveSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MoveSystem.cpp; sourceTree = "<group>"; };
 		75412DE5460D087B4B987FCD /* jsoncpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
-		769D588B2F4504A9322D58A3 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		7DCA063A032F02FC74CC31B5 /* ShootingSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShootingSystem.cpp; sourceTree = "<group>"; };
 		7F5F49381D5564BC19C36263 /* SoundManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
 		C80DD9991A279ACE00A14330 /* SDL_mixer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL_mixer.xcodeproj; path = "../../../../Downloads/SDL2_mixer-2.0.0/Xcode/SDL_mixer.xcodeproj"; sourceTree = "<group>"; };
 		C80DD9A51A279AF800A14330 /* SDL_image.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL_image.xcodeproj; path = "../../../../Downloads/SDL2_image-2.0.0/Xcode/SDL_image.xcodeproj"; sourceTree = "<group>"; };
 		C80DD9BD1A279B4F00A14330 /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = "../../../../Downloads/SDL2-2.0.3/Xcode/SDL/SDL.xcodeproj"; sourceTree = "<group>"; };
 		C80DD9E11A279CA700A14330 /* SDL_ttf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL_ttf.xcodeproj; path = "../../../../Downloads/SDL2_ttf-2.0.12/Xcode/SDL_ttf.xcodeproj"; sourceTree = "<group>"; };
+		C8A4A8881A2929D100E4341B /* GameplayState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameplayState.h; sourceTree = "<group>"; };
+		C8A4A8891A2929D100E4341B /* MainMenuState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuState.h; sourceTree = "<group>"; };
+		C8A4A88A1A2929DE00E4341B /* GameplayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameplayState.cpp; sourceTree = "<group>"; };
+		C8A4A88B1A2929DE00E4341B /* GameStateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateManager.cpp; sourceTree = "<group>"; };
+		C8A4A88C1A2929DE00E4341B /* MainMenuState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuState.cpp; sourceTree = "<group>"; };
 		C8D487531A26504A001D8FD1 /* asset_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_helper.h; sourceTree = "<group>"; };
 		C8D487541A26504A001D8FD1 /* Components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
 		C8D487551A26504A001D8FD1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C8D487561A26504A001D8FD1 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		C8D487571A26504A001D8FD1 /* EntityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityFactory.h; sourceTree = "<group>"; };
 		C8D487581A26504A001D8FD1 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
-		C8D487591A26504A001D8FD1 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		C8D4875A1A26504A001D8FD1 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		C8D4875B1A26504A001D8FD1 /* GameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateManager.h; sourceTree = "<group>"; };
 		C8D4875C1A26504A001D8FD1 /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
@@ -315,10 +322,12 @@
 		2B591B902A992594452A6926 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C8A4A88A1A2929DE00E4341B /* GameplayState.cpp */,
+				C8A4A88B1A2929DE00E4341B /* GameStateManager.cpp */,
+				C8A4A88C1A2929DE00E4341B /* MainMenuState.cpp */,
 				47822CC208F2672B77502876 /* Entity.cpp */,
 				1D170A5654005ACC17F77962 /* EntityFactory.cpp */,
 				3F275AFD35EE4E027FFA17C3 /* FontManager.cpp */,
-				769D588B2F4504A9322D58A3 /* Game.cpp */,
 				4C923B041C154B4A7BC41DBD /* Graphics.cpp */,
 				2C6E153D6777585E267766DD /* SoundEngine.cpp */,
 				7F5F49381D5564BC19C36263 /* SoundManager.cpp */,
@@ -420,13 +429,14 @@
 		C8D487521A26504A001D8FD1 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				C8A4A8881A2929D100E4341B /* GameplayState.h */,
+				C8A4A8891A2929D100E4341B /* MainMenuState.h */,
 				C8D487531A26504A001D8FD1 /* asset_helper.h */,
 				C8D487541A26504A001D8FD1 /* Components.h */,
 				C8D487551A26504A001D8FD1 /* Constants.h */,
 				C8D487561A26504A001D8FD1 /* Entity.h */,
 				C8D487571A26504A001D8FD1 /* EntityFactory.h */,
 				C8D487581A26504A001D8FD1 /* FontManager.h */,
-				C8D487591A26504A001D8FD1 /* Game.h */,
 				C8D4875A1A26504A001D8FD1 /* GameState.h */,
 				C8D4875B1A26504A001D8FD1 /* GameStateManager.h */,
 				C8D4875C1A26504A001D8FD1 /* Graphics.h */,
@@ -699,17 +709,19 @@
 				7BE533AC6C0C27501B4A4E3F /* jsoncpp.cpp in Sources */,
 				01A0466933BD550D54277615 /* Entity.cpp in Sources */,
 				4AD3156051E656A45266269F /* EntityFactory.cpp in Sources */,
+				C8A4A88D1A2929DE00E4341B /* GameplayState.cpp in Sources */,
 				124B0A766F8337933F6E66CA /* FontManager.cpp in Sources */,
-				73AA1FEF2B8A2D235EB60EC5 /* Game.cpp in Sources */,
 				782142353291060D481E4514 /* Graphics.cpp in Sources */,
 				45D8793D4A28082973270572 /* SoundEngine.cpp in Sources */,
 				728D1F47114846956337561B /* SoundManager.cpp in Sources */,
 				0929768C09643DD83D3059C5 /* SystemFactory.cpp in Sources */,
 				14B12EF95F7646586CBD1DCD /* Vector2d.cpp in Sources */,
 				6882334F490F791C29072D6D /* World.cpp in Sources */,
+				C8A4A88F1A2929DE00E4341B /* MainMenuState.cpp in Sources */,
 				449B3998403659FB73942F8F /* TextureManager.cpp in Sources */,
 				32DD611B624E01523E577BA3 /* asset_helper.cpp in Sources */,
 				2841018B0CD305BE2C9E54DA /* main.cpp in Sources */,
+				C8A4A88E1A2929DE00E4341B /* GameStateManager.cpp in Sources */,
 				73EF60417FE94C54540A0AFF /* CollisionSystem.cpp in Sources */,
 				67240351607B2CFF4CCE01C7 /* CorpseSystem.cpp in Sources */,
 				6BDE5E1D5D9E3A38480D4E78 /* DamageSystem.cpp in Sources */,
@@ -730,17 +742,19 @@
 				C8D487931A265433001D8FD1 /* jsoncpp.cpp in Sources */,
 				C8D487941A265433001D8FD1 /* Entity.cpp in Sources */,
 				C8D487951A265433001D8FD1 /* EntityFactory.cpp in Sources */,
+				C8A4A8921A292AE700E4341B /* GameplayState.cpp in Sources */,
 				C8D487961A265433001D8FD1 /* FontManager.cpp in Sources */,
-				C8D487971A265433001D8FD1 /* Game.cpp in Sources */,
 				C8D487981A265433001D8FD1 /* Graphics.cpp in Sources */,
 				C8D487991A265433001D8FD1 /* SoundEngine.cpp in Sources */,
 				C8D4879A1A265433001D8FD1 /* SoundManager.cpp in Sources */,
 				C8D4879B1A265433001D8FD1 /* SystemFactory.cpp in Sources */,
 				C8D4879C1A265433001D8FD1 /* Vector2d.cpp in Sources */,
 				C8D4879D1A265433001D8FD1 /* World.cpp in Sources */,
+				C8A4A8941A292AED00E4341B /* MainMenuState.cpp in Sources */,
 				C8D4879E1A265433001D8FD1 /* TextureManager.cpp in Sources */,
 				C8D4879F1A265433001D8FD1 /* asset_helper.cpp in Sources */,
 				C8D487A01A265433001D8FD1 /* main.cpp in Sources */,
+				C8A4A8931A292AEA00E4341B /* GameStateManager.cpp in Sources */,
 				C8D487A11A265433001D8FD1 /* CollisionSystem.cpp in Sources */,
 				C8D487A21A265433001D8FD1 /* CorpseSystem.cpp in Sources */,
 				C8D487A31A265433001D8FD1 /* DamageSystem.cpp in Sources */,

@@ -3,6 +3,8 @@
 
 FontManager::FontManager()
 {
+    //TODO: Font rendering class?
+    TTF_Init();
 }
 FontManager::~FontManager()
 {
@@ -11,11 +13,17 @@ FontManager::~FontManager()
         SDL_Log("Releasing font %s", kv.first.c_str());
         TTF_CloseFont(kv.second);
     }
+    //TODO: Move the ttf out.
+    TTF_Quit();
+
 }
 void FontManager::loadFontWithName(const std::string &fontName, const int pointSize)
 {
     AssetHelper helper;
-    TTF_Font *font = TTF_OpenFont(helper.fullAssetPathForFile(fontName).c_str(), pointSize);
+    TTF_Font *font = nullptr;
+    font = TTF_OpenFont(helper.fullAssetPathForFile(fontName).c_str(), pointSize);
+    SDL_assert(font != nullptr);
+    SDL_Log("Loaded font %s", fontName.c_str());
     fonts.insert(std::pair<std::string, TTF_Font*>(getRealName(fontName, pointSize), font));
 }
 
