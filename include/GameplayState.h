@@ -11,25 +11,22 @@
 #include "World.h"
 #include "System.h"
 
-class Game : public GameState
+class GameplayState : public GameState
 {
     public:
-        Game();
-        ~Game();
+        GameplayState(GameStateManager *_engine);
+        ~GameplayState();
         void initialize() {};
-        void run();
-    protected:
-    private:
+        void pause() {};
+        void resume() {};
         void handleInput();
         void update(int elapsedMs);
         void render();
+    protected:
+    private:
         void renderHud();
         void cleanUp();
 
-        //TODO: I Don't like this
-        bool continueRunning;
-
-        int fps;
         Graphics graphics;
         World world;
         SoundEngine soundEngine;

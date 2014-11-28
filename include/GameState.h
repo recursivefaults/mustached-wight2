@@ -1,22 +1,23 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
-enum class GameStates
-{
-    STATE_STARTMENU,
-    STATE_PLAYING,
-    STATE_PAUSEMENU,
-    STATE_GAMEOVER
-};
+#include "GameStateManager.h"
+
+class GameStateManager;
 
 class GameState
 {
     public:
+        GameState(GameStateManager *_engine) : engine(_engine) {};
+        virtual ~GameState() {};
         virtual void initialize() = 0;
-        virtual void run() = 0;
-        virtual GameStates getState() {return _state;};
+        virtual void pause() = 0;
+        virtual void resume() = 0;
+        virtual void update(int) = 0;
+        virtual void handleInput() = 0;
+        virtual void render() = 0;
     protected:
-        GameStates _state;
+        GameStateManager *engine;
     private:
 };
 

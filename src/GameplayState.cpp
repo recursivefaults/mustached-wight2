@@ -1,19 +1,14 @@
 #include <string>
 
 #include "walkers.h"
-#include "Game.h"
+#include "GameplayState.h"
 #include "Components.h"
 #include "SystemFactory.h"
 #include "asset_helper.h"
 #include "EntityFactory.h"
 
-Game::Game()
+GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 {
-    SDL_Log("SDL Initializing");
-    if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "SDL failed to initizlize, how do we have this message?");
-    }
     graphics.init();
     soundEngine.init();
 
@@ -34,11 +29,8 @@ Game::Game()
     System::SystemFactory f;
     systems = f.constructSystems(&soundEngine);
 
-    _state = GameStates::STATE_PLAYING;
-
     SDL_Log("Systems constructed");
 
-    fps = 60;
 
     EntityFactory entityFactory = EntityFactory();
 
@@ -50,11 +42,10 @@ Game::Game()
     p->y = 10;
     world.addEntity(entityFactory.createZombie(p));
 
-    continueRunning = true;
     SDL_Log("Game initialized");
 }
 
-Game::~Game()
+GameplayState::~GameplayState()
 {
     delete(textureManager);
     delete(fontManager);
@@ -62,47 +53,14 @@ Game::~Game()
     TTF_Quit();
     SDL_Quit();
 }
-void Game::run()
-{
-    int msPerFrame = 1000/fps;
 
-    long previousFrameMs = SDL_GetTicks();
-
-    while(continueRunning)
-    {
-        int current = SDL_GetTicks();
-        const int elapsed = current - previousFrameMs;
-
-        //gather input
-        handleInput();
-
-        //update
-        update(elapsed);
-        
-        //render
-        render();
-
-        //Render HUD
-        
-        if(elapsed < msPerFrame)
-        {
-            //Rest to keep 60 fps
-            SDL_Delay(msPerFrame - elapsed);
-        }
-        previousFrameMs = current;
-
-    }
-    cleanUp();
-
-}
-
-void Game::cleanUp()
+void GameplayState::cleanUp()
 {
     SDL_Log("Cleaning up resources and quitting");
     SDL_Quit();
 }
 
-void Game::update(int elapsedMs)
+void GameplayState::update(int elapsedMs)
 {
     for(auto system : systems)
     {
@@ -110,7 +68,7 @@ void Game::update(int elapsedMs)
     }
 }
 
-void Game::render()
+void GameplayState::render()
 {
     SDL_Rect rect;
     graphics.clearRenderer();
@@ -147,7 +105,7 @@ void Game::render()
     graphics.render();
 }
 
-void Game::renderHud()
+void GameplayState::renderHud()
 {
     TTF_Font *font = fontManager->getFontWithName("ostrich-regular.ttf", 24);
     SDL_Color color = {255, 255, 255};
@@ -187,15 +145,15 @@ void Game::renderHud()
 }
 
 
-void Game::handleInput()
+void GameplayState::handleInput()
 {
-
     SDL_Event e;
     SDL_PollEvent(&e);
     if (e.type == SDL_QUIT) 
     {
         SDL_Log("Game exiting due to exit keys");
-        continueRunning = false;
+        //TODO: Fix this.
+        engine->cleanUp();
     }
     if(e.type == SDL_KEYDOWN) {
         //We don't use a switch because mutiple keys are pressed
