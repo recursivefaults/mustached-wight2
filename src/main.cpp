@@ -1,5 +1,5 @@
 #include "walkers.h"
-#include "GameplayState.h"
+#include "MainMenuState.h"
 
 int main()
 {
@@ -22,14 +22,14 @@ int main()
     TextureManager textureManager(graphics);
     FontManager fontManager;
     GameStateManager manager(&graphics, &soundEngine, &textureManager, &fontManager);
-    manager.changeState(new GameplayState(&manager));
+    manager.changeState(new MainMenuState(&manager));
 
     int fps = 60;
     int msPerFrame = 1000/fps;
 
     long previousFrameMs = SDL_GetTicks();
 
-    SDL_Log("Walkers initializing");
+    SDL_Log("Beginning main game loop");
     
     while(manager.isRunning())
     {

@@ -71,6 +71,7 @@ OBJECTS := \
 	$(OBJDIR)/GameStateManager.o \
 	$(OBJDIR)/Graphics.o \
 	$(OBJDIR)/main.o \
+	$(OBJDIR)/MainMenuState.o \
 	$(OBJDIR)/SoundEngine.o \
 	$(OBJDIR)/SoundManager.o \
 	$(OBJDIR)/SystemFactory.o \
@@ -168,6 +169,9 @@ $(OBJDIR)/Graphics.o: src/Graphics.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/main.o: src/main.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MainMenuState.o: src/MainMenuState.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SoundEngine.o: src/SoundEngine.cpp

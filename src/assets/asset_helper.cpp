@@ -6,7 +6,7 @@ SDL_Texture *AssetHelper::loadNamedTexture(const std::string &fileName, Graphics
 
     SDL_Texture *texture = IMG_LoadTexture(graphics.getRenderer(), fullAssetPathForFile(fileName).c_str());
     SDL_assert(texture != nullptr);
-    std::cout << "Loaded texture: " << fileName << std::endl;
+    SDL_Log("Loaded texture %s", fileName.c_str());
     return texture;
 }
 std::string AssetHelper:: fullAssetPathForFile(const std::string &fileName) {

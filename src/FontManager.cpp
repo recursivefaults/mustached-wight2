@@ -12,7 +12,7 @@ FontManager::~FontManager()
         TTF_CloseFont(kv.second);
     }
 }
-void FontManager::loadFontWithname(const std::string &fontName, const int pointSize)
+void FontManager::loadFontWithName(const std::string &fontName, const int pointSize)
 {
     AssetHelper helper;
     TTF_Font *font = TTF_OpenFont(helper.fullAssetPathForFile(fontName).c_str(), pointSize);
@@ -26,7 +26,7 @@ TTF_Font *FontManager::getFontWithName(const std::string &fontName, const int po
     if(finder == fonts.end())
     {
         SDL_Log("Couldn't load font: %s, loading now", fontName.c_str());
-        loadFontWithname(fontName, pointSize);
+        loadFontWithName(fontName, pointSize);
     }
     return fonts.at(realName);
 }

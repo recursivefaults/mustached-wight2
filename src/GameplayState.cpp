@@ -16,7 +16,7 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
     textureManager->loadTextureWithName("forest2.png");
 
 
-    engine->getFontManager()->loadFontWithname("ostrich-regular.ttf", 24);
+    engine->getFontManager()->loadFontWithName("ostrich-regular.ttf", 24);
 
 
     System::SystemFactory f;

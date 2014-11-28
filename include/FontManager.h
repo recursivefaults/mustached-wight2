@@ -11,7 +11,7 @@ class FontManager
     public:
         FontManager();
         ~FontManager();
-        void loadFontWithname(const std::string &, const int);
+        void loadFontWithName(const std::string &, const int);
         TTF_Font *getFontWithName(const std::string &, const int);
     protected:
     private:
