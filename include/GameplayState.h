@@ -27,11 +27,7 @@ class GameplayState : public GameState
         void renderHud();
         void cleanUp();
 
-        Graphics graphics;
         World world;
-        SoundEngine soundEngine;
-        TextureManager *textureManager;
-        FontManager *fontManager;
         std::vector<System::System *> systems;
 };
 

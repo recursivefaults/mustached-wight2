@@ -8,7 +8,20 @@ int main()
     {
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "SDL failed to initizlize, how do we have this message?");
     }
-    GameStateManager manager;
+
+    //Initialize SDL_ttf
+    //TODO: Font rendering class?
+    TTF_Init();
+
+    Graphics graphics;
+    SoundEngine soundEngine;
+
+    graphics.init();
+    soundEngine.init();
+
+    TextureManager textureManager(graphics);
+    FontManager fontManager;
+    GameStateManager manager(&graphics, &soundEngine, &textureManager, &fontManager);
     manager.changeState(new GameplayState(&manager));
 
     int fps = 60;
@@ -34,7 +47,9 @@ int main()
         }
         previousFrameMs = current;
     }
-
     manager.cleanUp();
+    //TODO: Move the ttf out.
+    TTF_Quit();
+    SDL_Quit();
     return 0;
 }

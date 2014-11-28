@@ -9,25 +9,18 @@
 
 GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 {
-    graphics.init();
-    soundEngine.init();
-
-    textureManager = new TextureManager(graphics);
+    TextureManager *textureManager = engine->getTextureManager();
     textureManager->loadTextureWithName("Hero.png");
     textureManager->loadTextureWithName("Zombie.png");
     textureManager->loadTextureWithName("Corpse.png");
     textureManager->loadTextureWithName("forest2.png");
 
-    //Initialize SDL_ttf
-    //TODO: Font rendering class?
-    TTF_Init();
 
-    fontManager = new FontManager();
-    fontManager->loadFontWithname("ostrich-regular.ttf", 24);
+    engine->getFontManager()->loadFontWithname("ostrich-regular.ttf", 24);
 
 
     System::SystemFactory f;
-    systems = f.constructSystems(&soundEngine);
+    systems = f.constructSystems(engine->getSoundEngine());
 
     SDL_Log("Systems constructed");
 
@@ -42,16 +35,12 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
     p->y = 10;
     world.addEntity(entityFactory.createZombie(p));
 
-    SDL_Log("Game initialized");
+    SDL_Log("Gameplay initialized");
 }
 
 GameplayState::~GameplayState()
 {
-    delete(textureManager);
-    delete(fontManager);
-    //TODO: Font rendering class?
-    TTF_Quit();
-    SDL_Quit();
+    //TODO: Delete all systems
 }
 
 void GameplayState::cleanUp()
@@ -71,12 +60,13 @@ void GameplayState::update(int elapsedMs)
 void GameplayState::render()
 {
     SDL_Rect rect;
-    graphics.clearRenderer();
+    Graphics *graphics = engine->getGraphics();
+    graphics->clearRenderer();
 
     //Render the background
     //TODO: MAP!
     SDL_Rect wholeScreen = {0, 0, 800, 600};
-    graphics.drawTexture(textureManager->getTextureForName("forest2.png")->getTexture(), &wholeScreen);
+    graphics->drawTexture(engine->getTextureManager()->getTextureForName("forest2.png")->getTexture(), &wholeScreen);
 
     /**
      * Render the HUD
@@ -93,21 +83,23 @@ void GameplayState::render()
         rect.w = r->rect.w;
         if(r->spriteName.length() == 0)
         {
-            graphics.drawRect(&rect, r->color, true);
+            graphics->drawRect(&rect, r->color, true);
         }
         else
         {
-            graphics.drawTexture(textureManager->getTextureForName(r->spriteName)->getTexture(), &rect);
+            graphics->drawTexture(engine->getTextureManager()->getTextureForName(r->spriteName)->getTexture(), &rect);
         }
     }
 
     renderHud();
-    graphics.render();
+    graphics->render();
 }
 
 void GameplayState::renderHud()
 {
-    TTF_Font *font = fontManager->getFontWithName("ostrich-regular.ttf", 24);
+
+    Graphics *graphics = engine->getGraphics();
+    TTF_Font *font = engine->getFontManager()->getFontWithName("ostrich-regular.ttf", 24);
     SDL_Color color = {255, 255, 255};
     if(!font) 
     { 
@@ -125,20 +117,20 @@ void GameplayState::renderHud()
     TTF_SizeText(font, lifeString.c_str(), &w, &h);
 
     SDL_Surface *surface = TTF_RenderText_Solid(font, lifeString.c_str(), color);
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(graphics->getRenderer(), surface);
 
     SDL_Rect loc = {5, 5, w, h};
-    graphics.drawTexture(tex, &loc);
+    graphics->drawTexture(tex, &loc);
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(tex);
 
     surface = TTF_RenderText_Solid(font, ammoString.c_str(), color);
-    tex = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
+    tex = SDL_CreateTextureFromSurface(graphics->getRenderer(), surface);
 
     TTF_SizeText(font, ammoString.c_str(), &w, &h);
 
     loc = {5, 25, w, h};
-    graphics.drawTexture(tex, &loc);
+    graphics->drawTexture(tex, &loc);
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(tex);
     
