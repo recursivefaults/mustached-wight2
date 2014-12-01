@@ -23,11 +23,16 @@ void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
 
     counter->elapsedMs += elapsedMs;
     std::list<Entity *> corpses = world.getEntitiesForType(ComponentTypes::CORPSE);
-    int newBracket = floor(corpses.size()/3);
+    int newBracket = corpses.size();
 
     if(newBracket != bracket)
     {
-        counter->totalMsNeeded -= (newBracket - bracket) * 100;
+        int newTotal = counter->totalMsNeeded - (newBracket - bracket) * 150;
+        if(newTotal < 1000)
+        {
+            newTotal = 1000;
+        }
+        counter->totalMsNeeded = newTotal;
         SDL_Log("New ticks per spawn %d", counter->totalMsNeeded);
         bracket = newBracket;
     }

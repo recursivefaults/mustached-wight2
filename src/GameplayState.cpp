@@ -135,7 +135,6 @@ void GameplayState::renderHud()
     TTF_SizeText(font, spawnString.c_str(), &w, &h);
     loc = {800 - 125 - 5, 5, w, h};
     graphics->renderFont(font, spawnString.c_str(), color, &loc);
-
 }
 
 

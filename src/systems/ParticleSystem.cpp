@@ -8,7 +8,6 @@ void System::ParticleSystem::update(int elapsedMs, World &world)
         Particle *particleComponent = (Particle *) particle->getComponent(ComponentTypes::PARTICLE);
         if(particleComponent->framesRemaining == 0)
         {
-            SDL_Log("Cleaning up particle");
             particle->addComponent(ComponentTypes::REMOVE,new Remove());
         }
 
