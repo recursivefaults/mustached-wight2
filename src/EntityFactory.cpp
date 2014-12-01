@@ -18,8 +18,8 @@ Entity *EntityFactory::createPlayer()
 
     //Components
     Position *p = new Position();
-    p->x = 10;
-    p->y = 10;
+    p->x = 400;
+    p->y = 300;
 
     Velocity *m = new Velocity();
     m->dx = 0.0f;

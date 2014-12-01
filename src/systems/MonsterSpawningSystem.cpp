@@ -5,10 +5,8 @@
 
 void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
 {
-
     if(currentTicks >= ticksPerSpawn)
     {
-        std::default_random_engine generator;
         std::uniform_int_distribution<int> width_generator(0,800);
         std::uniform_int_distribution<int> height_generator(0,600);
         currentTicks = 0;
