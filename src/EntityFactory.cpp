@@ -43,6 +43,13 @@ Entity *EntityFactory::createPlayer()
     return player;
 }
 
+Entity *EntityFactory::createSpawnCounter()
+{
+    Entity *counter = new Entity();
+    counter->addComponent(ComponentTypes::CORPSE_COUNTER, new CorpseCounter());
+    return counter;
+}
+
 Entity *EntityFactory::createCorpse(Position *position)
 {
     Entity *corpse = new Entity();

@@ -16,6 +16,7 @@ enum class ComponentTypes
     MONSTER,
     CORPSE,
     PARTICLE,
+    CORPSE_COUNTER,
     FACING,
     SPRITE,
     EASTFACING,
@@ -101,6 +102,12 @@ struct TimedComponent : public Component
         TimedComponent(int _totalNeeded) : elapsedMs(0), totalMsNeeded(_totalNeeded) {};
         int elapsedMs;
         int totalMsNeeded;
+};
+
+struct CorpseCounter : TimedComponent
+{
+    public:
+        CorpseCounter(int _totalNeeded = 4000) : TimedComponent(_totalNeeded) {};
 };
 
 struct Stunned : public TimedComponent 

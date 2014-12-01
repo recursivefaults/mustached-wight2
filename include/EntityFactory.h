@@ -9,6 +9,7 @@ class EntityFactory
     public:
         EntityFactory();
         Entity *createPlayer();
+        Entity *createSpawnCounter();
         Entity *createBullet(Position *, Velocity *);
         Entity *createZombie(Position *);
         Entity *createCorpse(Position *);

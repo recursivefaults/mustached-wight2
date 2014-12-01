@@ -28,6 +28,7 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
     EntityFactory entityFactory = EntityFactory();
 
     world.addEntity(entityFactory.createPlayer());
+    world.addEntity(entityFactory.createSpawnCounter());
 
     //TODO:: Move this to a spawn thingie
     Position *p = new Position();
@@ -107,10 +108,6 @@ void GameplayState::renderHud()
     Graphics *graphics = engine->getGraphics();
     TTF_Font *font = engine->getFontManager()->getFontWithName("ostrich-regular.ttf", 24);
     SDL_Color color = {255, 255, 255};
-    if(!font) 
-    { 
-        SDL_Log("Font didn't load %s", TTF_GetError());
-    }
     Entity *player = world.getEntitiesForType(ComponentTypes::AMMO).front();
     Ammo *ammo = (Ammo *) player->getComponent(ComponentTypes::AMMO);
     Life *life = (Life *) player->getComponent(ComponentTypes::LIFE);
@@ -122,24 +119,23 @@ void GameplayState::renderHud()
     int h = 0;
     TTF_SizeText(font, lifeString.c_str(), &w, &h);
 
-    SDL_Surface *surface = TTF_RenderText_Solid(font, lifeString.c_str(), color);
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(graphics->getRenderer(), surface);
-
     SDL_Rect loc = {5, 5, w, h};
-    graphics->drawTexture(tex, &loc);
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(tex);
-
-    surface = TTF_RenderText_Solid(font, ammoString.c_str(), color);
-    tex = SDL_CreateTextureFromSurface(graphics->getRenderer(), surface);
+    graphics->renderFont(font, lifeString, color, &loc);
 
     TTF_SizeText(font, ammoString.c_str(), &w, &h);
 
     loc = {5, 25, w, h};
-    graphics->drawTexture(tex, &loc);
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(tex);
-    
+    graphics->renderFont(font, ammoString, color, &loc);
+
+
+    //Render the countdown
+    Entity *corpseCounter = world.getEntitiesForType(ComponentTypes::CORPSE_COUNTER).front();
+    CorpseCounter *counter = (CorpseCounter *) corpseCounter->getComponent(ComponentTypes::CORPSE_COUNTER);
+    std::string spawnString = "Next Spawn: " + std::to_string(counter->totalMsNeeded - counter->elapsedMs);
+    TTF_SizeText(font, spawnString.c_str(), &w, &h);
+    loc = {800 - 125 - 5, 5, w, h};
+    graphics->renderFont(font, spawnString.c_str(), color, &loc);
+
 }
 
 

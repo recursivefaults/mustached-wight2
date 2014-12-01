@@ -5,11 +5,14 @@
 
 void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
 {
-    if(currentTicks >= ticksPerSpawn)
+    Entity *corpseCounter = world.getEntitiesForType(ComponentTypes::CORPSE_COUNTER).front();
+
+    CorpseCounter *counter = (CorpseCounter *) corpseCounter->getComponent(ComponentTypes::CORPSE_COUNTER);
+    if(counter->elapsedMs >= counter->totalMsNeeded)
     {
         std::uniform_int_distribution<int> width_generator(0,800);
         std::uniform_int_distribution<int> height_generator(0,600);
-        currentTicks = 0;
+        counter->elapsedMs = 0;
         Position *p = new Position();
         p->x = width_generator(generator);
         p->y = height_generator(generator);
@@ -18,14 +21,14 @@ void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
         world.addEntity(factory.createZombie(p));
     }
 
-    currentTicks += elapsedMs;
+    counter->elapsedMs += elapsedMs;
     std::list<Entity *> corpses = world.getEntitiesForType(ComponentTypes::CORPSE);
     int newBracket = floor(corpses.size()/3);
 
     if(newBracket != bracket)
     {
-        ticksPerSpawn -= (newBracket - bracket) * 100;
-        SDL_Log("New ticks per spawn %d", ticksPerSpawn);
+        counter->totalMsNeeded -= (newBracket - bracket) * 100;
+        SDL_Log("New ticks per spawn %d", counter->totalMsNeeded);
         bracket = newBracket;
     }
     
