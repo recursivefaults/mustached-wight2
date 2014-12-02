@@ -8,7 +8,7 @@ EntityFactory::EntityFactory()
 {
         lifeDistribution = std::uniform_int_distribution<int>(1, 3);
         ammoDistribution = std::uniform_int_distribution<int>(1, 5);
-        frameDistribution = std::uniform_int_distribution<int>(5, 25);
+        frameDistribution = std::uniform_int_distribution<int>(5, 15);
         velocityDistribution = std::uniform_real_distribution<float>(-1.0f, 1.0f);
 }
 
