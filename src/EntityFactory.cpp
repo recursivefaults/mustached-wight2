@@ -50,6 +50,23 @@ Entity *EntityFactory::createSpawnCounter()
     return counter;
 }
 
+Entity *EntityFactory::createLootedCorpse(Position *position)
+{
+    Entity *corpse = new Entity();
+
+    RenderRect *r = new RenderRect();
+    r->rect.w = 16;
+    r->rect.h = 16;
+    r->color = {168, 132, 0};
+    r->spriteName = "Corpses.png";
+    r->textureRect = {16, 0, 16, 16};
+
+    corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
+    corpse->addComponent(ComponentTypes::POSITION, position);
+    corpse->addComponent(ComponentTypes::RENDERRECT, r);
+    return corpse;
+}
+
 Entity *EntityFactory::createCorpse(Position *position)
 {
     Entity *corpse = new Entity();
@@ -58,7 +75,8 @@ Entity *EntityFactory::createCorpse(Position *position)
     r->rect.w = 16;
     r->rect.h = 16;
     r->color = {168, 132, 0};
-    r->spriteName = "Corpse.png";
+    r->spriteName = "Corpses.png";
+    r->textureRect = {0, 0, 16, 16};
 
     corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
     corpse->addComponent(ComponentTypes::AMMO, new Ammo(ammoDistribution(generator)));

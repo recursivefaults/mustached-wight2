@@ -13,6 +13,7 @@ class EntityFactory
         Entity *createBullet(Position *, Velocity *);
         Entity *createZombie(Position *);
         Entity *createCorpse(Position *);
+        Entity *createLootedCorpse(Position *);
         Entity *createBloodParticle(Position *, Velocity *);
     protected:
     private:

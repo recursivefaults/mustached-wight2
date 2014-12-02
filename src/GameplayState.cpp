@@ -92,9 +92,13 @@ void GameplayState::render()
         {
             graphics->drawRect(&rect, r->color, true);
         }
-        else
+        else if(r->textureRect.w == 0)
         {
             graphics->drawTexture(engine->getTextureManager()->getTextureForName(r->spriteName)->getTexture(), &rect);
+        }
+        else
+        {
+            graphics->drawTexture(engine->getTextureManager()->getTextureForName(r->spriteName)->getTexture(), &rect, &r->textureRect);
         }
     }
 

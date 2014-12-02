@@ -1,4 +1,5 @@
 #include "systems/CorpseSystem.h"
+#include "EntityFactory.h"
 
 void System::CorpseSystem::update(int elapsedMs, World &world)
 {
@@ -44,6 +45,16 @@ void System::CorpseSystem::handleLooting(Entity *entity, int elapsed,  World &wo
 
         OnCorpse *c = (OnCorpse *)entity->getComponent(ComponentTypes::ONCORPSE);
         SDL_Log("Deleting corpse %d", c->corpseEntityId);
+
+        for(auto corpse : world.getEntitiesForType(ComponentTypes::CORPSE))
+        {
+            if(corpse->getId() == c->corpseEntityId)
+            {
+                //Create a new corpse here for the looted one.
+                EntityFactory factory;
+                world.addEntity(factory.createLootedCorpse((Position *)corpse->getComponent(ComponentTypes::POSITION)));
+            }
+        }
         
         entity->removeComponent(ComponentTypes::LOOTINGCORPSE);
         entity->removeComponent(ComponentTypes::ONCORPSE);

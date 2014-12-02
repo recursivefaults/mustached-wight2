@@ -57,6 +57,7 @@ struct RenderRect : public Component
 {
     public:
         SDL_Rect rect;
+        SDL_Rect textureRect;
         std::string spriteName;
         SDL_Color color;
 };
