@@ -159,7 +159,6 @@ Entity *EntityFactory::createBloodParticle(Position *startingPostion, Velocity *
         }
         velocity->dy *= velocityDistribution(generator);
     }
-    else
     if(startingVelocity->dy != 0)
     {
         if(startingVelocity->dy < 0)
