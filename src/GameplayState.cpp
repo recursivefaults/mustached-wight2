@@ -1,3 +1,4 @@
+#include <sstream>
 #include <string>
 
 #include "walkers.h"
@@ -135,9 +136,18 @@ void GameplayState::renderHud()
     //Render the countdown
     Entity *corpseCounter = world.getEntitiesForType(ComponentTypes::CORPSE_COUNTER).front();
     CorpseCounter *counter = (CorpseCounter *) corpseCounter->getComponent(ComponentTypes::CORPSE_COUNTER);
-    std::string spawnString = "Next Spawn: " + std::to_string(counter->totalMsNeeded - counter->elapsedMs);
+    int delta = counter->totalMsNeeded - counter->elapsedMs;
+    int minutes = delta/(1000 * 60);
+    int seconds = delta/(1000);
+    int ms = delta % 1000;
+    char time[10];
+    std::sprintf(time, "%02d:%02d:%03d", minutes, seconds, ms);
+    std::string spawnString = "Next Spawn: " + std::string(time);
+
+    //SDL_Log(spawnString.c_str());
     TTF_SizeText(font, spawnString.c_str(), &w, &h);
-    loc = {800 - 125 - 5, 5, w, h};
+    //SDL_Log("Width of timer: %d", w);
+    loc = {800 - 155, 5, w, h};
     graphics->renderFont(font, spawnString.c_str(), color, &loc);
 }
 
