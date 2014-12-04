@@ -1,15 +1,24 @@
 #include "EntityFactory.h"
 #include "Components.h"
 #include "Constants.h"
-#include <random>
+#include <chrono>
 
 
 EntityFactory::EntityFactory()
 {
-        lifeDistribution = std::uniform_int_distribution<int>(1, 3);
-        ammoDistribution = std::uniform_int_distribution<int>(1, 5);
-        frameDistribution = std::uniform_int_distribution<int>(5, 15);
-        velocityDistribution = std::uniform_real_distribution<float>(-1.0f, 1.0f);
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    generator = new std::default_random_engine(seed);
+
+
+    lifeDistribution = std::uniform_int_distribution<int>(1, 3);
+    ammoDistribution = std::uniform_int_distribution<int>(1, 5);
+    frameDistribution = std::uniform_int_distribution<int>(5, 15);
+    velocityDistribution = std::uniform_real_distribution<float>(-1.0f, 1.0f);
+}
+
+EntityFactory::~EntityFactory()
+{
+    delete(generator);
 }
 
 Entity *EntityFactory::createPlayer() 
@@ -79,7 +88,7 @@ Entity *EntityFactory::createCorpse(Position *position)
     r->textureRect = {0, 0, 16, 16};
 
     corpse->addComponent(ComponentTypes::CORPSE, new Corpse());
-    corpse->addComponent(ComponentTypes::AMMO, new Ammo(ammoDistribution(generator)));
+    corpse->addComponent(ComponentTypes::AMMO, new Ammo(ammoDistribution(*generator)));
     corpse->addComponent(ComponentTypes::POSITION, position);
     corpse->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
     corpse->addComponent(ComponentTypes::RENDERRECT, r);
@@ -90,7 +99,7 @@ Entity *EntityFactory::createZombie(Position *position)
 {
     Entity *zombie = new Entity();
 
-    int life = lifeDistribution(generator);
+    int life = lifeDistribution(*generator);
 
     RenderRect *r = new RenderRect();
     r->rect.w = 16;
@@ -157,7 +166,7 @@ Entity *EntityFactory::createBloodParticle(Position *startingPostion, Velocity *
         {
             velocity->dx *= -1.0f;
         }
-        velocity->dy *= velocityDistribution(generator);
+        velocity->dy *= velocityDistribution(*generator);
     }
     if(startingVelocity->dy != 0)
     {
@@ -165,7 +174,7 @@ Entity *EntityFactory::createBloodParticle(Position *startingPostion, Velocity *
         {
             velocity->dy *= -1.0f;
         }
-        velocity->dx *= velocityDistribution(generator);
+        velocity->dx *= velocityDistribution(*generator);
     }
 
     SDL_Log("Particle Velocity: %f, %f", velocity->dx, velocity->dy);
@@ -175,7 +184,7 @@ Entity *EntityFactory::createBloodParticle(Position *startingPostion, Velocity *
     render->rect.h = 2;
     render->color = {200, 60, 20};
 
-    int particleLifespan = frameDistribution(generator);
+    int particleLifespan = frameDistribution(*generator);
     
     particle->addComponent(ComponentTypes::POSITION, position);
     particle->addComponent(ComponentTypes::VELOCITY, velocity);

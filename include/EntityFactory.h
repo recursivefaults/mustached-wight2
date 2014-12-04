@@ -8,6 +8,7 @@ class EntityFactory
 {
     public:
         EntityFactory();
+        ~EntityFactory();
         Entity *createPlayer();
         Entity *createSpawnCounter();
         Entity *createBullet(Position *, Velocity *);
@@ -21,7 +22,7 @@ class EntityFactory
         std::uniform_int_distribution<int> frameDistribution;
         std::uniform_int_distribution<int> ammoDistribution;
         std::uniform_real_distribution<float> velocityDistribution;
-        std::default_random_engine generator;
+        std::default_random_engine *generator;
 };
 
 #endif
