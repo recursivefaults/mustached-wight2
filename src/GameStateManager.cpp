@@ -1,7 +1,16 @@
+#include <chrono>
 #include "GameStateManager.h"
+
+
+GameStateManager::GameStateManager(Graphics *g, SoundEngine *s, TextureManager *t, FontManager *f) : _graphics(g), _sound(s), _textures(t), _fonts(f), running(true) 
+{
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    _randomGenerator = new std::default_random_engine(seed);
+};
 
 GameStateManager::~GameStateManager()
 {
+    delete(_randomGenerator);
     while(!stateStack.empty())
     {
         delete(stateStack.top());

@@ -2,6 +2,7 @@
 #define GAME_STATE_MANAGER_H
 
 #include <stack>
+#include <random>
 #include "Graphics.h"
 #include "SoundEngine.h"
 #include "TextureManager.h"
@@ -13,7 +14,7 @@ class GameState;
 class GameStateManager
 {
     public:
-        GameStateManager(Graphics *g, SoundEngine *s, TextureManager *t, FontManager *f) : _graphics(g), _sound(s), _textures(t), _fonts(f), running(true) {};
+        GameStateManager(Graphics *g, SoundEngine *s, TextureManager *t, FontManager *f);
         ~GameStateManager();
         /**
          * Pause the current state and put new state in focus.
@@ -39,9 +40,11 @@ class GameStateManager
         SoundEngine *getSoundEngine() const {return _sound;};
         FontManager *getFontManager() const {return _fonts;};
         Graphics *getGraphics() const {return _graphics;};
+        std::default_random_engine *getRandomGenerator() const {return _randomGenerator;};
 
     protected:
     private:
+        std::default_random_engine *_randomGenerator;
         Graphics *_graphics;
         SoundEngine *_sound;
         TextureManager *_textures;

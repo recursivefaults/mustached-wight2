@@ -9,7 +9,7 @@
 class World
 {
     public:
-    World() : gameOver(false) {};
+        World() : gameOver(false) {};
         void addEntity(Entity *e) {entities.push_back(e);};
         void pressKey(SDL_Keycode key) {keypresses[key] = true;}
         void removeEntity(int id);
@@ -18,8 +18,8 @@ class World
         std::list<Entity *> getEntitiesForType(ComponentTypes type);
         Entity *getEntityById(int id);
         bool wasKeyPressed(SDL_Keycode key) {return keypresses[key];};
-    void setGameOver(bool isOver) { gameOver = isOver;};
-    bool getGameOver() {return gameOver;};
+        void setGameOver(bool isOver) { gameOver = isOver;};
+        bool getGameOver() {return gameOver;};
     protected:
     private:
         std::list<Entity *> entities;

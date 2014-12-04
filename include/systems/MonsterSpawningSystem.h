@@ -11,7 +11,6 @@ namespace System {
             void update(int, World &);
         protected:
         private:
-            std::default_random_engine generator;
             int bracket;
     };
 }
