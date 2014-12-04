@@ -119,7 +119,9 @@ bool System::CollisionSystem::didCollide(Entity *first, Entity *second, int elap
 
 void System::CollisionSystem::bulletHitsMonster(Entity *first, Entity *second, World &world)
 {
-    if(first->hasComponent(ComponentTypes::BULLET) && second->hasComponent(ComponentTypes::MONSTER))
+    if(first->hasComponent(ComponentTypes::BULLET) && 
+            second->hasComponent(ComponentTypes::MONSTER) && 
+            !first->hasComponent(ComponentTypes::REMOVE))
     {
         SDL_Log("Bullet hit monster!");
         first->addComponent(ComponentTypes::REMOVE, new Remove());
