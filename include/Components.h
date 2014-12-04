@@ -29,6 +29,8 @@ enum class ComponentTypes
     STUNNED,
     LOOTINGCORPSE,
     BURNINGCORPSE,
+    WANDERING_BEHAVIOR,
+    TARGETING_PLAYER_BEHAVIOR,
     REMOVE,
     COLLIDABLE
 
@@ -143,6 +145,14 @@ struct Ammo : public Component {
 };
 
 struct Remove : public Component {};
+
+struct WanderingBehavior : public TimedComponent 
+{
+    public:
+        WanderingBehavior(int _wanderingFor = 450) : TimedComponent(_wanderingFor) {};
+};
+
+struct TargetingPlayerBehavior : public Component {};
 
 struct Collidable : public Component {
     public:

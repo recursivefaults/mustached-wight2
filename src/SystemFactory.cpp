@@ -16,7 +16,7 @@ std::vector<System::System *> System::SystemFactory::constructSystems(GameStateM
     std::vector<System::System *> systems;
     systems.push_back(new MonsterSpawningSystem(engine));
     systems.push_back(new MoveSystem());
-    systems.push_back(new MonsterSystem());
+    systems.push_back(new MonsterSystem(engine));
     systems.push_back(new FacingSystem());
     systems.push_back(new ShootingSystem(engine));
     systems.push_back(new CorpseSystem(engine));

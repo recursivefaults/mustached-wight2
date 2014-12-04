@@ -38,6 +38,7 @@ Vector2d Vector2d::operator- (Vector2d &other) const
 Vector2d Vector2d::unit() const
 {
     float mag = magnitude();
+    if(mag == 0.0f) { return Vector2d(0.0f, 0.0f); }
     return Vector2d(x/mag, y/mag);
 }
 

@@ -9,7 +9,6 @@ EntityFactory::EntityFactory()
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     generator = new std::default_random_engine(seed);
 
-
     lifeDistribution = std::uniform_int_distribution<int>(1, 3);
     ammoDistribution = std::uniform_int_distribution<int>(1, 5);
     frameDistribution = std::uniform_int_distribution<int>(5, 15);
@@ -114,6 +113,19 @@ Entity *EntityFactory::createZombie(Position *position)
     zombie->addComponent(ComponentTypes::FACING, new Facing());
     zombie->addComponent(ComponentTypes::COLLIDABLE, new Collidable());
     zombie->addComponent(ComponentTypes::POSITION, position);
+
+    std::uniform_real_distribution<float> wanderingChance(0.0f, 1.0f);
+    if(wanderingChance(*generator) < kWanderingMonsterChance)
+    {
+        SDL_Log("Wandering monster created");
+        zombie->addComponent(ComponentTypes::WANDERING_BEHAVIOR, new WanderingBehavior());
+    }
+    else
+    {
+        SDL_Log("Targeting monster created");
+        zombie->addComponent(ComponentTypes::TARGETING_PLAYER_BEHAVIOR, new TargetingPlayerBehavior());
+    }
+
     return zombie;
 }
 

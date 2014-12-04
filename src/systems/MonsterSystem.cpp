@@ -5,20 +5,26 @@ void System::MonsterSystem::update(int elapsedMs, World &world)
 {
     for(auto monster : world.getEntitiesForType(ComponentTypes::MONSTER))
     {
-        //Get the player
-        std::list<Entity*> players = world.getEntitiesForType(ComponentTypes::PLAYERINPUT);
-        //Pick a player
-        Entity *player = players.front();
-
-        //Calculate vector towards player
-        Velocity diff = Velocity();
-        Position *playerPosition = (Position *)player->getComponent(ComponentTypes::POSITION);
-        Position *zombiePosition = (Position *)monster->getComponent(ComponentTypes::POSITION);
-        diff.dx = playerPosition->x - zombiePosition->x;
-        diff.dy = playerPosition->y - zombiePosition->y;
+        Vector2d *newDirection = nullptr;
+        if(monster->hasComponent(ComponentTypes::TARGETING_PLAYER_BEHAVIOR))
+        {
+            newDirection = getTargetedVelocity(monster, world);
+        }
+        if(monster->hasComponent(ComponentTypes::WANDERING_BEHAVIOR))
+        {
+            newDirection = getWanderingVelocity(monster, elapsedMs, world);
+        }
 
         //Adjust velocity in that direction
         Velocity *zombieVelocity = (Velocity *) monster->getComponent(ComponentTypes::VELOCITY);
+
+        zombieVelocity->dx = newDirection->x * kZombieMoveVelocity;
+        zombieVelocity->dy = newDirection->y * kZombieMoveVelocity;
+
+        if(newDirection != nullptr)
+        {
+            delete(newDirection);
+        }
 
         if(monster->hasComponent(ComponentTypes::STUNNED))
         {
@@ -26,21 +32,41 @@ void System::MonsterSystem::update(int elapsedMs, World &world)
             return;
         }
 
-
-        if(diff.dx == 0.0f)
-            zombieVelocity->dx = 0.0f;
-        if(diff.dy == 0.0f)
-            zombieVelocity->dy = 0.0f;
-        if(diff.dx < 0.0f)
-            zombieVelocity->dx = -kZombieMoveVelocity;
-        if(diff.dx > 0.0f)
-            zombieVelocity->dx = kZombieMoveVelocity;
-        if(diff.dy < 0.0f)
-            zombieVelocity->dy = -kZombieMoveVelocity;
-        if(diff.dy > 0.0f)
-            zombieVelocity->dy = kZombieMoveVelocity;
-
     }
+}
+Vector2d *System::MonsterSystem::getTargetedVelocity(Entity *monster, World &world)
+{
+    //Get the player
+    std::list<Entity*> players = world.getEntitiesForType(ComponentTypes::PLAYERINPUT);
+    //Pick a player
+    Entity *player = players.front();
+
+    Position *playerPosition = (Position *)player->getComponent(ComponentTypes::POSITION);
+    Position *zombiePosition = (Position *)monster->getComponent(ComponentTypes::POSITION);
+    Vector2d vel(playerPosition->x - zombiePosition->x, playerPosition->y - zombiePosition->y);
+    Vector2d unitVel = vel.unit();
+    return new Vector2d(unitVel.x, unitVel.y);
+}
+
+Vector2d *System::MonsterSystem::getWanderingVelocity(Entity *monster, int elapsedMs, World &world)
+{
+    WanderingBehavior *target = (WanderingBehavior *) monster->getComponent(ComponentTypes::WANDERING_BEHAVIOR);
+    target->elapsedMs += elapsedMs;
+
+    Velocity *vel = (Velocity *) monster->getComponent(ComponentTypes::VELOCITY);
+    Vector2d unit(vel->dx, vel->dy);
+    unit = unit.unit();
+
+    if(target->elapsedMs >= target->totalMsNeeded)
+    {
+        //Change direction
+        target->elapsedMs = 0;
+        std::uniform_int_distribution<int> directions(0, 2);
+        unit.x = directions(*engine->getRandomGenerator()) - 1.0f;
+        unit.y = directions(*engine->getRandomGenerator()) - 1.0f;
+        unit = unit.unit();
+    }
+    return new Vector2d(unit.x, unit.y);
 }
 
 void System::MonsterSystem::handleStun(Entity *monster, int elapsedMs)
