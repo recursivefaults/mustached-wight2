@@ -135,6 +135,7 @@ void GameplayState::renderHud()
     //Render the countdown
     Entity *corpseCounter = world.getEntitiesForType(ComponentTypes::CORPSE_COUNTER).front();
     CorpseCounter *counter = (CorpseCounter *) corpseCounter->getComponent(ComponentTypes::CORPSE_COUNTER);
+    SDL_assert(counter->totalMsNeeded - counter->elapsedMs > 0);
     int delta = counter->totalMsNeeded - counter->elapsedMs;
     int minutes = delta/(1000 * 60);
     int seconds = delta/(1000);
@@ -144,7 +145,6 @@ void GameplayState::renderHud()
     std::sprintf(time, "%02d:%02d:%03d", minutes, seconds, ms);
     std::string spawnString = "Next Spawn: " + std::string(time);
 
-    //SDL_Log(spawnString.c_str());
     TTF_SizeText(font, spawnString.c_str(), &w, &h);
     loc = {800 - 155, 5, w, h};
     graphics->renderFont(font, spawnString.c_str(), color, &loc);

@@ -11,13 +11,29 @@ void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
     CorpseCounter *counter = (CorpseCounter *) corpseCounter->getComponent(ComponentTypes::CORPSE_COUNTER);
 
     counter->elapsedMs += elapsedMs;
+    
+    std::list<Entity *> corpses = world.getEntitiesForType(ComponentTypes::CORPSE);
+    int newBracket = corpses.size();
+
+    if(newBracket != bracket)
+    {
+        int newTotal = counter->totalMsNeeded - (newBracket - bracket) * 150;
+        if(newTotal < 1000)
+        {
+            newTotal = 1000;
+        }
+        counter->totalMsNeeded = newTotal;
+        SDL_Log("New ticks per spawn %d", counter->totalMsNeeded);
+        bracket = newBracket;
+    }
+
     if(counter->elapsedMs >= counter->totalMsNeeded)
     {
         std::uniform_int_distribution<int> width_generator(0,800);
         std::uniform_int_distribution<int> height_generator(0,600);
 
         std::uniform_real_distribution<float> flood_chance_generator(0.0f, 1.0f);
-        std::uniform_int_distribution<int> flood_generator(3, 10);
+        std::uniform_int_distribution<int> flood_generator(3, 5);
 
         counter->elapsedMs = 0;
         int spawnCount = 1;
@@ -37,19 +53,5 @@ void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
         }
     }
 
-    std::list<Entity *> corpses = world.getEntitiesForType(ComponentTypes::CORPSE);
-    int newBracket = corpses.size();
-
-    if(newBracket != bracket)
-    {
-        int newTotal = counter->totalMsNeeded - (newBracket - bracket) * 150;
-        if(newTotal < 1000)
-        {
-            newTotal = 1000;
-        }
-        counter->totalMsNeeded = newTotal;
-        SDL_Log("New ticks per spawn %d", counter->totalMsNeeded);
-        bracket = newBracket;
-    }
     
 }

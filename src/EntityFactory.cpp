@@ -189,8 +189,6 @@ Entity *EntityFactory::createBloodParticle(Position *startingPostion, Velocity *
         velocity->dx *= velocityDistribution(*generator);
     }
 
-    SDL_Log("Particle Velocity: %f, %f", velocity->dx, velocity->dy);
-
     RenderRect *render = new RenderRect();
     render->rect.w = 2;
     render->rect.h = 2;
