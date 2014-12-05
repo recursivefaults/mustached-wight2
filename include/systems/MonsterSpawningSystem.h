@@ -11,6 +11,7 @@ namespace System {
             void update(int, World &);
         protected:
         private:
+            Position *getSpawnPosition();
             int bracket;
     };
 }
