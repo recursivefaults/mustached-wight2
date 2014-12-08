@@ -17,7 +17,11 @@ void MainMenuState::initialize()
 
     engine->getTextureManager()->loadTextureWithName("menu_background.png");
     SDL_Log("Main menu initialized");
+
+    //Play music?
+    engine->getSoundEngine()->playMusic("Cinder.wav", 1);
 }
+
 void MainMenuState::pause()
 {
     SDL_Log("Main menu paused");
@@ -72,8 +76,6 @@ void MainMenuState::render()
     TTF_SizeText(boldFont, "Walkers", &w, &h);
     loc = {800/2 - w/2, 40, w, h};
     renderFontAt(boldFont, loc, "Walkers");
-
-    int nextH = 40 + h + 10;
 
     std::string instructions = "Press <Enter> to play, or 'q' to quit.";
     TTF_SizeText(font, instructions.c_str(), &w, &h);

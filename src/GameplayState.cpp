@@ -46,6 +46,12 @@ GameplayState::~GameplayState()
     //TODO: Delete all systems
 }
 
+void GameplayState::initialize()
+{
+    //Start the music!
+    //engine->getSoundEngine()->playMusicWithFade("Cinder.wav", 300, -1);
+}
+
 void GameplayState::cleanUp()
 {
     SDL_Log("Cleaning up resources and quitting");

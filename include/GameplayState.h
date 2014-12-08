@@ -16,7 +16,7 @@ class GameplayState : public GameState
     public:
         GameplayState(GameStateManager *_engine);
         ~GameplayState();
-        void initialize() {};
+        void initialize();
         void pause() {};
         void resume() {};
         void handleInput();

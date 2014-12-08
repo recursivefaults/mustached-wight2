@@ -11,6 +11,14 @@ class SoundEngine
         ~SoundEngine();
         void init();
         void playSound(const std::string &, int) const;
+        void playMusic(const std::string &, int) const;
+        /**
+         * Name
+         * Fade in MS
+         * Loops -1 forever
+         **/
+        void playMusicWithFade(const std::string &, int, int) const;
+        void setMusicVolumePercent(const float percentage) {Mix_VolumeMusic(MIX_MAX_VOLUME * percentage);};
     protected:
     private:
         SoundManager *sounds;

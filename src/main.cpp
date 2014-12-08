@@ -9,9 +9,6 @@ int main()
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "SDL failed to initizlize, how do we have this message?");
     }
 
-    //Initialize SDL_ttf
-
-
     Graphics graphics;
     SoundEngine soundEngine;
 
