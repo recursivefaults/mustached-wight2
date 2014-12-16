@@ -73,9 +73,12 @@ OBJECTS := \
 	$(OBJDIR)/Graphics.o \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/MainMenuState.o \
+	$(OBJDIR)/Room.o \
+	$(OBJDIR)/RoomFactory.o \
 	$(OBJDIR)/SoundEngine.o \
 	$(OBJDIR)/SoundManager.o \
 	$(OBJDIR)/SystemFactory.o \
+	$(OBJDIR)/Tile.o \
 	$(OBJDIR)/Vector2d.o \
 	$(OBJDIR)/World.o \
 	$(OBJDIR)/asset_helper.o \
@@ -178,6 +181,12 @@ $(OBJDIR)/main.o: src/main.cpp
 $(OBJDIR)/MainMenuState.o: src/MainMenuState.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Room.o: src/Room.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/RoomFactory.o: src/RoomFactory.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SoundEngine.o: src/SoundEngine.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
@@ -185,6 +194,9 @@ $(OBJDIR)/SoundManager.o: src/SoundManager.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/SystemFactory.o: src/SystemFactory.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Tile.o: src/Tile.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Vector2d.o: src/Vector2d.cpp

@@ -10,6 +10,7 @@
 #include "Entity.h"
 #include "World.h"
 #include "System.h"
+#include "Room.h"
 
 class GameplayState : public GameState
 {
@@ -25,10 +26,12 @@ class GameplayState : public GameState
     protected:
     private:
         void renderHud();
+        void renderMap();
         void cleanUp();
 
         World world;
         std::vector<System::System *> systems;
+        Room *room;
 };
 
 #endif

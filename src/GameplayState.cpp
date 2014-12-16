@@ -7,6 +7,7 @@
 #include "asset_helper.h"
 #include "EntityFactory.h"
 #include "GameOverState.h"
+#include "RoomFactory.h"
 
 GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 {
@@ -15,6 +16,7 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
     textureManager->loadTextureWithName("Zombie.png");
     textureManager->loadTextureWithName("Corpse.png");
     textureManager->loadTextureWithName("forest2.png");
+    textureManager->loadTextureWithName("zelda-like.png");
 
 
     engine->getFontManager()->loadFontWithName("ostrich-regular.ttf", 24);
@@ -23,7 +25,6 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
     System::SystemFactory f;
     systems = f.constructSystems(engine);
     SDL_Log("Systems constructed");
-
 
     EntityFactory entityFactory = EntityFactory();
 
@@ -36,11 +37,15 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
     p->y = 10;
     world.addEntity(entityFactory.createZombie(p));
 
+    RoomFactory rf(textureManager);
+    room = rf.generateRoom(false, false, false, false);
+
     SDL_Log("Gameplay initialized");
 }
 
 GameplayState::~GameplayState()
 {
+    delete(room);
     SDL_Log("Destroying gameplay");
     systems.clear();
     //TODO: Delete all systems
@@ -54,6 +59,7 @@ void GameplayState::initialize()
 
 void GameplayState::cleanUp()
 {
+
     SDL_Log("Cleaning up resources and quitting");
     SDL_Quit();
 }
@@ -76,10 +82,7 @@ void GameplayState::render()
     Graphics *graphics = engine->getGraphics();
     graphics->clearRenderer();
 
-    //Render the background
-    //TODO: MAP!
-    SDL_Rect wholeScreen = {0, 0, 800, 600};
-    graphics->drawTexture(engine->getTextureManager()->getTextureForName("forest2.png")->getTexture(), &wholeScreen);
+    renderMap();
 
     /**
      * Render the HUD
@@ -110,6 +113,24 @@ void GameplayState::render()
 
     renderHud();
     graphics->render();
+}
+
+void GameplayState::renderMap()
+{
+    Graphics *graphics = engine->getGraphics();
+    //Render the background
+    Tile *tile = nullptr;
+    SDL_Rect destination, origin;
+    for(int i = 0; i < room->getHeight(); ++i)
+    {
+        for(int j = 0; j < room->getWidth(); ++j)
+        {
+            destination = { j * 16, i * 16, 16, 16 }; 
+            tile = room->getTileAt(j, i);
+            origin = tile->getOriginRect();
+            graphics->drawTexture(tile->getTexture()->getTexture(), &destination, &origin); 
+        }
+    }
 }
 
 void GameplayState::renderHud()

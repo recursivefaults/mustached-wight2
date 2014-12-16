@@ -19,7 +19,7 @@ void MainMenuState::initialize()
     SDL_Log("Main menu initialized");
 
     //Play music?
-    engine->getSoundEngine()->playMusic("Cinder.wav", 1);
+    //engine->getSoundEngine()->playMusic("Cinder.wav", 1);
 }
 
 void MainMenuState::pause()
