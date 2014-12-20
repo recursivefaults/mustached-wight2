@@ -73,6 +73,7 @@ OBJECTS := \
 	$(OBJDIR)/Graphics.o \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/MainMenuState.o \
+	$(OBJDIR)/Map.o \
 	$(OBJDIR)/Room.o \
 	$(OBJDIR)/RoomFactory.o \
 	$(OBJDIR)/SoundEngine.o \
@@ -179,6 +180,9 @@ $(OBJDIR)/main.o: src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/MainMenuState.o: src/MainMenuState.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Map.o: src/Map.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Room.o: src/Room.cpp

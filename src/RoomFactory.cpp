@@ -73,8 +73,7 @@ SDL_Rect RoomFactory::getGrassyTile()
     int roomType = grassyDistribution(generator);
     if(roomType == 1)
         return {6 * 16, 5 * 16, 16, 16};
-    if(roomType == 2)
-        return {5 * 16, 5 * 16, 16, 16};
+    return {5 * 16, 5 * 16, 16, 16};
 }
 SDL_Rect RoomFactory::getNorthWallTile()
 {
