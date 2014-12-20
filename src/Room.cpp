@@ -16,6 +16,7 @@ Room::Room(const int _width, const int _height) : width(_width), height(_height)
 
 Room::~Room()
 {
+    SDL_Log("Room deleted");
 }
 
 void Room::setTileAt(Tile *tile, const int x, const int y)

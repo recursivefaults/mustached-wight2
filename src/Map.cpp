@@ -6,6 +6,11 @@ Map::Map()
 }
 Map::~Map()
 {
+    for(auto room : rooms)
+    {
+        delete(room);
+    }
+    currentRoom = nullptr;
 }
 void Map::addRoom(Room *room)
 {

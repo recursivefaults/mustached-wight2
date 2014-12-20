@@ -10,7 +10,7 @@
 #include "Entity.h"
 #include "World.h"
 #include "System.h"
-#include "Room.h"
+#include "Map.h"
 
 class GameplayState : public GameState
 {
@@ -31,7 +31,7 @@ class GameplayState : public GameState
 
         World world;
         std::vector<System::System *> systems;
-        Room *room;
+        Map *currentMap;
 };
 
 #endif

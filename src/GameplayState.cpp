@@ -8,6 +8,7 @@
 #include "EntityFactory.h"
 #include "GameOverState.h"
 #include "RoomFactory.h"
+#include "Room.h"
 
 GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 {
@@ -38,14 +39,17 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
     world.addEntity(entityFactory.createZombie(p));
 
     RoomFactory rf(textureManager);
-    room = rf.generateRoom(false, false, false, false);
+    currentMap = new Map();
+    Room *r = rf.generateRoom(false, false, false, false);
+    currentMap->addRoom(r);
+    currentMap->setCurrentRoom(r);
 
     SDL_Log("Gameplay initialized");
 }
 
 GameplayState::~GameplayState()
 {
-    delete(room);
+    delete(currentMap);
     SDL_Log("Destroying gameplay");
     systems.clear();
     //TODO: Delete all systems
@@ -117,6 +121,7 @@ void GameplayState::render()
 
 void GameplayState::renderMap()
 {
+    Room *room = currentMap->getCurrentRoom();
     Graphics *graphics = engine->getGraphics();
     //Render the background
     Tile *tile = nullptr;
