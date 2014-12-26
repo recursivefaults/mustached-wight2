@@ -1,7 +1,7 @@
 #include "systems/CorpseSystem.h"
 #include "EntityFactory.h"
 
-void System::CorpseSystem::update(int elapsedMs, World &world)
+void System::CorpseSystem::update(int elapsedMs, World &world, Room &room)
 {
     for(auto oncorpse : world.getEntitiesForType(ComponentTypes::ONCORPSE))
     {

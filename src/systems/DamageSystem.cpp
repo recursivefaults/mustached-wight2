@@ -1,7 +1,7 @@
 #include "systems/DamageSystem.h"
 #include "EntityFactory.h"
 
-void System::DamageSystem::update(int elapsedMs, World &world)
+void System::DamageSystem::update(int elapsedMs, World &world, Room &room)
 {
     for(auto lifer : world.getEntitiesForType(ComponentTypes::LIFE))
     {

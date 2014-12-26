@@ -31,30 +31,32 @@ Room *RoomFactory::generateRoom(bool northExit, bool southExit, bool eastExit, b
      */
     if(northExit)
     {
-        delete(theRoom->getTileAt(widthMax/2, 0));
-        delete(theRoom->getTileAt(widthMax/2 - 1, 0));
+        delete(theRoom->getTileAt((int)widthMax/2, 0));
+        delete(theRoom->getTileAt((int)widthMax/2 - 1, 0));
         Tile *one = new Tile(getGrassyTile(), texture, TileType::NORTH_EXIT);
-        theRoom->setTileAt(one, widthMax/2, 0);
+        theRoom->setTileAt(one, (int)widthMax/2, 0);
         one = new Tile(getGrassyTile(), texture, TileType::NORTH_EXIT);
-        theRoom->setTileAt(one, widthMax/2 - 1, 0);
+        theRoom->setTileAt(one, (int)widthMax/2 - 1, 0);
     }
     if(southExit)
     {
-        delete(theRoom->getTileAt(widthMax/2, heightMax));
-        delete(theRoom->getTileAt(widthMax/2 - 1, heightMax));
+        SDL_Log("Deleting tile at (%d, %d)", widthMax/2, heightMax - 1);
+        SDL_Log("Deleting tile at (%d, %d)", widthMax/2 - 1, heightMax - 1);
+        delete(theRoom->getTileAt((int)widthMax/2, heightMax - 1));
+        delete(theRoom->getTileAt((int)widthMax/2 - 1, heightMax - 1));
         Tile *one = new Tile(getGrassyTile(), texture, TileType::SOUTH_EXIT);
-        theRoom->setTileAt(one, widthMax/2, heightMax);
+        theRoom->setTileAt(one, (int)widthMax/2, heightMax - 1);
         one = new Tile(getGrassyTile(), texture, TileType::SOUTH_EXIT);
-        theRoom->setTileAt(one, widthMax/2 - 1, heightMax);
+        theRoom->setTileAt(one, (int)widthMax/2 - 1, heightMax - 1);
     }
     if(eastExit)
     {
-        delete(theRoom->getTileAt(widthMax, heightMax/2));
-        delete(theRoom->getTileAt(widthMax, heightMax/2 - 1));
+        delete(theRoom->getTileAt(widthMax - 1, (int)heightMax/2));
+        delete(theRoom->getTileAt(widthMax - 1, (int)heightMax/2 - 1));
         Tile *one = new Tile(getGrassyTile(), texture, TileType::EAST_EXIT);
-        theRoom->setTileAt(one, widthMax, heightMax/2);
+        theRoom->setTileAt(one, widthMax - 1, (int)heightMax/2);
         one = new Tile(getGrassyTile(), texture, TileType::EAST_EXIT);
-        theRoom->setTileAt(one, widthMax, heightMax/2 - 1);
+        theRoom->setTileAt(one, widthMax - 1, (int)heightMax/2 - 1);
     }
     if(westExit)
     {

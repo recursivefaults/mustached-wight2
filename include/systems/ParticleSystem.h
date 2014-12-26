@@ -6,7 +6,7 @@ namespace System {
 class ParticleSystem : public System
 {
     public:
-        void update(int, World &);
+        void update(int, World &, Room &);
     protected:
     private:
 };

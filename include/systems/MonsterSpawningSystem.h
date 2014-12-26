@@ -8,7 +8,7 @@ namespace System {
     {
         public:
             MonsterSpawningSystem(GameStateManager *e) : System(e), bracket(0) {};
-            void update(int, World &);
+            void update(int, World &, Room &);
         protected:
         private:
             int bracket;

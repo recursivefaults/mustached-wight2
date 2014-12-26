@@ -7,7 +7,7 @@ class ShootingSystem : public System
 {
     public:
         ShootingSystem(GameStateManager *e) : System(e) {};
-        virtual void update(int elapsedMs, World &world);
+        virtual void update(int elapsedMs, World &world, Room &room);
     protected:
     private:
         Velocity *getInitialVelocity(Entity *entity);

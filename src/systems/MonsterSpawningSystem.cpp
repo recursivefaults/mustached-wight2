@@ -4,7 +4,7 @@
 #include "Constants.h"
 #include "systems/MonsterSpawningSystem.h"
 
-void System::MonsterSpawningSystem::update(int elapsedMs, World &world)
+void System::MonsterSpawningSystem::update(int elapsedMs, World &world, Room &room)
 {
     Entity *corpseCounter = world.getEntitiesForType(ComponentTypes::CORPSE_COUNTER).front();
 

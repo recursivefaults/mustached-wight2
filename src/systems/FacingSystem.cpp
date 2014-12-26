@@ -1,7 +1,7 @@
 #include "systems/FacingSystem.h"
 
 
-void System::FacingSystem::update(int elapsedMs, World &world)
+void System::FacingSystem::update(int elapsedMs, World &world, Room &room)
 {
     for(auto entity : world.getEntitiesForType(ComponentTypes::FACING))
     {

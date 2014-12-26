@@ -2,7 +2,7 @@
 #include "Constants.h"
 #include "EntityFactory.h"
 
-void System::ShootingSystem::update(int elapsedMs, World &world)
+void System::ShootingSystem::update(int elapsedMs, World &world, Room &room)
 {
     for(auto entity : world.getEntitiesForType(ComponentTypes::CANSHOOT))
     {

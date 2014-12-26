@@ -7,7 +7,7 @@ class DamageSystem : public System
 {
     public:
         DamageSystem(GameStateManager *e) : System(e) {};
-        void update(int, World &);
+        void update(int, World &, Room &);
     protected:
     private:
 

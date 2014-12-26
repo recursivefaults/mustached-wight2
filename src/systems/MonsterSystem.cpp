@@ -1,7 +1,7 @@
 #include "systems/MonsterSystem.h"
 #include "Constants.h"
 
-void System::MonsterSystem::update(int elapsedMs, World &world)
+void System::MonsterSystem::update(int elapsedMs, World &world, Room &room)
 {
     for(auto monster : world.getEntitiesForType(ComponentTypes::MONSTER))
     {

@@ -6,7 +6,7 @@ namespace System {
 class RemoveSystem : public System
 {
     public:
-        virtual void update(int elapsedMs, World &);
+        virtual void update(int elapsedMs, World &, Room &);
     protected:
     private:
 };

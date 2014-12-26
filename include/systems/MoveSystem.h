@@ -7,7 +7,7 @@ class MoveSystem : public System
     public:
         MoveSystem() {};
         ~MoveSystem() {};
-        virtual void update(int elapsedMs, World &);
+        virtual void update(int elapsedMs, World &, Room &);
     protected:
     private:
 };

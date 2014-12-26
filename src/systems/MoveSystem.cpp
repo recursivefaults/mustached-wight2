@@ -1,7 +1,7 @@
 #include "systems/MoveSystem.h"
 #include "Constants.h"
 
-void System::MoveSystem::update(int elapsedMs, World &world)
+void System::MoveSystem::update(int elapsedMs, World &world, Room &room)
 {
     //TODO: Change this to something else.. enemies move different.
     for(auto entity : world.getEntitiesForType(ComponentTypes::PLAYERINPUT))

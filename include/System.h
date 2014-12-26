@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "World.h"
+#include "Room.h"
 #include "GameStateManager.h"
 
 namespace System {
@@ -14,7 +15,7 @@ class System
         System(GameStateManager *_engine) : engine(_engine) {};
         virtual ~System() {};
 
-        virtual void update(int elapsedMs, World &) = 0;
+        virtual void update(int elapsedMs, World &, Room &) = 0;
     protected:
         GameStateManager *engine;
     private:

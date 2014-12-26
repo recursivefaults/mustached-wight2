@@ -26,9 +26,16 @@ void Room::setTileAt(Tile *tile, const int x, const int y)
 
 Tile *Room::getTileAtPoint(const int px, const int py) const
 {
-    return nullptr;
+    SDL_assert(px <= 800 && px >= 0);
+    SDL_assert(py <= 600 && py >= 0);
+    int tileX = px/16;
+    int tileY = py/16;
+    
+    return mapData[tileY][tileX];
 }
 Tile *Room::getTileAt(const int px, const int py) const
 {
+    SDL_assert(py < mapData.size());
+    SDL_assert(px < mapData[0].size());
     return mapData[py][px];
 }

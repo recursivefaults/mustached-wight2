@@ -9,7 +9,7 @@ namespace System {
     {
         public:
             MonsterSystem(GameStateManager *_engine) : System(_engine) {};
-            void update(int elapsedMs, World &);
+            void update(int elapsedMs, World &, Room &);
         protected:
         private:
             Vector2d *getTargetedVelocity(Entity *, World &);

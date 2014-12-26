@@ -7,7 +7,7 @@ class CorpseSystem : public System
 {
     public:
         CorpseSystem(GameStateManager *e) : System(e) {};
-        void update(int, World &);
+        void update(int, World &, Room &);
     protected:
     private:
         void handleLooting(Entity *entity, int, World &world);

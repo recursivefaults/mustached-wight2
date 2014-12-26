@@ -21,7 +21,7 @@ GameplayState::GameplayState(GameStateManager *engine) : GameState(engine)
 
     RoomFactory rf(textureManager);
     currentMap = new Map();
-    Room *r = rf.generateRoom(false, false, false, false);
+    Room *r = rf.generateRoom(true, true, true, true);
     currentMap->addRoom(r);
     currentMap->setCurrentRoom(r);
 
@@ -74,7 +74,7 @@ void GameplayState::update(int elapsedMs)
     World *world = currentMap->getCurrentRoom()->getWorld();
     for(auto system : systems)
     {
-        system->update(elapsedMs, *world);
+        system->update(elapsedMs, *world, *currentMap->getCurrentRoom());
     }
     if(world->getGameOver())
     {

@@ -1,8 +1,9 @@
 #include "systems/CollisionSystem.h"
 #include "EntityFactory.h"
+#include "Tile.h"
 #include <cmath>
 
-void System::CollisionSystem::update(int elapsedMs, World &world)
+void System::CollisionSystem::update(int elapsedMs, World &world, Room &room)
 {
     for(auto collidable : world.getEntitiesForType(ComponentTypes::COLLIDABLE))
     {
@@ -54,11 +55,15 @@ void System::CollisionSystem::update(int elapsedMs, World &world)
                if(collidable->hasComponent(ComponentTypes::BULLET)) {
                    remove = true;
                }
+               if(isPlayerAtExit(collidable, p, room, TileType::EAST_EXIT)) {
+               }
                p->x = 800 - 16;
            }
            if(p->x <= 0) {
                if(collidable->hasComponent(ComponentTypes::BULLET)) {
                    remove = true;
+               }
+               if(isPlayerAtExit(collidable, p, room, TileType::WEST_EXIT)) {
                }
                p->x = 0;
            }
@@ -67,11 +72,15 @@ void System::CollisionSystem::update(int elapsedMs, World &world)
                if(collidable->hasComponent(ComponentTypes::BULLET)) {
                    remove = true;
                }
+               if(isPlayerAtExit(collidable, p, room, TileType::SOUTH_EXIT)) {
+               }
                p->y = 600 - 16;
            }
            if(p->y <= 0) {
                if(collidable->hasComponent(ComponentTypes::BULLET)) {
                    remove = true;
+               }
+               if(isPlayerAtExit(collidable, p, room, TileType::NORTH_EXIT)) {
                }
                p->y = 0;
            }
@@ -175,3 +184,20 @@ void System::CollisionSystem::playerHitsMonster(Entity *first, Entity *second, i
     }
 }
 
+bool System::CollisionSystem::isPlayerAtExit(Entity *e, Position *p, Room &room, TileType type)
+{
+    if(e->hasComponent(ComponentTypes::PLAYERINPUT)) {
+        Position newP; 
+        newP.x = p->x;
+        newP.y = p->y;
+        if(p->x > 800) newP.x = 800;
+        if(p->x < 0) newP.x = 0;
+        if(p->y < 0) newP.y = 0;
+        if(p->y > 600) newP.y = 600;
+        if(room.getTileAtPoint(newP.x, newP.y)->getFlag() == type) {
+            SDL_Log("EXIT");
+            return true;
+        }
+    }
+    return false;
+}
