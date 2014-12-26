@@ -3,12 +3,6 @@
 
 #include <vector>
 #include "GameState.h"
-#include "Graphics.h"
-#include "TextureManager.h"
-#include "FontManager.h"
-#include "SoundEngine.h"
-#include "Entity.h"
-#include "World.h"
 #include "System.h"
 #include "Map.h"
 
@@ -29,7 +23,6 @@ class GameplayState : public GameState
         void renderMap();
         void cleanUp();
 
-        World world;
         std::vector<System::System *> systems;
         Map *currentMap;
 };

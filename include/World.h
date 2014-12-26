@@ -8,6 +8,9 @@
 
 class World
 {
+    /**
+     * TODO: Move the gameover event to some sort of observable event
+     **/
     public:
         World() : gameOver(false) {};
         void addEntity(Entity *e) {entities.push_back(e);};

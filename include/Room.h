@@ -2,6 +2,7 @@
 #define ROOM_H
 
 #include <vector>
+#include "World.h"
 #include "Tile.h"
 
 class Room
@@ -22,12 +23,14 @@ class Room
         Room *getEastRoom() const {return east;};
         Room *getWestRoom() const {return west;};
         Room *getSouthRoom() const {return south;};
+        World *getWorld() {return &world;};
     protected:
     private:
         Room *north;
         Room *south;
         Room *east;
         Room *west;
+        World world;
         int width, height;
         std::vector< std::vector<Tile*> > mapData;
 };
