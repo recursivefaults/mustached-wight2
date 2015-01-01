@@ -6,8 +6,6 @@ SoundEngine::SoundEngine()
 }
 
 void SoundEngine::init() {
-    int flags = Mix_Init(MIX_INIT_MP3);
-    SDL_assert(MIX_INIT_MP3 == flags);
     SDL_assert(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096) == 0);
 
     SDL_Log("Sound engine loaded");
